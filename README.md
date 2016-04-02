@@ -1,4 +1,4 @@
-
+#Table of Contents
 [Authors](#authors)
 
 [Rules](#rules)
