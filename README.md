@@ -1,4 +1,10 @@
-# TeamProject
+
+[Authors](#authors)
+[Rules](#rules)
+[Documentation Entry Point](#docs)
+
+
+# <a name="authors"></a>DragonSpire Authors
 Brandon G.
 
 Lloyd A.
@@ -10,7 +16,7 @@ Larry S.
 Caleb D.
 
 
-# Game Rules and Other Info
+# <a name="rules"></a>Game Rules and Other Info
 
 Dragonspire Tournament
 --------------------------
@@ -70,4 +76,8 @@ Often mistaken for a familiar by regular folk, these dragons are small enough to
 Element: Electricity<br/>
 Attack damage base: 5
 
+
+# <a href="docs"></a> Documentation Entry Point
+
+https://github.com/bg317/TeamProject/tree/master/docs
 
