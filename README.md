@@ -1,6 +1,8 @@
 
 [Authors](#authors)
+
 [Rules](#rules)
+
 [Documentation Entry Point](#docs)
 
 
