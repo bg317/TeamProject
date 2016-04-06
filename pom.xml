@@ -16,4 +16,12 @@
       </plugin>
     </plugins>
   </build>
+  
+    <dependencies>
+        <dependency>
+	    <groupId>org.yaml</groupId>
+	    <artifactId>snakeyaml</artifactId>
+	    	<version>1.5</version>
+        </dependency>
+ 	</dependencies>
 </project>
