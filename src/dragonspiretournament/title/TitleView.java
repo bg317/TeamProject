@@ -25,7 +25,6 @@ public class TitleView {
 		titleFrame.getContentPane().add(titleLabel, BorderLayout.CENTER);
 		
 		startButton.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				TitleController.doSomething();
 			}
