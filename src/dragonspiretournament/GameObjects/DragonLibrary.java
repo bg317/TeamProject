@@ -15,6 +15,7 @@ import dragonspiretournament.GameObjects.Dragons.*;
 public class DragonLibrary {
 	
 	private ArrayList<String> dragonLibrary;
+	@SuppressWarnings("unused")
 	private Map<String, Object> dragons;
 	
 	/**
@@ -22,6 +23,7 @@ public class DragonLibrary {
 	 * located in src/dragons/dragons.yaml
 	 * @throws FileNotFoundException 
 	 */
+	@SuppressWarnings("unchecked")
 	public DragonLibrary() throws FileNotFoundException {
 		Yaml yaml = new Yaml();
 		InputStream input = new FileInputStream(new File("src/dragons/Dragons.yaml"));
