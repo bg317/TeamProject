@@ -1,15 +1,13 @@
-import dragonspiretournament.title.TitleView;
+import dragonspiretournament.match.MatchView;
 
 import java.io.FileNotFoundException;
 
-import dragonspiretournament.GameObjects.DragonLibrary;
-import dragonspiretournament.title.TitleController;
+import dragonspiretournament.title.*;
 
 public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
-		TitleView titlePage = new TitleView();
-		DragonLibrary dLib = new DragonLibrary();
+		MatchView matchPage = new MatchView();
 	}
 
 }
