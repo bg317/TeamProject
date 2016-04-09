@@ -1,13 +1,21 @@
+import dragonspiretournament.armyselection.ArmySelectionView;
 import dragonspiretournament.match.MatchView;
 
 import java.io.FileNotFoundException;
-
-import dragonspiretournament.title.*;
-
+/**
+ * The Class Main.
+ * This is the main run for the Game.
+ */
 public class Main {
-	//lloyd removed all of larry's comments
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public static void main(String[] args) throws FileNotFoundException {
-		MatchView armySelectView = new MatchView();
+		ArmySelectionView armySelectView = new ArmySelectionView();
 	}
 
 }
