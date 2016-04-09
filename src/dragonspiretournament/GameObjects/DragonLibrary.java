@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.swing.Icon;
 
 import org.yaml.snakeyaml.Yaml;
 
@@ -14,7 +15,46 @@ import dragonspiretournament.GameObjects.Dragons.*;
 
 public class DragonLibrary {
 	
-	private ArrayList<String> dragonLibrary;
+	private ArrayList<Dragon> dragonLibrary;
+
+	public DragonLibrary() {
+	    dragonLibrary = new ArrayList<Dragon>();
+	    Dragon tmp;
+
+	    tmp = new Dragon("Igneagnus", "Fire", "Ice", "images/Igneagnus.jpg");
+        dragonLibrary.add(tmp);
+
+        tmp = new Dragon("Tenebret", "Ice", "Wind", "images/Tenebret.jpg");
+        dragonLibrary.add(tmp);
+
+        tmp = new Dragon("WindDragon", "Wind", "Earth", "images/WindDragon.jpg");
+        dragonLibrary.add(tmp);
+
+        tmp = new Dragon("EarthDragon", "Earth", "Electricity", "images/EarthDragon.jpg");
+        dragonLibrary.add(tmp);
+
+        tmp = new Dragon("Galthi", "Electricity", "Water", "images/Galthi.jpg");
+        dragonLibrary.add(tmp);
+
+        tmp = new Dragon("WaterDragon", "Water", "Fire", "images/WaterDragon.jpg");
+        dragonLibrary.add(tmp);
+	}
+
+	public Dragon getDragon(int index) {
+	    return dragonLibrary.get(index);
+	}
+	
+	public ArrayList<Dragon> getLibrary() {
+	    return dragonLibrary;
+	}
+}	
+	
+	
+	
+	
+	
+	
+/* YAML Section commented out
 	@SuppressWarnings("unused")
 	private Map<String, Object> dragons;
 	
@@ -22,7 +62,7 @@ public class DragonLibrary {
 	 * All dragons are pulled in from an external yaml file 
 	 * located in src/dragons/dragons.yaml
 	 * @throws FileNotFoundException 
-	 */
+	 *
 	@SuppressWarnings("unchecked")
 	public DragonLibrary() throws FileNotFoundException {
 		Yaml yaml = new Yaml();
@@ -30,8 +70,5 @@ public class DragonLibrary {
 		dragonLibrary = (ArrayList<String>) yaml.load(input);
 		System.out.println( dragonLibrary );
 	}
-	
-	
-	
-
 }
+*/
