@@ -26,7 +26,7 @@ public class MatchView {
 		matchFrame = new JFrame("DragonSpire Tournament");
 		matchFrame.setSize(849, 626);
 		matchFrame.getContentPane().setLayout(null);
-		
+		matchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
 		panel.setBounds(36, 11, 121, 400);
 		matchFrame.getContentPane().add(panel);
