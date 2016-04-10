@@ -4,7 +4,7 @@ import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dice;
 import dragonspiretournament.GameObjects.Army;
 
-public class Match {
+public class MatchModel {
 	
 	private Player playerOne;
 	private Player playerTwo;
@@ -31,4 +31,3 @@ public class Match {
 		this.playerOneDice = playerOneDice;
 		this.playerTwoDice = playerTwoDice;
 	}
-}
