@@ -31,3 +31,4 @@ public class MatchModel {
 		this.playerOneDice = playerOneDice;
 		this.playerTwoDice = playerTwoDice;
 	}
+}

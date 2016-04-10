@@ -74,7 +74,7 @@ public class ArmySelectionModel {
 	}
 	
 	public ArrayList<Dragon> getAllLibraryDragons() { 
-		return dragLib.getDragonLibrary();
+		return dragLib.getLibrary();
 	}
 	/**
 	 * Gets the drag lib.
