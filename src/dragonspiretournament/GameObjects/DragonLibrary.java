@@ -1,14 +1,6 @@
 package dragonspiretournament.GameObjects;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.swing.Icon;
-import org.yaml.snakeyaml.Yaml;
 import dragonspiretournament.GameObjects.Dragons.*;
 
 /**
@@ -33,25 +25,25 @@ public class DragonLibrary {
 	    dragonLibrary = new ArrayList<Dragon>();
 	    Dragon tmp;
 
-	    tmp = new Dragon("Igneagnus", "Lava", "Flora", "src/dragons/icons/Igneagnus.png");
+	    tmp = new Dragon("Igneagnus", "Lava", "Flora", "src/dragons/icons/Igneagnus.png", "src/dragons/descr/Igneagnus.txt");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Tenebret", "Ice", "Lava", "src/dragons/icons/Tenebret.png");
+        tmp = new Dragon("Tenebret", "Ice", "Lava", "src/dragons/icons/Tenebret.png", "src/dragons/descr/Tenebret.txt");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Arinial", "Metal", "Ice", "src/dragons/icons/Arinial.png");
+        tmp = new Dragon("Arinial", "Metal", "Ice", "src/dragons/icons/Arinial.png", "src/dragons/descr/Arinial.txt");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Skenna", "Goo", "Storm", "src/dragons/icons/Skenna.png");
+        tmp = new Dragon("Skenna", "Goo", "Storm", "src/dragons/icons/Skenna.png", "src/dragons/descr/Skenna.txt");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Fladoen", "Solar", "Goo", "src/dragons/icons/Fladoen.png");
+        tmp = new Dragon("Fladoen", "Solar", "Goo", "src/dragons/icons/Fladoen.png", "src/dragons/descr/Fladoen.txt");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Galthi", "Storm", "Metal", "src/dragons/icons/Galthi.png");
+        tmp = new Dragon("Galthi", "Storm", "Metal", "src/dragons/icons/Galthi.png", "src/dragons/descr/Galthi.txt");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Trudrake", "Flora", "Solar", "src/dragons/icons/Trudrake.png");
+        tmp = new Dragon("Trudrake", "Flora", "Solar", "src/dragons/icons/Trudrake.png", "src/dragons/descr/Trudrake.txt");
         dragonLibrary.add(tmp);
 	}
 
@@ -94,7 +86,17 @@ public class DragonLibrary {
 	
 	
 	
+/*
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
+import javax.swing.Icon;
+import org.yaml.snakeyaml.Yaml;
 	
+ */
 	
 	
 /* YAML Section commented out

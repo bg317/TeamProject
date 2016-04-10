@@ -19,7 +19,7 @@ public class Player {
     private int lastDamage;
     private Dragon lastDragon;
 
-    private static final int MAX_HP = 20;
+    private static final int MAX_HP = 25;
 
     /**
      * Creates a player using a specified name. Default HP is set to MAX_HP
