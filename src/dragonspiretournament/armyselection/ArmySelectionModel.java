@@ -2,6 +2,7 @@ package dragonspiretournament.armyselection;
 
 import java.util.ArrayList;
 
+import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
@@ -13,7 +14,17 @@ public class ArmySelectionModel {
 	private Dragon current;
 	private Dragon prev;
 	private Dragon next;
+	private Army currentPlayerArmy;
+
 	
+	public Army getCurrentPlayerArmy() {
+		return currentPlayerArmy;
+	}
+
+	public void setCurrentPlayerArmy(Army currentPlayerArmy) {
+		this.currentPlayerArmy = currentPlayerArmy;
+	}
+
 	/**
 	 * Instantiates a new army selection model.
 	 *
@@ -29,6 +40,7 @@ public class ArmySelectionModel {
 		this.current = current;
 		this.prev = prev;
 		this.next = next;
+		this.currentPlayerArmy = new Army();
 		
 	}
 	
@@ -37,8 +49,8 @@ public class ArmySelectionModel {
 	 */
 	public ArmySelectionModel() {
 		// TODO Auto-generated constructor stub
-		dragLib = new DragonLibrary();
-		
+		this.dragLib = new DragonLibrary();
+		this.currentPlayerArmy = new Army();
 		ArmySelectionController.initCurrentAndPrev(this);
 	}
 	

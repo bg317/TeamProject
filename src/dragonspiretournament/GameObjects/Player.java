@@ -18,7 +18,7 @@ public class Player {
         army = null;
         dice = new Dice();
         strongholdHP = MAX_HP;
-        lastDamage = null;
+        lastDamage = (Integer) null;
         lastDragon = null;
     }
 

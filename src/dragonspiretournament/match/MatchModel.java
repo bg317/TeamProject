@@ -1,5 +1,5 @@
 package dragonspiretournament.match;
 
-public class Match {
+public class MatchModel {
 
 }
