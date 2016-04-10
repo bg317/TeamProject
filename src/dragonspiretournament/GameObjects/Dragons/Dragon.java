@@ -20,17 +20,19 @@ public class Dragon {
     private String strength; //Type strong against
     private String statEffect; //Status effect
     private String icon; //Location of the image file
+    private String description; //Description of dragon
 
     /**
      * Creates Dragon with default damage and multiplier with no status effect
      * 
-     * @param dragonName Name of the dragon
-     * @param dragonType Type of the dragon
-     * @param typeStrong Type that the dragon is strong against
-     * @param dragonIcon File location of the dragon's image
+     * @param dragonName  Name of the dragon
+     * @param dragonType  Type of the dragon
+     * @param typeStrong  Type that the dragon is strong against
+     * @param dragonIcon  File location of the dragon's image
+     * @param description File location of the description of dragon
      */
 
-    public Dragon(String dragonName, String dragonType, String typeStrong, String dragonIcon) {
+    public Dragon(String dragonName, String dragonType, String typeStrong, String dragonIcon, String description) {
         name = dragonName;
         damage = DEFAULT_DAMAGE;
         multiplier = DEFAULT_MULTIPLIER;
@@ -38,6 +40,7 @@ public class Dragon {
         strength = typeStrong;
         statEffect = "none";
         icon = dragonIcon;
+        this.description = description;
     }
 
     /**
@@ -49,9 +52,10 @@ public class Dragon {
      * @param dragonType        Type of the dragon
      * @param typeStrong        Type that the dragon is strong against
      * @param dragonIcon        File location of the dragon's image
+     * @param description       File location of the description of dragon
      */
 
-    public Dragon(String dragonName, int dragonDamage, double damageMultiplier, String dragonType, String typeStrong, String dragonIcon) {
+    public Dragon(String dragonName, int dragonDamage, double damageMultiplier, String dragonType, String typeStrong, String dragonIcon, String description) {
         name = dragonName;
         damage = dragonDamage;
         multiplier = damageMultiplier;
@@ -59,6 +63,7 @@ public class Dragon {
         strength = typeStrong;
         statEffect = "none";
         icon = dragonIcon;
+        this.description = description;
     }
 
     /**
@@ -69,9 +74,10 @@ public class Dragon {
      * @param typeStrong    Type that the dragon is strong against
      * @param dragonEffect  Status effect inflicted by the dragon
      * @param dragonIcon    File location of the dragon's image
+     * @param description   File location of the description of dragon
      */
 
-    public Dragon(String dragonName, String dragonType, String typeStrong, String dragonEffect, String dragonIcon) {
+    public Dragon(String dragonName, String dragonType, String typeStrong, String dragonEffect, String dragonIcon, String description) {
         name = dragonName;
         damage = DEFAULT_DAMAGE;
         multiplier = DEFAULT_MULTIPLIER;
@@ -79,6 +85,7 @@ public class Dragon {
         strength = typeStrong;
         statEffect = dragonEffect;
         icon = dragonIcon;
+        this.description = description;
     }
 
     /**
@@ -91,9 +98,10 @@ public class Dragon {
      * @param typeStrong        Type that the dragon is strong against
      * @param dragonEffect      Status effect inflicted by the dragon
      * @param dragonIcon        File location of the dragon's image
+     * @param description       File location of the description of dragon
      */
 
-    public Dragon(String dragonName, int dragonDamage, double damageMultiplier, String dragonType, String typeStrong, String statusEffect, String dragonIcon) {
+    public Dragon(String dragonName, int dragonDamage, double damageMultiplier, String dragonType, String typeStrong, String statusEffect, String dragonIcon, String description) {
         name = dragonName;
         damage = dragonDamage;
         multiplier = damageMultiplier;
@@ -101,6 +109,7 @@ public class Dragon {
         strength = typeStrong;
         statEffect = statusEffect;
         icon = dragonIcon;
+        this.description = description;
     }
 
     /**
@@ -149,6 +158,18 @@ public class Dragon {
 
     public String getIcon() {
         return icon;
+    }
+
+    /**
+     * getDescription - returns the description of the dragon
+     * 
+     * @param  none
+     * 
+     * @return description of the dragon
+     */
+
+    public String getDesciption() {
+        return description;
     }
 
     /**
