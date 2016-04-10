@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.Icon;
-
 import org.yaml.snakeyaml.Yaml;
-
 import dragonspiretournament.GameObjects.Dragons.*;
 
 /**
