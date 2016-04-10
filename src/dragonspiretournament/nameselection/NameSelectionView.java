@@ -63,22 +63,22 @@ public class NameSelectionView {
 	 private class ButtonListener implements ActionListener
 	   {
 		 
+		 /**
+		  * when the button is pressed
+		  */
 		public void actionPerformed(ActionEvent e) {
 			
 			//set the name based on what the user entered
-			NameSelectionController.setName(nameEntry.getSelectedText());
+			NameSelectionController.setName(nameEntry.getText());
 			
 			//then moving on to the game if we're on player 2
 			if (NameSelectionController.goToNextFrame() == true)
 			{
-				System.out.println("in if");
 				//start game
 			}
 			//go to player 2 if on player 1
 			else
 			{
-				
-				System.out.println("in else");
 				
 				//we do it all again for player 2
 				currentPlayer = NameSelectionController.getPlayer();
