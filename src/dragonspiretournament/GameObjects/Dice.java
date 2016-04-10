@@ -61,6 +61,18 @@ public class Dice {
     }
 
     /**
+     * getDice - returns all of the dice faces
+     * 
+     * @param  none
+     * 
+     * @return ArrayList containing the dragon on each dice face
+     */
+
+    public ArrayList<Dragon> getDice() {
+        return diceFaces;
+    }
+
+    /**
      * getFaceCount - Returns a count of the number of faces with dragons
      * 
      * @param none
