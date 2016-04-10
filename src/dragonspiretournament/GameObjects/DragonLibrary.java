@@ -33,25 +33,25 @@ public class DragonLibrary {
 	    dragonLibrary = new ArrayList<Dragon>();
 	    Dragon tmp;
 
-	    tmp = new Dragon("Igneagnus", "Lava", "Flora", "src/dragons/icons/Igneagnus.png");
+	    tmp = new Dragon("Igneagnus", "Lava", "Flora", "src/dragons/icons/testDragonIcon.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Tenebret", "Ice", "Lava", "src/dragons/icons/Tenebret.png");
+        tmp = new Dragon("Tenebret", "Ice", "Lava", "src/dragons/icons/testDragonIcon.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Arinial", "Metal", "Ice", "src/dragons/icons/Arinial.png");
+        tmp = new Dragon("Arinial", "Metal", "Ice", "src/dragons/icons/testDragonIcon.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Skenna", "Goo", "Storm", "src/dragons/icons/Skenna.png");
+        tmp = new Dragon("Skenna", "Goo", "Storm", "src/dragons/icons/testDragonIcon.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Fladoen", "Solar", "Goo", "src/dragons/icons/Fladoen.png");
+        tmp = new Dragon("Fladoen", "Solar", "Goo", "src/dragons/icons/testDragonIcon.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Galthi", "Storm", "Metal", "src/dragons/icons/Galthi.png");
+        tmp = new Dragon("Galthi", "Storm", "Metal", "src/dragons/icons/testDragonIcon.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Trudrake", "Flora", "Solar", "src/dragons/icons/Trudrake.png");
+        tmp = new Dragon("Trudrake", "Flora", "Solar", "src/dragons/icons/testDragonIcon.png");
         dragonLibrary.add(tmp);
 	}
 
