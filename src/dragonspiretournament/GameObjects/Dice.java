@@ -16,7 +16,7 @@ public class Dice {
     private ArrayList<Dragon> diceFaces;
     private int maxFaces; //Maximum number of faces allowed on dice
 
-    private static final int DEFAULT_MAX = 5;
+    private static final int DEFAULT_MAX = 6;
 
     /**
      * Creates a dice with no faces. Max number of faces is default
@@ -30,7 +30,7 @@ public class Dice {
     }
 
     /**
-     * Creates a dice with no faces. 
+     * Creates a dice with no faces, except the first spot for "missed" attacks
      * 
      * @param faces Maximum number of faces on the dice
      */
@@ -38,6 +38,9 @@ public class Dice {
     public Dice(int faces) {
         diceFaces = new ArrayList<Dragon>();
         maxFaces = faces;
+        
+        Dragon missed = new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png");
+        diceFaces.add(missed); //Adds missed to first face of dice
     }
 
     /**
@@ -98,22 +101,27 @@ public class Dice {
 
     /**
      * remove - Removes a dragon from the dice face,
-     *          All dice faces move up one spot
+     *          All dice faces move up one spot. Cannot remove "missed".
      * 
      * @param index Location of the dice face
      */
 
     public void remove(int index) {
-        diceFaces.remove(index);
+        if(index != 0)
+            diceFaces.remove(index);
     }
 
     /**
-     * clearDice - Removes all dragons from all dice faces
+     * clearDice - Removes all dragons from all dice faces, except the "missed" slot
      * 
      * @param none
      */
 
     public void clearDice() {
         diceFaces.clear();
+
+        Dragon missed = new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png");
+
+        diceFaces.add(missed); //Adds missed to first face of dice
     }
 }
