@@ -1,5 +1,9 @@
 package dragonspiretournament.PlayerInformation;
 
+import javax.swing.ImageIcon;
+
+import dragonspiretournament.GameObjects.Dragons.Dragon;
+
 public class DragonInformationController {
 	
 	static DragonInformation dragonInfo;

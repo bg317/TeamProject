@@ -1,5 +1,7 @@
 package dragonspiretournament.nameselection;
 
+import dragonspiretournament.GameObjects.Player;
+
 public class NameSelectionModel {
 	
 	//for ease of remembering which player we're dealing with

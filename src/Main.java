@@ -1,5 +1,6 @@
 import dragonspiretournament.armyselection.ArmySelectionView;
 import dragonspiretournament.match.MatchView;
+import dragonspiretournament.title.TitleView;
 
 import java.io.FileNotFoundException;
 /**
@@ -16,6 +17,8 @@ public class Main {
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		ArmySelectionView armySelectView = new ArmySelectionView();
+		MatchView matchView = new MatchView();
+		TitleView titleView = new TitleView();
 	}
 
 }
