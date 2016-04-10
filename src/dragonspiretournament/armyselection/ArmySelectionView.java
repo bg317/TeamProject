@@ -6,12 +6,15 @@ import javax.swing.JButton;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import dragonspiretournament.GameObjects.Dragons.Dragon;
-import dragonspiretournament.GameObjects.Dragons.TestDragon;
+import dragonspiretournament.GameObjects.UIComponents.DragonButton;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,6 +28,16 @@ public class ArmySelectionView {
 	JFrame armySelectionWindow;
 	ArmySelectionModel selectionModel;
 	
+	JPanel mainPanel;
+	JPanel prevWindow;
+	JPanel currWindow;
+	JPanel nextWindow;
+	JPanel currentArmySelection;
+	
+	JButton selectDragonBtn;
+	JButton prevButton;
+	JButton nextButton;
+	
 	/**
 	 * Instantiates a new army selection view.
 	 */
@@ -35,23 +48,24 @@ public class ArmySelectionView {
 		armySelectionWindow.setSize(1200, 748);
 		armySelectionWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel mainPanel = new JPanel();
+		mainPanel = new JPanel();
 		armySelectionWindow.getContentPane().add(mainPanel);
 		mainPanel.setLayout(null);
 		
-		JPanel prevWindow = new JPanel();
+		prevWindow = new JPanel();
 		prevWindow.setBounds(41, 163, 124, 108);
 		mainPanel.add(prevWindow);
 		
-		JPanel currWindow = new JPanel();
+		
+		currWindow = new JPanel();
 		currWindow.setBounds(334, 111, 298, 210);
 		mainPanel.add(currWindow);
 		
-		JPanel nextWindow = new JPanel();
+		nextWindow = new JPanel();
 		nextWindow.setBounds(814, 163, 124, 108);
 		mainPanel.add(nextWindow);
 		
-		JPanel currentArmySelection = new JPanel();
+		currentArmySelection = new JPanel();
 		currentArmySelection.setBounds(96, 441, 797, 67);	
 		currentArmySelection.setBorder(new LineBorder(Color.CYAN));
 		
@@ -61,16 +75,15 @@ public class ArmySelectionView {
 
 			
 		
-		JButton selectDragonBtn = new JButton("Pick Item");
-
+		selectDragonBtn = new JButton("Pick Item");
 		selectDragonBtn.setBounds(439, 387, 89, 23);
 		mainPanel.add(selectDragonBtn);
 		
-		JButton prevButton = new JButton("Prev");
+		prevButton = new JButton("Prev");
 		prevButton.setBounds(76, 347, 89, 23);
 		mainPanel.add(prevButton);
 		
-		JButton nextButton = new JButton("Next");
+		nextButton = new JButton("Next");
 		nextButton.setBounds(823, 347, 89, 23);
 		mainPanel.add(nextButton);
 		
@@ -82,12 +95,24 @@ public class ArmySelectionView {
 		Iterator<Dragon> playerDragonsIteration = playerDragons.iterator();
 		ImageIcon dragIcon;
 		Dragon currentDragon;
+		DragonButton dragButton;
 		
 		while ( playerDragonsIteration.hasNext() ) {
 			currentDragon = playerDragonsIteration.next();
-			dragIcon = new ImageIcon(currentDragon.getIcon());
-			selectionPanel.add(new JButton(dragIcon));
+			dragButton = new DragonButton( currentDragon );
+			configureActionListener( dragButton );
+			selectionPanel.add( dragButton );
 		}
+	}
+	
+	public void configureActionListener( DragonButton dragBtn ) {
+		dragBtn.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				//ArmySelectionController.removeFromArmy()
+				//updateSelectionPanel( this.currentArmySelection, this.selectionModel )
+			}
+		});
 	}
 	
 }

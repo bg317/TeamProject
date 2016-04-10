@@ -29,7 +29,7 @@ public class ArmySelectionModel {
 		this.current = current;
 		this.prev = prev;
 		this.next = next;
-		setupDragonPrevAndNext();
+		
 	}
 	
 	/**
@@ -37,18 +37,11 @@ public class ArmySelectionModel {
 	 */
 	public ArmySelectionModel() {
 		// TODO Auto-generated constructor stub
+		dragLib = new DragonLibrary();
+		
+		ArmySelectionController.initCurrentAndPrev(this);
 	}
 	
-	public void setupDragonPrevAndNext() {
-		int currentIndex;
-		if ( current == null ) {
-			//current = dragLib.getList().get(1);
-			//prev = dragLib.getList().get(0);
-			//next = dragLib.getList().get(2);
-		} else {
-			//currentIndex = dragLib.getList().
-		}
-	}
 
 	/**
 	 * Gets the player.
