@@ -35,6 +35,15 @@ public class Player {
         lastDamage = -1;
         lastDragon = null;
     }
+    
+    public Player(String playerName, Army army) {
+        name = playerName;
+        army = army;
+        dice = new Dice();
+        strongholdHP = MAX_HP;
+        lastDamage = -1;
+        lastDragon = null;
+    }
 
     /**
      * Creates a player using a specified name and HP
@@ -51,8 +60,14 @@ public class Player {
         lastDamage = -1;
         lastDragon = null;
     }
-
+    
     /**
+     * Generates an empty player
+     */
+    public Player() {
+	}
+
+	/**
      * getName - returns the name of the player
      * 
      * @param  none
