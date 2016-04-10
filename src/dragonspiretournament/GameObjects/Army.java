@@ -11,7 +11,7 @@ import dragonspiretournament.GameObjects.Dragons.*;
  * @version Apr 10, 2016
  */
 
-class Army {
+public class Army {
     private ArrayList<Dragon> army;
 
     /**

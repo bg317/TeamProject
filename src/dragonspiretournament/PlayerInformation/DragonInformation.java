@@ -1,5 +1,7 @@
 package dragonspiretournament.PlayerInformation;
 
+import dragonspiretournament.GameObjects.Dragons.Dragon;
+
 public class DragonInformation {
 
 	private String dragonName;

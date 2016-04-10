@@ -1,5 +1,16 @@
 package dragonspiretournament.nameselection;
 
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 public class NameSelectionView {
 	
 	//not sure if we want a frame here, but this is for testing purposes
@@ -49,7 +60,7 @@ public class NameSelectionView {
 		totalPanel.add(entryAndSubmit);
 		
 		//adds functionality to the button
-		submitButton.addActionListener(new ButtonListener());
+		submitButton.addActionListener((ActionListener) new ButtonListener());
 		
 		
 		//frame stuff
@@ -66,6 +77,7 @@ public class NameSelectionView {
 		 /**
 		  * when the button is pressed
 		  */
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			//set the name based on what the user entered
