@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,20 +57,23 @@ public class ArmySelectionView {
 		prevWindow.setBounds(41, 163, 124, 108);
 		mainPanel.add(prevWindow);
 		prevWindow.add(new DragonButton( this.selectionModel.getPrev()));
+		prevWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		currWindow = new JPanel();
 		currWindow.setBounds(334, 111, 298, 210);
 		mainPanel.add(currWindow);
 		currWindow.add(new DragonButton( this.selectionModel.getCurrent()));
+		currWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		nextWindow = new JPanel();
 		nextWindow.setBounds(814, 163, 124, 108);
 		mainPanel.add(nextWindow);
 		nextWindow.add(new DragonButton( this.selectionModel.getNext()));
+		nextWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		currentArmySelection = new JPanel();
 		currentArmySelection.setBounds(96, 441, 797, 67);	
-		currentArmySelection.setBorder(new LineBorder(Color.CYAN));
+		currentArmySelection.setBorder(new LineBorder(Color.BLACK));
 		
 		updateSelectionPanel( currentArmySelection, selectionModel ); 
 		
@@ -79,6 +83,7 @@ public class ArmySelectionView {
 		
 		selectDragonBtn = new JButton("Add Dragon");
 		selectDragonBtn.setBounds(439, 387, 89, 23);
+		selectDragonBtn.setSize(new Dimension(150,50));
 		mainPanel.add(selectDragonBtn);
 		selectDragonBtn.addActionListener(new ActionListener() {
 			@Override

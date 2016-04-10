@@ -12,6 +12,9 @@ public class DragonButton extends JButton {
 	public DragonButton(Dragon dragon) {
 		super(new ImageIcon( dragon.getIcon() ));	
 		associatedDragon = dragon;
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		this.setBorderPainted(false);
 	}
 
 	public Dragon getAssociatedDragon() {
