@@ -33,22 +33,25 @@ public class DragonLibrary {
 	    dragonLibrary = new ArrayList<Dragon>();
 	    Dragon tmp;
 
-	    tmp = new Dragon("Igneagnus", "Fire", "Ice", "images/Igneagnus.jpg");
+	    tmp = new Dragon("Igneagnus", "Lava", "Flora", "src/dragons/icons/Igneagnus.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Tenebret", "Ice", "Wind", "images/Tenebret.jpg");
+        tmp = new Dragon("Tenebret", "Ice", "Lava", "src/dragons/icons/Tenebret.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("WindDragon", "Wind", "Earth", "images/WindDragon.jpg");
+        tmp = new Dragon("Arinial", "Metal", "Ice", "src/dragons/icons/Arinial.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("EarthDragon", "Earth", "Electricity", "images/EarthDragon.jpg");
+        tmp = new Dragon("Skenna", "Goo", "Storm", "src/dragons/icons/Skenna.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("Galthi", "Electricity", "Water", "images/Galthi.jpg");
+        tmp = new Dragon("Fladoen", "Solar", "Goo", "src/dragons/icons/Fladoen.png");
         dragonLibrary.add(tmp);
 
-        tmp = new Dragon("WaterDragon", "Water", "Fire", "images/WaterDragon.jpg");
+        tmp = new Dragon("Galthi", "Storm", "Metal", "src/dragons/icons/Galthi.png");
+        dragonLibrary.add(tmp);
+
+        tmp = new Dragon("Trudrake", "Flora", "Solar", "src/dragons/icons/Trudrake.png");
         dragonLibrary.add(tmp);
 	}
 
@@ -63,6 +66,30 @@ public class DragonLibrary {
 	public Dragon getDragon(int index) {
 	    return dragonLibrary.get(index);
 	}
+
+    /**
+     * Returns the entire Dragon Library
+     * 
+     * @param  none
+     * 
+     * @return ArrayList containing all dragons in the library
+     */
+
+    public ArrayList<Dragon> getLibrary() {
+        return dragonLibrary;
+    }
+
+    /**
+     * Returns the size of the dragon library
+     * 
+     * @param  none
+     * 
+     * @return integer size of dragon library
+     */
+
+    public int getSize() {
+        return dragonLibrary.size();
+    }
 }	
 	
 	
