@@ -1,5 +1,7 @@
 package dragonspiretournament.armyselection;
 
+import java.util.ArrayList;
+
 import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
@@ -21,12 +23,13 @@ public class ArmySelectionModel {
 	 * @param prev the prev
 	 * @param next the next
 	 */
-	public ArmySelectionModel(Player player, DragonLibrary dragLib, Dragon current, Dragon prev, Dragon next) {
+	public ArmySelectionModel(Player player, DragonLibrary dragLib) {
 		this.player = player;
 		this.dragLib = dragLib;
 		this.current = current;
 		this.prev = prev;
 		this.next = next;
+		setupDragonPrevAndNext();
 	}
 	
 	/**
@@ -34,6 +37,17 @@ public class ArmySelectionModel {
 	 */
 	public ArmySelectionModel() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void setupDragonPrevAndNext() {
+		int currentIndex;
+		if ( current == null ) {
+			//current = dragLib.getList().get(1);
+			//prev = dragLib.getList().get(0);
+			//next = dragLib.getList().get(2);
+		} else {
+			//currentIndex = dragLib.getList().
+		}
 	}
 
 	/**
@@ -54,6 +68,9 @@ public class ArmySelectionModel {
 		this.player = player;
 	}
 	
+	public ArrayList<Dragon> getAllLibraryDragons() { 
+		return dragLib.getDragonLibrary();
+	}
 	/**
 	 * Gets the drag lib.
 	 *

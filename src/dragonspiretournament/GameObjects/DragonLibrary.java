@@ -52,6 +52,14 @@ public class DragonLibrary {
         dragonLibrary.add(tmp);
 	}
 
+	public ArrayList<Dragon> getDragonLibrary() {
+		return dragonLibrary;
+	}
+
+	public void setDragonLibrary(ArrayList<Dragon> dragonLibrary) {
+		this.dragonLibrary = dragonLibrary;
+	}
+
 	/**
 	 * Returns the Dragon located a specific position in the library
 	 * 
