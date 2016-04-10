@@ -123,6 +123,12 @@ public class ArmySelectionView {
 	}
 	
 	
+	/**
+	 * Updates a panel to display the dragon passed in
+	 *
+	 * @param panel the panel
+	 * @param dragon the dragon
+	 */
 	public void updatePanel( JPanel panel, Dragon dragon ) {
 		panel.removeAll();
 		panel.add( new DragonButton( dragon ));
@@ -130,6 +136,11 @@ public class ArmySelectionView {
 	}
 	
 	
+	/**
+	 * @param selectionPanel The Panel that is displaying the user's selction
+	 * @param armySelectModel The model containing the user's army
+	 * Updates the panel displaying the user's current selection
+	 */
 	public void updateSelectionPanel( JPanel selectionPanel, ArmySelectionModel armySelectModel ) {
 		
 		Army playerDragons = armySelectModel.getCurrentPlayerArmy();
@@ -150,6 +161,13 @@ public class ArmySelectionView {
 		
 	}
 	
+	/**
+	 * Configure dragon button action listener.
+	 *
+	 * @param currentArmySelection the current army selection
+	 * @param selectionModel the selection model
+	 * @param dragBtn the drag btn
+	 */
 	public void configureDragonButtonActionListener( JPanel currentArmySelection, ArmySelectionModel selectionModel, DragonButton dragBtn ) {
 		dragBtn.addActionListener( new ActionListener() {
 			@Override
