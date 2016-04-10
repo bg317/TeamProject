@@ -13,9 +13,23 @@ import org.yaml.snakeyaml.Yaml;
 
 import dragonspiretournament.GameObjects.Dragons.*;
 
+/**
+ * Class to create a library to store data on all dragons available
+ *
+ * @author Team 29 (LA)
+ * 
+ * @version Apr 9, 2016
+ */
+
 public class DragonLibrary {
 	
 	private ArrayList<Dragon> dragonLibrary;
+
+	/**
+	 * Creates a dragon library containing one of each dragon
+	 * 
+	 * @param none
+	 */
 
 	public DragonLibrary() {
 	    dragonLibrary = new ArrayList<Dragon>();
@@ -40,12 +54,16 @@ public class DragonLibrary {
         dragonLibrary.add(tmp);
 	}
 
+	/**
+	 * Returns the Dragon located a specific position in the library
+	 * 
+	 * @param  index Library index
+	 * 
+	 * @return Dragon located at specific index
+	 */
+
 	public Dragon getDragon(int index) {
 	    return dragonLibrary.get(index);
-	}
-	
-	public ArrayList<Dragon> getLibrary() {
-	    return dragonLibrary;
 	}
 }	
 	
