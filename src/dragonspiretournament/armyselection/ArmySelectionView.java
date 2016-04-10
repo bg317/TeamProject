@@ -1,22 +1,23 @@
 package dragonspiretournament.armyselection;
 
 import javax.swing.JFrame;
-
 import javax.swing.JButton;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
-import dragonspiretournament.GameObjects.Dragons.TestDragon;
+import dragonspiretournament.GameObjects.UIComponents.DragonButton;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ArmySelectionView.
  */
@@ -24,73 +25,157 @@ public class ArmySelectionView {
 	
 	/** The army selection window. */
 	JFrame armySelectionWindow;
-	ArmySelectionModel selectionModel = new ArmySelectionModel();
+	ArmySelectionModel selectionModel;
+	
+	JPanel mainPanel;
+	JPanel prevWindow;
+	JPanel currWindow;
+	JPanel nextWindow;
+	JPanel currentArmySelection;
+	
+	JButton selectDragonBtn;
+	JButton prevButton;
+	JButton nextButton;
 	
 	/**
 	 * Instantiates a new army selection view.
 	 */
 	public ArmySelectionView() {
+		selectionModel = new ArmySelectionModel();
+		ArmySelectionController.initCurrentAndPrev(selectionModel);
 		armySelectionWindow = new JFrame("Select your army");
 		armySelectionWindow.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 		armySelectionWindow.setSize(1200, 748);
 		armySelectionWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel mainPanel = new JPanel();
+		mainPanel = new JPanel();
 		armySelectionWindow.getContentPane().add(mainPanel);
 		mainPanel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(41, 163, 124, 108);
-		mainPanel.add(panel_1);
+		prevWindow = new JPanel();
+		prevWindow.setBounds(41, 163, 124, 108);
+		mainPanel.add(prevWindow);
+		prevWindow.add(new DragonButton( this.selectionModel.getPrev()));
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(334, 111, 298, 210);
-		mainPanel.add(panel_2);
+		currWindow = new JPanel();
+		currWindow.setBounds(334, 111, 298, 210);
+		mainPanel.add(currWindow);
+		currWindow.add(new DragonButton( this.selectionModel.getCurrent()));
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(814, 163, 124, 108);
-		mainPanel.add(panel_3);
+		nextWindow = new JPanel();
+		nextWindow.setBounds(814, 163, 124, 108);
+		mainPanel.add(nextWindow);
+		nextWindow.add(new DragonButton( this.selectionModel.getNext()));
 		
-		JPanel currentArmySelection = new JPanel();
+		currentArmySelection = new JPanel();
 		currentArmySelection.setBounds(96, 441, 797, 67);	
 		currentArmySelection.setBorder(new LineBorder(Color.CYAN));
 		
-		//Get this from the Model object. Model gets it from associated player object
-		ArrayList<Dragon> onlyForTestingDragons = new ArrayList<Dragon>();
-		for ( int index = 0; index < 8; index++ ) {
-			onlyForTestingDragons.add(new TestDragon());
-		}
-		updateSelectionPanel( currentArmySelection, onlyForTestingDragons); 
+		updateSelectionPanel( currentArmySelection, selectionModel ); 
 		
 		mainPanel.add(currentArmySelection);
 
 			
 		
-		JButton btnNewButton = new JButton("Pick Item");
-
-		btnNewButton.setBounds(439, 387, 89, 23);
-		mainPanel.add(btnNewButton);
+		selectDragonBtn = new JButton("Add Dragon");
+		selectDragonBtn.setBounds(439, 387, 89, 23);
+		mainPanel.add(selectDragonBtn);
+		selectDragonBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				ArmySelectionController.addToArmy( selectionModel, selectionModel.getCurrent() );
+				updateSelectionPanel( currentArmySelection, selectionModel );
+			}
+		});
 		
-		JButton btnNewButton_1 = new JButton("Prev");
-		btnNewButton_1.setBounds(76, 347, 89, 23);
-		mainPanel.add(btnNewButton_1);
+		prevButton = new JButton("Prev");
+		prevButton.setBounds(76, 347, 89, 23);
+		mainPanel.add(prevButton);
+		prevButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				ArmySelectionController.shiftPreviewLeft( selectionModel );
+				updateSelectionPanel( currentArmySelection, selectionModel );
+				updatePreviewPanels();
+			}
+		});
 		
-		JButton btnNewButton_2 = new JButton("Next");
-		btnNewButton_2.setBounds(823, 347, 89, 23);
-		mainPanel.add(btnNewButton_2);
+		nextButton = new JButton("Next");
+		nextButton.setBounds(823, 347, 89, 23);
+		mainPanel.add(nextButton);
+		nextButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				ArmySelectionController.shiftPreviewRight( selectionModel );
+				updateSelectionPanel( currentArmySelection, selectionModel );
+				updatePreviewPanels();
+			}
+		});
 		
 		armySelectionWindow.setVisible(true);
 	}
 	
-	public void updateSelectionPanel( JPanel selectionPanel, ArrayList<Dragon> playerDragons ) {
+	//Updates previous, current, and next preview panels for dragon selection.
+	public void updatePreviewPanels() {
+		updatePanel( currWindow, selectionModel.getCurrent() );
+		updatePanel( nextWindow, selectionModel.getNext() );
+		updatePanel( prevWindow, selectionModel.getPrev() );
+	}
+	
+	
+	/**
+	 * Updates a panel to display the dragon passed in
+	 *
+	 * @param panel the panel
+	 * @param dragon the dragon
+	 */
+	public void updatePanel( JPanel panel, Dragon dragon ) {
+		panel.removeAll();
+		panel.add( new DragonButton( dragon ));
+		panel.updateUI();
+	}
+	
+	
+	/**
+	 * @param selectionPanel The Panel that is displaying the user's selction
+	 * @param armySelectModel The model containing the user's army
+	 * Updates the panel displaying the user's current selection
+	 */
+	public void updateSelectionPanel( JPanel selectionPanel, ArmySelectionModel armySelectModel ) {
 		
-		Iterator<Dragon> playerDragonsIteration = playerDragons.iterator();
+		Army playerDragons = armySelectModel.getCurrentPlayerArmy();
+		Iterator<Dragon> playerDragonsIteration = playerDragons.getArmy().iterator();
 		Dragon currentDragon;
+		DragonButton dragButton;
+		selectionPanel.removeAll();
 		
-		while ( playerDragonsIteration.hasNext() ) {
-			currentDragon = playerDragonsIteration.next();
-			selectionPanel.add(new JButton(currentDragon.getDragonIcon()));
+		if ( playerDragons.getSize() != 0 ) {
+			while ( playerDragonsIteration.hasNext() ) {
+				currentDragon = playerDragonsIteration.next();
+				dragButton = new DragonButton( currentDragon );
+				configureDragonButtonActionListener( selectionPanel, armySelectModel, dragButton );
+				selectionPanel.add( dragButton );
+				selectionPanel.updateUI();
+			}
 		}
+		
+	}
+	
+	/**
+	 * Configure dragon button action listener.
+	 *
+	 * @param currentArmySelection the current army selection
+	 * @param selectionModel the selection model
+	 * @param dragBtn the drag btn
+	 */
+	public void configureDragonButtonActionListener( JPanel currentArmySelection, ArmySelectionModel selectionModel, DragonButton dragBtn ) {
+		dragBtn.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				ArmySelectionController.removeFromArmy( selectionModel.getCurrentPlayerArmy(), dragBtn.getAssociatedDragon() );
+				updateSelectionPanel( currentArmySelection, selectionModel );
+			}
+		});
 	}
 	
 }
