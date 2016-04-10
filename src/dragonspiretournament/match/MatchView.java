@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,6 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dragonspiretournament.GameObjects.Army;
+import dragonspiretournament.GameObjects.Player;
+import dragonspiretournament.GameObjects.Dragons.Dragon;
+import dragonspiretournament.GameObjects.UIComponents.DragonButton;
 import dragonspiretournament.title.TitleController;
 import javax.swing.JSplitPane;
 import javax.swing.JProgressBar;
@@ -21,98 +27,35 @@ public class MatchView {
 	private JFrame matchFrame;
 	private JPanel playerOneDragons;
 	private JPanel playerTwoDragons;
+	JPanel playerTwoArmy;
+	JPanel playerOneArmy;
 	
-	public MatchView() {
+	private MatchModel matchModel;
+	
+	public MatchView( Player playerOne, Player playerTwo ) {
+		matchModel = new MatchModel( playerOne, playerTwo );
+		System.out.println( playerOne.getArmy() );
 		matchFrame = new JFrame("DragonSpire Tournament");
 		matchFrame.setSize(849, 626);
 		matchFrame.getContentPane().setLayout(null);
 		matchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel panel = new JPanel();
-		panel.setBounds(36, 11, 121, 400);
-		matchFrame.getContentPane().add(panel);
-		
-		JButton btnNewButton = new JButton("New button");
-		panel.add(btnNewButton);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		panel.add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("New button");
-		panel.add(btnNewButton_3);
-		
-		JButton btnNewButton_4 = new JButton("New button");
-		panel.add(btnNewButton_4);
-		
-		JButton btnNewButton_5 = new JButton("New button");
-		panel.add(btnNewButton_5);
-		
-		JButton btnNewButton_6 = new JButton("New button");
-		panel.add(btnNewButton_6);
-		
-		JButton btnNewButton_7 = new JButton("New button");
-		panel.add(btnNewButton_7);
-		
-		JButton btnNewButton_8 = new JButton("New button");
-		panel.add(btnNewButton_8);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		panel.add(btnNewButton_1);
-		
-		JButton btnNewButton_10 = new JButton("New button");
-		panel.add(btnNewButton_10);
-		
-		JButton btnNewButton_11 = new JButton("New button");
-		panel.add(btnNewButton_11);
-		
-		JButton btnNewButton_9 = new JButton("New button");
-		panel.add(btnNewButton_9);
-		
-		JButton btnNewButton_12 = new JButton("New button");
-		panel.add(btnNewButton_12);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(686, 147, 121, 400);
-		matchFrame.getContentPane().add(panel_1);
+		playerOneArmy = new JPanel();
+		playerOneArmy.setBounds(36, 11, 121, 400);
+		matchFrame.getContentPane().add(playerOneArmy);
+		updateArmyPanel( playerOneArmy, matchModel.getPlayerOneArmy() );
+
+		playerTwoArmy = new JPanel();
+		playerTwoArmy.setBounds(686, 147, 121, 400);
+		matchFrame.getContentPane().add(playerTwoArmy);
+		updateArmyPanel( playerTwoArmy, matchModel.getPlayerTwoArmy() );
 		
 		JButton btnNewButton_13 = new JButton("New button");
 		btnNewButton_13.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
-		panel_1.add(btnNewButton_13);
-		
-		JButton btnNewButton_14 = new JButton("New button");
-		panel_1.add(btnNewButton_14);
-		
-		JButton btnNewButton_16 = new JButton("New button");
-		panel_1.add(btnNewButton_16);
-		
-		JButton btnNewButton_15 = new JButton("New button");
-		panel_1.add(btnNewButton_15);
-		
-		JButton btnNewButton_17 = new JButton("New button");
-		panel_1.add(btnNewButton_17);
-		
-		JButton btnNewButton_19 = new JButton("New button");
-		panel_1.add(btnNewButton_19);
-		
-		JButton btnNewButton_20 = new JButton("New button");
-		panel_1.add(btnNewButton_20);
-		
-		JButton btnNewButton_18 = new JButton("New button");
-		panel_1.add(btnNewButton_18);
-		
-		JButton btnNewButton_22 = new JButton("New button");
-		panel_1.add(btnNewButton_22);
-		
-		JButton btnNewButton_23 = new JButton("New button");
-		panel_1.add(btnNewButton_23);
-		
-		JButton btnNewButton_21 = new JButton("New button");
-		panel_1.add(btnNewButton_21);
-		
-		JButton btnNewButton_24 = new JButton("New button");
-		panel_1.add(btnNewButton_24);
 		
 		JLabel lblPlayerTwo = new JLabel("Player One Dragons");
 		lblPlayerTwo.setBounds(36, 422, 121, 40);
@@ -122,13 +65,13 @@ public class MatchView {
 		lblPlayerTwoDragons.setBounds(686, 96, 121, 40);
 		matchFrame.getContentPane().add(lblPlayerTwoDragons);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(36, 484, 146, 14);
-		matchFrame.getContentPane().add(progressBar);
+		JProgressBar playerOneHP = new JProgressBar();
+		playerOneHP.setBounds(36, 484, 146, 14);
+		matchFrame.getContentPane().add(playerOneHP);
 		
-		JProgressBar progressBar_1 = new JProgressBar();
-		progressBar_1.setBounds(573, 11, 146, 14);
-		matchFrame.getContentPane().add(progressBar_1);
+		JProgressBar playerTwoHP = new JProgressBar();
+		playerTwoHP.setBounds(573, 11, 146, 14);
+		matchFrame.getContentPane().add(playerTwoHP);
 		
 		JButton btnNewButton_25 = new JButton("New button");
 		btnNewButton_25.setBounds(226, 105, 146, 108);
@@ -147,5 +90,22 @@ public class MatchView {
 		matchFrame.getContentPane().add(button_2);
 		
 		matchFrame.setVisible(true);
+	}
+	
+	public void updateArmyPanel( JPanel playersArmy, Army playerArmy ) {
+		
+		ArrayList<Dragon> dragons = playerArmy.getArmy();
+		Iterator<Dragon> dragonsItr = dragons.iterator();
+		DragonButton dragBtn;
+		Dragon currentDrag;
+		playersArmy.removeAll();
+		
+		while ( dragonsItr.hasNext() ) {
+			currentDrag = dragonsItr.next();
+			dragBtn = new DragonButton( currentDrag );
+			playersArmy.add(dragBtn);
+		}
+		
+		playersArmy.updateUI();	
 	}
 }
