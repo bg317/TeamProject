@@ -35,10 +35,17 @@ public class Player {
         lastDamage = -1;
         lastDragon = null;
     }
-    
+
+    /**
+     * Creates a player using a specified name and army
+     * 
+     * @param playerName  Name of player
+     * @param army        Player's army of dragons
+     */
+
     public Player(String playerName, Army army) {
         name = playerName;
-        army = army;
+        this.army = army;
         dice = new Dice();
         strongholdHP = MAX_HP;
         lastDamage = -1;
