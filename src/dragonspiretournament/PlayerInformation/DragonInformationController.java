@@ -17,8 +17,11 @@ public class DragonInformationController {
 	 */
 	public static void setDragon(Dragon dragon)
 	{
+		if (dragon != null)
+		{
 		dragonInfo = new DragonInformation(dragon);
 		dragonSet = true;
+		}
 	}
 	
 	/**
@@ -57,7 +60,7 @@ public class DragonInformationController {
 		}
 		else
 		{
-			return "";
+			return "PlaceholderL.png";
 		}
 	}
 	
