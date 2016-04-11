@@ -41,6 +41,10 @@ public class PlayerChangeNotification extends JDialog implements ActionListener{
 	/**
 	 *  Overloaded Constructor
 	 *  Can display custom title and message and is aware of parent frames location and size
+	 *  
+	 *  @param parent the JFrame that calls this dialog
+	 *  @param title the text that will appear in the title bar of this dialog
+	 *  @param message the message that will appear in this dialog
 	 */
 	//Create a JDialog box for notifying players will be switching on construction
 	 public PlayerChangeNotification(JFrame parent, String title, String message) {
