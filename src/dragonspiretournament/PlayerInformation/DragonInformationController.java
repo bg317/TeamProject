@@ -1,4 +1,5 @@
 package dragonspiretournament.PlayerInformation;
+import dragonspiretournament.GameObjects.Dragons.Dragon;
 
 import javax.swing.ImageIcon;
 
@@ -60,7 +61,7 @@ public class DragonInformationController {
 		}
 		else
 		{
-			return "PlaceholderL.png";
+			return "src/dragons/art/PlaceholderL.png";
 		}
 	}
 	
@@ -81,6 +82,18 @@ public class DragonInformationController {
 		if(dragonSet == true)
 		{
 		return dragonInfo.getType();
+		}
+		else
+		{
+			return "No Data";
+		}
+	}
+	
+	public static String getAdvantage()
+	{
+		if (dragonSet == true)
+		{
+			return dragonInfo.getAdvantage();
 		}
 		else
 		{

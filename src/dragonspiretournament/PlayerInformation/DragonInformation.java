@@ -1,6 +1,9 @@
 package dragonspiretournament.PlayerInformation;
 
 import dragonspiretournament.GameObjects.Dragons.Dragon;
+import java.util.Scanner;
+import java.io.FileReader;
+import java.io.*;
 
 public class DragonInformation {
 
@@ -9,6 +12,8 @@ public class DragonInformation {
 	private String dragonType;
 	private String dragonDescription;
 	private String dragonFullArt;
+	private String dragonDescriptionLocation;
+	private String dragonAdvantage;
 	
 	/**
 	 * constructor takes info from a dragon object to show in an info box.
@@ -18,8 +23,25 @@ public class DragonInformation {
 		dragonName = dragon.getName();
 		iconLocation = dragon.getIcon();
 		dragonType = dragon.getType();
-		dragonDescription = "";
+		dragonDescriptionLocation = dragon.getDescription();
 		dragonFullArt = "";
+		dragonDescription = "";
+		dragonAdvantage = "";
+		
+		try
+		{
+			Scanner scan = new Scanner(new FileReader(dragonDescriptionLocation));
+			while(scan.hasNext())
+			{
+				dragonDescription += scan.nextLine();
+			}
+			
+			scan.close();
+		}
+		catch (FileNotFoundException e)
+		{
+			
+		}
 		
 	}
 	
@@ -66,5 +88,10 @@ public class DragonInformation {
 	public String getArt()
 	{
 		return dragonFullArt;
+	}
+	
+	public String getAdvantage()
+	{
+		return dragonAdvantage;
 	}
 }
