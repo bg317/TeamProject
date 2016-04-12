@@ -1,9 +1,12 @@
+package dragonspiretournament;
+
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.armyselection.ArmySelectionView;
 
 import dragonspiretournament.match.MatchView;
+import dragonspiretournament.nameselection.NameSelectionView;
 import dragonspiretournament.title.TitleView;
 
 import java.io.FileNotFoundException;
@@ -24,7 +27,6 @@ public class Main {
 		
 		Army playerOneArmy = new Army();
 		DragonLibrary dragLib = new DragonLibrary();
-		System.out.println( dragLib.getDragon(1) );
 		playerOneArmy.add( dragLib.getDragon(0));
 		playerOneArmy.add( dragLib.getDragon(1));
 		playerOneArmy.add( dragLib.getDragon(2));
@@ -33,6 +35,8 @@ public class Main {
 		MatchView matchView = new MatchView( playerOne, playerTwo );
 		
 		TitleView titleView = new TitleView();
+		
+		NameSelectionView nameView = new NameSelectionView();
 	}
 
 }
