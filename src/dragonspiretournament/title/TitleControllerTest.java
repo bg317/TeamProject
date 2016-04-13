@@ -1,3 +1,9 @@
+/* TitleViewController Test
+ * 
+ * @author larry
+ * @version 4-12-16
+ * 
+ */
 package dragonspiretournament.title;
 
 import static org.junit.Assert.*;
