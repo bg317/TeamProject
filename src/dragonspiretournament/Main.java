@@ -8,6 +8,7 @@ import dragonspiretournament.armyselection.ArmySelectionView;
 import dragonspiretournament.match.MatchView;
 import dragonspiretournament.nameselection.NameSelectionView;
 import dragonspiretournament.title.TitleView;
+import dragonspiretournament.PlayerInformation.DragonInformationView;
 
 import java.io.FileNotFoundException;
 /**
@@ -37,6 +38,8 @@ public class Main {
 		TitleView titleView = new TitleView();
 		
 		NameSelectionView nameView = new NameSelectionView();
+		
+		DragonInformationView infoView = new DragonInformationView(dragLib.getDragon(3));
 	}
 
 }
