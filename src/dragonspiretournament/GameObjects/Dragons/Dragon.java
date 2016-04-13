@@ -168,7 +168,7 @@ public class Dragon {
      * @return description of the dragon
      */
 
-    public String getDesciption() {
+    public String getDescription() {
         return description;
     }
 
