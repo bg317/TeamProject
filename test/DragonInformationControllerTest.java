@@ -1,4 +1,4 @@
-package dragonspiretournament.PlayerInformation;
+
 
 /* Dragon information controller test
  * Tests to make sure the dragon information controller is working
@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 
 import org.junit.Test;
 
+import dragonspiretournament.PlayerInformation.DragonInformationController;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 
 public class DragonInformationControllerTest {
@@ -76,12 +77,12 @@ public class DragonInformationControllerTest {
 	
 	/*
 	 * not really sure what to do here.
-	 */
+	 *//*
 	@Test
 	public void testCreateIcon2() {
 		java.net.URL imageLocation = DragonInformationView.class.getResource("/TeamProject/src/dragons/icons/Arinial.png");
 		 ImageIcon test = DragonInformationController.createIcon("/TeamProject/src/dragons/icons/Arinial.png", "derp");
 		assertEquals(test, null);
-	}
+	}*/
 
 }

@@ -5,7 +5,7 @@
  * 
  */
 
-package dragonspiretournament.PlayerInformation;
+import dragonspiretournament.PlayerInformation.DragonInformation;
 
 
 import dragonspiretournament.GameObjects.Dragons.Dragon;
