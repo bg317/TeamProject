@@ -1,6 +1,7 @@
 package dragonspiretournament.match;
 
 import dragonspiretournament.GameObjects.Player;
+import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.Dice;
 import dragonspiretournament.GameObjects.Army;
 
@@ -8,10 +9,29 @@ public class MatchModel {
 	
 	private Player playerOne;
 	private Player playerTwo;
+	
 	private Army playerOneArmy;
 	private Army playerTwoArmy;
+	
 	private Dice playerOneDice;
 	private Dice playerTwoDice;
+	private Dice currentDiceSelection;
+	
+	private String playerOneLastAction;
+	private String playerTwoLastAction;
+	
+	private Dragon playerOneLastDragon;
+	private Dragon playerTwoLastDragon;
+	
+	private Dragon dragonBeingAddedToDice;
+	private Dragon dragonBeingRemovedFromDice;
+	
+	
+	public String getPlayerOneLastAction() {
+		return playerOneLastAction;
+	}
+	
+	
 	
 	/**
 	 * MatchModel - Constructor to create a MatchModel
@@ -30,6 +50,19 @@ public class MatchModel {
 		this.playerTwoArmy = playerTwo.getArmy();
 		this.playerOneDice = playerOne.getDice();
 		this.playerTwoDice = playerTwo.getDice();
+		this.currentDiceSelection = new Dice();
+		this.playerOneLastAction = "No dice has been rolled yet";
+		this.playerTwoLastAction = "No dice has been rolled yet";
+	}
+	
+	public MatchModel() {
+		this.playerOne = new Player();
+		this.playerTwo = new Player();
+		this.playerOneArmy = new Army();
+		this.playerTwoArmy = new Army();
+		this.playerOneDice = new Dice();
+		this.playerTwoDice = new Dice();
+		this.currentDiceSelection = new Dice();
 	}
 
 	public Player getPlayerOne() {
@@ -79,15 +112,61 @@ public class MatchModel {
 	public void setPlayerTwoDice(Dice playerTwoDice) {
 		this.playerTwoDice = playerTwoDice;
 	}
-
-	public MatchModel() {
-		this.playerOne = new Player();
-		this.playerTwo = new Player();
-		this.playerOneArmy = new Army();
-		this.playerTwoArmy = new Army();
-		this.playerOneDice = new Dice();
-		this.playerTwoDice = new Dice();
+	
+	public void setPlayerOneLastAction(String playerOneLastAction) {
+		this.playerOneLastAction = playerOneLastAction;
 	}
+
+	public String getPlayerTwoLastAction() {
+		return playerTwoLastAction;
+	}
+
+	public void setPlayerTwoLastAction(String playerTwoLastAction) {
+		this.playerTwoLastAction = playerTwoLastAction;
+	}
+
+	public Dragon getPlayerOneLastDragon() {
+		return playerOneLastDragon;
+	}
+
+	public void setPlayerOneLastDragon(Dragon playerOneLastDragon) {
+		this.playerOneLastDragon = playerOneLastDragon;
+	}
+
+	public Dragon getPlayerTwoLastDragon() {
+		return playerTwoLastDragon;
+	}
+
+	public void setPlayerTwoLastDragon(Dragon playerTwoLastDragon) {
+		this.playerTwoLastDragon = playerTwoLastDragon;
+	}
+
+	public Dice getCurrentDiceSelection() {
+		return currentDiceSelection;
+	}
+
+	public void setCurrentDiceSelection(Dice currentDiceSelection) {
+		this.currentDiceSelection = currentDiceSelection;
+	}
+
+	public Dragon getDragonBeingAddedToDice() {
+		return dragonBeingAddedToDice;
+	}
+
+	public void setDragonBeingAddedToDice(Dragon dragonBeingAddedToDice) {
+		this.dragonBeingAddedToDice = dragonBeingAddedToDice;
+	}
+
+	public Dragon getDragonBeingRemovedFromDice() {
+		return dragonBeingRemovedFromDice;
+	}
+
+	public void setDragonBeingRemovedFromDice(Dragon dragonBeingRemovedFromDice) {
+		this.dragonBeingRemovedFromDice = dragonBeingRemovedFromDice;
+	}
+	
+	
+	
 	
 	
 }

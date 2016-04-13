@@ -16,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dragonspiretournament.GameObjects.Dragons.Dragon;
+
 public class DragonInformationView {
 
 	//values to use in the display

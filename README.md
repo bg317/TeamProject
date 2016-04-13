@@ -57,27 +57,61 @@ choice 1: Done (go to Title Select Screen)<br/>
 Dragon flavor text:
 --
 
-Igneagnus
+<strong>Igneagnus</strong><br/>
+
+Element: Lava<br/>
 
 A dragon commonly employed by wizards. They are born of an igneous rock submerged in lava on a night of a harvest moon. They are popular among apprentices because they are relatively easy to create, mild mannered, and eager to please their masters. Badly trained specimens are known to drool magma when praised. 
 
-Element: Fire<br/>
 Attack damage Base: 5
 
-Tenebret
-
-This dragon emerges fully formed from ancient, undisturbed ice flows on moonless nights. It imprints on the first wizard it sees after emerging. Tenebrets have the curious trait of always being surrounded by a swirling front of frigid air; stingy wizards sometimes employ them as full-time refrigerators. 
+<strong>Tenebret</strong><br/>
 
 Element: Ice<br/>
+
+This dragon emerges fully formed from ancient, undisturbed ice flows on moonless nights. It imprints on the first wizard it sees after emerging. Tenebrets have the curious trait of always being surrounded by a swirling front of frigid air; stingy wizards sometimes employ them as full-time refrigerators.
+
 Attack damage base: 5
 
-Galthi
+<strong>Arinial</strong><br/>
+
+Element: Metal<br/>
+
+Arinals are golem dragons born from chunks of ore. Arinials will eat any metal they are given, but rusted metals make them sick. Their carapaces will take on the colors and strengths of the metals they are fed. For the best-fortified coats, arinials should eat combinations of steel, wolfram, chromium, and titanium.
+
+Attack damage base: 5
+
+<strong>Skenna</strong></br>
+
+Element: Goo</br>
+
+Their beards are made of the adhesive paste that they produce in a gland in their mouths. The shapes and forms of their beards are quite complex and are believed to be a kind of self-expression. Since their adhesive paste hardens into a cement-like substance, skennas are popular among wizards who like to handle their own home repairs.
+
+Attack damage base: 5
+
+<strong>Fladoen</strong><br/>
+
+Element: Solar
+
+Fladoens like to hum and sing, and will repeat back tunes that are played for them. Because they sit very still and are inclined to inaction, they may be mistaken for gargoyles.
+
+Attack damage base: 5
+
+<strong>Galthi</strong><br/>
+
+Element: Storm<br/>
 
 Often mistaken for a familiar by regular folk, these dragons are small enough to ride on their masters’ shoulders, but no less potent than their larger counterparts. They are the protector of choice for the traveling wizard.  Galthi are born of a gecko that has ingested a rare electrical reagent called a Cloudsphere. It is commonly believed that the first Galthi was created by mistake. No one would purposely waste a Cloudsphere like that, would they?
 
-Element: Electricity<br/>
 Attack damage base: 5
 
+<strong>Trudrake</strong><br/>
+
+Element: Flora<br/>
+
+These dragons are a kind of sentient plant related to the fabled mandrake. Grown like a plant, they are immobile until fully mature. They do not have a mouth, instead absorbing energy from the sun through their skin and water through their root-like legs and tail.
+
+Attack damage base: 5
 
 # <a href="docs"></a> Documentation Entry Point
 
