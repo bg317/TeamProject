@@ -1,4 +1,4 @@
-package dragonspiretournament.armyselection;
+
 
 import static org.junit.Assert.*;
 

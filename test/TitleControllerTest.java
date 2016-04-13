@@ -4,9 +4,11 @@
  * @version 4-12-16
  * 
  */
-package dragonspiretournament.title;
+
+import dragonspiretournament.title.TitleController;
 
 import static org.junit.Assert.*;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
