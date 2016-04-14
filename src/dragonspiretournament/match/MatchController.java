@@ -24,10 +24,11 @@ public class MatchController {
 	 */
 	
 	public static void doDragonAttack(Player defender, Dragon attacker, Dragon defending) {
-		int damage;
 		
+		int damage;
 		damage = attacker.attack(defending.getType());
 		updatePlayerStrongholdHP(defender, damage);
+		
 	}
 	
 	/**
@@ -37,9 +38,11 @@ public class MatchController {
 	 * @param damage the damage that is being done to a player
 	 */
 	
-	public static void updatePlayerStrongholdHP(Player player, int damage) {
+	public static void updatePlayerStrongholdHP(Player player, int damage ) {
 		player.setStrongholdHP(player.getStrongholdHP() - damage);
+		player.setLastDamage( damage );
 	}
+	
 	
 	/**
 	 * updatePlayerDice - gets the new selected dragon for a player and 
@@ -75,21 +78,64 @@ public class MatchController {
 		Dice playerTwoDice = playerTwo.getDice();
 		Random rand = new Random();
 		
-		System.out.println( playerOneDice.getDice() );
 		playerOneRoll = rand.nextInt(playerOneDice.getFaceCount());
 		playerTwoRoll = rand.nextInt(playerTwoDice.getFaceCount());
 		
 		playerOneDrag = playerOneDice.getFace(playerOneRoll);
 		playerTwoDrag = playerTwoDice.getFace(playerTwoRoll);
 		
-		doDragonAttack(playerTwo, playerOneDrag, playerTwoDrag);
-		doDragonAttack(playerOne, playerTwoDrag, playerOneDrag);
+		updatePlayerLastDragon( playerOne, playerOneDrag );
+		updatePlayerLastDragon( playerTwo, playerTwoDrag );
+		
+		doDragonAttack( playerTwo, playerOneDrag, playerTwoDrag );
+		doDragonAttack( playerOne, playerTwoDrag, playerOneDrag );
+		
+		updateRollActionText( matchModel );
+		updateRollActionDragon( matchModel );
 	}
 	
-	public static void addToDiceSelection( MatchModel matchModel ) {
+	public static void updatePlayerLastDragon( Player player, Dragon dragon ) {
+		player.setLastDragon( dragon );
+	}
+	
+	public static void updateRollActionText( MatchModel matchModel ) {
+		String playerOneActionText;
+		String playerTwoActionText;
+		Player playerOne = matchModel.getPlayerOne();
+		Player playerTwo = matchModel.getPlayerTwo();
+		
+		Dragon oneLast = playerOne.getLastDragon();
+		Dragon twoLast = playerTwo.getLastDragon();
+		
+		String oneDragonName = oneLast.getName();
+		String twoDragonName = twoLast.getName();
+		
+		playerOneActionText = "Dragon: " + oneDragonName + " Damage: " + playerOne.getLastDamage();
+		playerTwoActionText = "Dragon: " + twoDragonName + " Damage: " + playerTwo.getLastDamage();
+		
+		matchModel.setPlayerOneLastAction( playerOneActionText );
+		matchModel.setPlayerTwoLastAction( playerTwoActionText );
+			
+	}
+	
+	public static void updateRollActionDragon( MatchModel matchModel ) {
+		Player playerOne = matchModel.getPlayerOne();
+		Player playerTwo = matchModel.getPlayerTwo();
+		
+		Dragon oneLast = playerOne.getLastDragon();
+		Dragon twoLast = playerTwo.getLastDragon();
+		
+		matchModel.setPlayerOneLastDragon( oneLast );
+		matchModel.setPlayerTwoLastDragon( twoLast );
+	}
+	
+	public static void addToDiceSelection( MatchModel matchModel, Dragon addedDragon ) {
 		Dice currentDice = matchModel.getCurrentDiceSelection();
-		Dragon currentDrag = matchModel.getDragonBeingAddedToDice();
-		currentDice.add( currentDrag );
+		currentDice.add( addedDragon );
+	}
+	
+	public static void clearDiceSelection( MatchModel matchModel ) {
+		matchModel.getCurrentDiceSelection().clearDice();
 	}
 
 	public static void updateDragonToAdd( MatchModel matchModel, Dragon currentDrag ) {
@@ -108,15 +154,15 @@ public class MatchController {
 	}
 	
 	public static void setPlayerOneDice( MatchModel matchModel ) {
-		Dice selectionDice = matchModel.getCurrentDiceSelection();
+		Dice currentDice = matchModel.getCurrentDiceSelection();
 		Player playerOne = matchModel.getPlayerOne();
-		playerOne.setDice( matchModel.getCurrentDiceSelection() );
+		playerOne.setDice( currentDice );
 	}
 	
 	public static void setPlayerTwoDice( MatchModel matchModel ) {
 		Dice selectionDice = matchModel.getCurrentDiceSelection();
 		Player playerTwo = matchModel.getPlayerTwo();
-		playerTwo.setDice( matchModel.getCurrentDiceSelection() );
+		playerTwo.setDice( selectionDice );
 	}
 
 

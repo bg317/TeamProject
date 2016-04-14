@@ -26,6 +26,11 @@ public class MatchModel {
 	private Dragon dragonBeingAddedToDice;
 	private Dragon dragonBeingRemovedFromDice;
 	
+	private int playerOneHealth;
+	private int playerTwoHealth;
+	private int playerOneLastDamageRecv;
+	private int playerTwoLastDamageRecv;
+	
 	
 	public String getPlayerOneLastAction() {
 		return playerOneLastAction;
@@ -50,6 +55,8 @@ public class MatchModel {
 		this.playerTwoArmy = playerTwo.getArmy();
 		this.playerOneDice = playerOne.getDice();
 		this.playerTwoDice = playerTwo.getDice();
+		this.playerOneHealth = playerOne.getStrongholdHP();
+		this.playerTwoHealth = playerTwo.getStrongholdHP();
 		this.currentDiceSelection = new Dice();
 		this.playerOneLastAction = "No dice has been rolled yet";
 		this.playerTwoLastAction = "No dice has been rolled yet";
@@ -98,7 +105,7 @@ public class MatchModel {
 	}
 
 	public Dice getPlayerOneDice() {
-		return playerOneDice;
+		return playerOne.getDice();
 	}
 
 	public void setPlayerOneDice(Dice playerOneDice) {
@@ -106,7 +113,7 @@ public class MatchModel {
 	}
 
 	public Dice getPlayerTwoDice() {
-		return playerTwoDice;
+		return playerTwo.getDice();
 	}
 
 	public void setPlayerTwoDice(Dice playerTwoDice) {
@@ -164,9 +171,21 @@ public class MatchModel {
 	public void setDragonBeingRemovedFromDice(Dragon dragonBeingRemovedFromDice) {
 		this.dragonBeingRemovedFromDice = dragonBeingRemovedFromDice;
 	}
-	
-	
-	
-	
+
+	public int getPlayerOneHealth() {
+		return playerOne.getStrongholdHP();
+	}
+
+	public void setPlayerOneHealth(int playerOneHealth) {
+		this.playerOneHealth = playerOneHealth;
+	}
+
+	public int getPlayerTwoHealth() {
+		return playerTwo.getStrongholdHP();
+	}
+
+	public void setPlayerTwoHealth(int playerTwoHealth) {
+		this.playerTwoHealth = playerTwoHealth;
+	}
 	
 }
