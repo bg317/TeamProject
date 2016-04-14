@@ -1,6 +1,7 @@
 package dragonspiretournament.match;
 
 import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -31,8 +32,6 @@ public class MatchView {
 	private MatchModel matchModel;
 		
 	private JFrame matchFrame;
-	private JPanel playerOneDragons;
-	private JPanel playerTwoDragons;
 	private JPanel playerTwoArmy;
 	private JPanel playerOneArmy;
 	private JPanel currentDiceSelection;
@@ -41,13 +40,16 @@ public class MatchView {
 	private JLabel lblPlayerTwoDragons;
 	private JLabel playerOneLastAction;
 	private JLabel playerTwoLastAction;
+	private JLabel lblAddDiceHere;
 	
 	private JProgressBar playerOneHP;
 	private JProgressBar playerTwoHP;
 	
 	private DragonButton playerOneLastDragon;
 	private DragonButton playerTwoLastDragon;
+	
 	private JButton btnConfirmSelection;
+	private JButton btnRoll;
 	
 	
 	public MatchView( Player playerOne, Player playerTwo ) {
@@ -78,57 +80,118 @@ public class MatchView {
 		lblPlayerTwoDragons.setBounds(601, 48, 79, 40);
 		matchFrame.getContentPane().add(lblPlayerTwoDragons);
 		
-		playerOneHP = new JProgressBar();
+		playerOneHP = new JProgressBar(0, 100);
 		playerOneHP.setBounds(46, 467, 146, 14);
 		matchFrame.getContentPane().add(playerOneHP);
+		playerOneHP.setValue(50);
 		
-		playerTwoHP = new JProgressBar();
+		playerTwoHP = new JProgressBar(0, 100);
 		playerTwoHP.setBounds(677, 86, 146, 14);
 		matchFrame.getContentPane().add(playerTwoHP);
+		playerTwoHP.setValue(50);
 		
 		playerOneLastAction = new JLabel("No dragons rolled yet");
-		playerOneLastAction.setBounds(226, 105, 146, 108);
+		playerOneLastAction.setBounds(226, 105, 243, 108);
 		matchFrame.getContentPane().add(playerOneLastAction);
 		
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
-		playerTwoLastAction.setBounds(381, 220, 146, 108);		
+		playerTwoLastAction.setBounds(381, 220, 311, 108);		
 		matchFrame.setVisible(true);
 		matchFrame.getContentPane().add(playerTwoLastAction);
 		
 		playerOneLastDragon = new DragonButton("New button");
-		playerOneLastDragon.setBounds(381, 105, 146, 108);
+		playerOneLastDragon.setBounds(479, 99, 146, 108);
 		matchFrame.getContentPane().add(playerOneLastDragon);
 		
 		playerTwoLastDragon = new DragonButton("New button");
 		playerTwoLastDragon.setBounds(226, 220, 146, 108);
 		matchFrame.getContentPane().add(playerTwoLastDragon);
 		
-		JButton btnRoll = new JButton("Roll");
+		btnRoll = new JButton("Roll");
 		btnRoll.setBounds(485, 442, 89, 23);
 		matchFrame.getContentPane().add(btnRoll);
+		btnRoll.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MatchController.diceRoll(matchModel);
+				MatchController.clearDiceSelection(matchModel);
+				updateViewForDiceRoll();
+			}
+		});
+		btnRoll.setVisible(false);
 		
 		currentDiceSelection = new JPanel();
 		currentDiceSelection.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		currentDiceSelection.setBounds(223, 492, 515, 93);
 		matchFrame.getContentPane().add(currentDiceSelection);
 		
-		JLabel lblAddDiceHere = new JLabel("Add dice here by selecting from your library");
+		lblAddDiceHere = new JLabel("Add dice here by selecting from your library");
 		lblAddDiceHere.setBounds(228, 467, 299, 14);
 		matchFrame.getContentPane().add(lblAddDiceHere);
 		
 		btnConfirmSelection = new JButton("Confirm Selection");
 		btnConfirmSelection.setBounds(417, 588, 157, 23);
 		matchFrame.getContentPane().add(btnConfirmSelection);
-		btnRoll.addActionListener( new ActionListener() {
+		btnConfirmSelection.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MatchController.setPlayerOneDice( matchModel );
-				MatchController.setPlayerTwoDice( matchModel );
+				//HARD CODED NEXT TWO LINES FOR TESTING DO REMOVE
+				matchModel.getPlayerOne().setDice( matchModel.getCurrentDiceSelection() );
+				matchModel.getPlayerTwo().setDice( matchModel.getCurrentDiceSelection() );
+				btnConfirmSelection.setVisible(false);
+				btnRoll.setVisible(true);
+				hideDiceSelection();
+				hidePlayersArmies();
 			}
 		});
+		btnConfirmSelection.setVisible(true);
 		
-		
-		
+		matchFrame.repaint();
+	}
+	
+	public void updateViewForDiceRoll() {
+		updateLastDragon();
+		updateLastPlayerOneAction();
+		updateLastPlayerTwoAction();
+		updatePlayersHealthBars();
+		showPlayersArmies();
+		showDiceSelection();
+		btnConfirmSelection.setVisible(true);
+		lblAddDiceHere.setVisible(true);
+		btnRoll.setVisible(false);
+	}
+	
+	public void hidePlayersArmies() {
+		playerOneArmy.setVisible(false);
+		playerTwoArmy.setVisible(false);
+		playerOneArmy.updateUI();
+		playerTwoArmy.updateUI();
+	}
+	
+	public void showPlayersArmies() {
+		playerOneArmy.setVisible(true);
+		playerTwoArmy.setVisible(true);
+		playerOneArmy.updateUI();
+		playerTwoArmy.updateUI();
+	}
+	
+	public void hideDiceSelection() {
+		currentDiceSelection.setVisible(false);
+		currentDiceSelection.removeAll();
+		currentDiceSelection.updateUI();
+	}
+	
+	public void showDiceSelection() {
+		currentDiceSelection.setVisible(true);
+		currentDiceSelection.removeAll();
+		currentDiceSelection.updateUI();
+	}
+	
+	public void rollDice() {
+		MatchController.diceRoll( this.matchModel );
+		updatePlayersHealthBars();
+		updateLastPlayerOneAction();
+		updateLastPlayerTwoAction();
 	}
 	
 	public void updateArmyPanel( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
@@ -145,8 +208,8 @@ public class MatchView {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					DragonButton btnSelected = (DragonButton) e.getSource();
-					MatchController.updateDragonToAdd(matchModel, btnSelected.getAssociatedDragon());
-					MatchController.addToDiceSelection( matchModel );
+					MatchController.updateDragonToAdd( matchModel, new Dragon( btnSelected.getAssociatedDragon() ));
+					MatchController.addToDiceSelection( matchModel, new Dragon( btnSelected.getAssociatedDragon() ) );
 					updateDiceSelectionPanel( currentDiceSelection );
 				}
 			});
@@ -158,7 +221,7 @@ public class MatchView {
 	
 	public void updateDiceSelectionPanel( JPanel diceSelectionPanel ) { 
 		
-		Dice dragonFaces = matchModel.getCurrentDiceSelection();
+		Dice dragonFaces = this.matchModel.getCurrentDiceSelection();
 		ArrayList<Dragon> dragons = dragonFaces.getDice();
 		Iterator<Dragon> dragonsItr = dragons.iterator();
 		DragonButton dragBtn;
@@ -167,13 +230,14 @@ public class MatchView {
 		
 		while ( dragonsItr.hasNext() ) {
 			currentDrag = dragonsItr.next();
-			MatchController.updateDragonToDelete( matchModel, currentDrag );
+			MatchController.updateDragonToDelete( this.matchModel, currentDrag );
 			dragBtn = new DragonButton( currentDrag );
 			diceSelectionPanel.add( dragBtn );
 			dragBtn.addActionListener( new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					MatchController.removeFromDiceSelection( matchModel );
+					updateDiceSelectionPanel( diceSelectionPanel );
 				}
 			});
 		}
@@ -184,22 +248,33 @@ public class MatchView {
 	
 	public void updateLastDragon() {
 		if ( matchModel.getPlayerOneLastDragon() != null ) {
-			playerOneLastDragon.setAssociatedDragon( matchModel.getPlayerOneLastDragon() );
-			playerOneLastDragon.updateUI();
+			this.playerOneLastDragon.setAssociatedDragon( matchModel.getPlayerOneLastDragon() );
+			this.playerOneLastDragon.updateUI();
 		} 
 		if ( matchModel.getPlayerTwoLastDragon() != null ) {
-			playerTwoLastDragon.setAssociatedDragon( matchModel.getPlayerTwoLastDragon() );
-			playerOneLastDragon.updateUI();
+			this.playerTwoLastDragon.setAssociatedDragon( matchModel.getPlayerTwoLastDragon() );
+			this.playerOneLastDragon.updateUI();
 		}
 	}
 	
 	public void updateLastPlayerOneAction() {
-		playerOneLastAction.setText( matchModel.getPlayerOneLastAction() );
-		playerOneLastAction.updateUI();
+		this.playerOneLastAction.setText( matchModel.getPlayerOneLastAction() );
+		this.playerOneLastAction.updateUI();
 	}
 	
 	public void updateLastPlayerTwoAction() {
-		playerTwoLastAction.setText( matchModel.getPlayerTwoLastAction() );
-		playerOneLastAction.updateUI();
+		this.playerTwoLastAction.setText( matchModel.getPlayerTwoLastAction() );
+		this.playerOneLastAction.updateUI();
+	}
+	
+	public void updatePlayersHealthBars() {
+		int healthPlayerOne = matchModel.getPlayerOneHealth();
+		int healthPlayerTwo = matchModel.getPlayerTwoHealth();
+		
+		this.playerOneHP.setValue( healthPlayerOne );
+		this.playerTwoHP.setValue( healthPlayerTwo );
+		
+		playerOneHP.updateUI();
+		playerTwoHP.updateUI();
 	}
 }

@@ -87,6 +87,17 @@ public class Dragon {
         icon = dragonIcon;
         this.description = description;
     }
+    
+    public Dragon( Dragon toCopy ) {
+    	this.name = toCopy.getName();
+    	this.damage = DEFAULT_DAMAGE;
+    	this.multiplier = DEFAULT_MULTIPLIER;
+    	this.type = toCopy.getType();
+    	this.strength = toCopy.getStrength();
+    	this.statEffect = toCopy.getStatEffect();
+    	this.icon = toCopy.getIcon();
+    	this.description = toCopy.getDescription();
+    }
 
     /**
      * Creates Dragon with all fields specified
@@ -190,4 +201,14 @@ public class Dragon {
 
         return totalDamage;
     }
+
+	public String getStrength() {
+		return strength;
+	}
+
+	public void setStrength(String strength) {
+		this.strength = strength;
+	}
+    
+    
 }

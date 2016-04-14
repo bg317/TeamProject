@@ -153,7 +153,7 @@ public class Player {
      */
 
     public void setName(String playerName) {
-        name = playerName;
+        this.name = playerName;
     }
 
     /**
@@ -163,7 +163,7 @@ public class Player {
      */
 
     public void setArmy(Army playerArmy) {
-        army = playerArmy;
+        this.army = playerArmy;
     }
 
     /**
@@ -173,7 +173,7 @@ public class Player {
      */
 
     public void setDice(Dice playerDice) {
-        dice = playerDice;
+        this.dice = playerDice;
     }
 
     /**
@@ -183,7 +183,7 @@ public class Player {
      */
 
     public void setStrongholdHP(int newHP) { 
-        strongholdHP = newHP;
+        this.strongholdHP = newHP;
     }
 
     /**
