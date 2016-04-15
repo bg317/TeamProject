@@ -1,7 +1,7 @@
-package dragonspiretournament;
+//package dragonspiretournament;
 
 /* ArmyTest
- * Test casses to make sure the functions of the Dragon class all work
+ * Test cases to make sure the functions of the Dragon class all work
  * 
  * @author Team 29 (CD)
  * @version 4-14-16
@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import dragonspiretournament.GameObjects.Dragon;
+import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.Army;
 
 public class ArmyTest{
@@ -30,52 +30,52 @@ public class ArmyTest{
 		Army testArmy = new Army();
 		Dragon testDrag = new Dragon("TestName", "TestType", "TestStrength", "TestIcon", "TestDescription");
 		testArmy.add(testDrag);
-		assertEquals(testArmy.size(), 1);
+		assertEquals(testArmy.getSize(), 1);
 		assertEquals(testArmy.toString(), "TestName ");
 	}
 	
 	@Test
 	//Test to see if add(Dragon newDragon) works with multiple adds
-	public void testAddMultiple(){
+	public void testAddMultiple1(){
 		Army testArmy = new Army();
 		Dragon testDrag = new Dragon("TestName", "TestType", "TestStrength", "TestIcon", "TestDescription");
 		Dragon testDrag2 = new Dragon("TestName2", "TestType2", "TestStrength2", "TestIcon2", "TestDescription2");
 		testArmy.add(testDrag);
 		testArmy.add(testDrag2);
-		assertEquals(testArmy.size(), 2);
+		assertEquals(testArmy.getSize(), 2);
 		assertEquals(testArmy.toString(), "TestName TestName2 ");
 		Dragon testDrag3 = new Dragon("TestName3", "TestType3", "TestStrength3", "TestIcon3", "TestDescription3");
 		Dragon testDrag4 = new Dragon("TestName4", "TestType4", "TestStrength4", "TestIcon4", "TestDescription4");
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
-		assertEquals(testArmy.size(), 4);
+		assertEquals(testArmy.getSize(), 4);
 		assertEquals(testArmy.toString(), "TestName TestName2 TestName3 TestName4 ");
 	}
 	
 	@Test
 	//Test to see if getSize() / remove() / clearArmy() work
-	public void testAddMultiple(){
+	public void testAddMultiple2(){
 		Army testArmy = new Army();
 		Dragon testDrag = new Dragon("TestName", "TestType", "TestStrength", "TestIcon", "TestDescription");
 		Dragon testDrag2 = new Dragon("TestName2", "TestType2", "TestStrength2", "TestIcon2", "TestDescription2");
 		testArmy.add(testDrag);
 		testArmy.add(testDrag2);
-		assertEquals(testArmy.size(), 2);
+		assertEquals(testArmy.getSize(), 2);
 		Dragon testDrag3 = new Dragon("TestName3", "TestType3", "TestStrength3", "TestIcon3", "TestDescription3");
 		Dragon testDrag4 = new Dragon("TestName4", "TestType4", "TestStrength4", "TestIcon4", "TestDescription4");
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
-		assertEquals(testArmy.size(), 4);
+		assertEquals(testArmy.getSize(), 4);
 		testArmy.remove(0);
-		assertEquals(testArmy.size(), 3);
+		assertEquals(testArmy.getSize(), 3);
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
-		assertEquals(testArmy.size(), 5);
+		assertEquals(testArmy.getSize(), 5);
 		testArmy.remove(2);
 		testArmy.remove(1);
-		assertEquals(testArmy.size(), 3);
+		assertEquals(testArmy.getSize(), 3);
 		testArmy.clearArmy();
-		assertEquals(testArmy.size(), 0);
+		assertEquals(testArmy.getSize(), 0);
 	}
 	
 	@Test
@@ -123,7 +123,7 @@ public class ArmyTest{
 		testArmy.add(testDrag2);
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
-		testArmy2 = testArmy.getArmy(1);
-		assertEquals(testArmy.toSting(), testArmy2.toString());
+		testArmy2 = testArmy;
+		assertEquals(testArmy.getArmy().toString(), testArmy2.getArmy().toString());
 	}
 }
