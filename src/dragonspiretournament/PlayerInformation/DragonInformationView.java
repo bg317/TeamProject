@@ -88,12 +88,10 @@ public class DragonInformationView {
 			System.out.println(dragonArtLocation);
 			mainImage = new ImageButton(dragonArtLocation);
 			totalPanel.add(mainImage, BorderLayout.CENTER);
-			System.out.println("got to the end of the try");
 		}
 		finally
 		{
 		
-		System.out.println("doing finally stuff");
 		//frame stuff
 		infoFrame.getContentPane().add(totalPanel);
 		infoFrame.setVisible(true);
