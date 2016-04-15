@@ -1,4 +1,4 @@
-/* ArmySelectionControllerTest
+/* ArmySelectionModelTest
  * makes sure the models getters and setters work
  * 
  * @author larry
