@@ -57,7 +57,7 @@ public class DragonInformationController {
 	{
 		if(dragonSet == true)
 		{
-		return dragonInfo.getArt();
+		return "src/dragons/art/" + dragonInfo.getName() + "L.png";
 		}
 		else
 		{

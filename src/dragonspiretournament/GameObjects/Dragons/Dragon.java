@@ -210,5 +210,15 @@ public class Dragon {
 		this.strength = strength;
 	}
     
-    
+	public int getDamage(){
+		return damage;
+	}
+	
+	public double getDamageMultiplier(){
+		return multiplier;
+	}
+	
+	public String toString() { 
+	    return name;
+	} 
 }
