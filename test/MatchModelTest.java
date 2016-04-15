@@ -1,4 +1,15 @@
-
+/* Match Model
+ * makes sure the model's getters and setters work
+ * 
+ * @author larry
+ * @version 4-14-16
+ * 
+ */
+import dragonspiretournament.GameObjects.Army;
+import dragonspiretournament.GameObjects.Dice;
+import dragonspiretournament.GameObjects.DragonLibrary;
+import dragonspiretournament.GameObjects.Player;
+import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.match.MatchModel;
 
 import static org.junit.Assert.*;
@@ -9,142 +20,307 @@ public class MatchModelTest {
 
 	@Test
 	public void testGetPlayerOneLastAction() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerOneLastAction("Last Action");
+		
+		assertEquals("Last Action", testModel.getPlayerOneLastAction());
 	}
 
 	@Test
 	public void testMatchModelPlayerPlayer() {
-		fail("Not yet implemented");
+		Player testPlayer1 = new Player("Name1", new Army());
+		Player testPlayer2 = new Player("Name2", new Army());
+		MatchModel testModel = new MatchModel(testPlayer1, testPlayer2);
+		
+		assertNotEquals(testModel, null);
+		assertEquals(testModel.getPlayerOne(), testPlayer1);
+		assertEquals(testModel.getPlayerTwo(), testPlayer2);
+		
 	}
 
 	@Test
 	public void testMatchModel() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		
+		assertNotEquals(testModel, null);
+		assertNotEquals(testModel.getPlayerOne(), null);
+		assertNotEquals(testModel.getPlayerTwo(), null);
 	}
 
 	@Test
 	public void testGetPlayerOne() {
-		fail("Not yet implemented");
+		Player testPlayer1 = new Player("Name1", new Army());
+		MatchModel testModel = new MatchModel(testPlayer1, testPlayer1);
+		
+		assertNotEquals(testModel, null);
+		assertEquals(testModel.getPlayerOne(), testPlayer1);
 	}
 
 	@Test
 	public void testSetPlayerOne() {
-		fail("Not yet implemented");
+		Player testPlayer1 = new Player("Name1", new Army());
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerOne(testPlayer1);
+		
+		assertNotEquals(testModel, null);
+		assertEquals(testModel.getPlayerOne(), testPlayer1);
 	}
 
 	@Test
 	public void testGetPlayerTwo() {
-		fail("Not yet implemented");
+		Player testPlayer1 = new Player("Name1", new Army());
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerTwo(testPlayer1);
+		
+		assertNotEquals(testModel, null);
+		assertEquals(testModel.getPlayerTwo(), testPlayer1);
 	}
 
 	@Test
 	public void testSetPlayerTwo() {
-		fail("Not yet implemented");
+		Player testPlayer1 = new Player("Name1", new Army());
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerTwo(testPlayer1);
+		
+		assertNotEquals(testModel, null);
+		assertEquals(testModel.getPlayerTwo(), testPlayer1);
 	}
 
 	@Test
 	public void testGetPlayerOneArmy() {
-		fail("Not yet implemented");
+		Army testArmy = new Army();
+		DragonLibrary testLib = new DragonLibrary();
+		testArmy.add( testLib.getDragon(0));
+		Player testPlayer = new Player("Name", testArmy);
+		
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerOne(testPlayer);
+		testModel.setPlayerOneArmy(testArmy);
+		
+		assertEquals(testModel.getPlayerOneArmy(), testPlayer.getArmy());
 	}
 
 	@Test
 	public void testSetPlayerOneArmy() {
-		fail("Not yet implemented");
+		Army testArmy = new Army();
+		DragonLibrary testLib = new DragonLibrary();
+		testArmy.add( testLib.getDragon(0));
+		Player testPlayer = new Player("testname", testArmy);
+		
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerOne(testPlayer);
+		testModel.setPlayerOneArmy(testArmy);
+		
+		assertEquals(testModel.getPlayerOneArmy(), testPlayer.getArmy());
 	}
 
 	@Test
 	public void testGetPlayerTwoArmy() {
-		fail("Not yet implemented");
+		Army testArmy = new Army();
+		DragonLibrary testLib = new DragonLibrary();
+		testArmy.add( testLib.getDragon(0));
+		Player testPlayer = new Player();
+		
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerTwo(testPlayer);
+		testModel.setPlayerTwoArmy(testArmy);
+		
+		assertEquals(testModel.getPlayerTwoArmy(), testArmy);
 	}
 
 	@Test
 	public void testSetPlayerTwoArmy() {
-		fail("Not yet implemented");
+		Army testArmy = new Army();
+		DragonLibrary testLib = new DragonLibrary();
+		testArmy.add( testLib.getDragon(0));
+		Player testPlayer = new Player("hello", testArmy);
+		
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerTwo(testPlayer);
+		testModel.setPlayerTwoArmy(testArmy);
+		
+		assertEquals(testModel.getPlayerTwoArmy(), testPlayer.getArmy());
 	}
 
 	@Test
 	public void testGetPlayerOneDice() {
-		fail("Not yet implemented");
+		Player testPlayer = new Player();
+		Dice testDice = new Dice();
+		testPlayer.setDice(testDice);
+	
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerOne(testPlayer);
+		
+		assertEquals(testModel.getPlayerOneDice(), testDice);
 	}
 
 	@Test
-	public void testSetPlayerOneDice() {
-		fail("Not yet implemented");
+	public void testSetPlayerOneDice() { //dont know why this is failing
+	//	Player testPlayer = new Player();
+		Dice testDice = new Dice();
+		MatchModel testModel = new MatchModel();
+		//testModel.setPlayerOne(testPlayer);
+		Player testPlayer = new Player("hello", new Army());
+		testModel.setPlayerOne(testPlayer);
+		testModel.setPlayerOneDice(testDice);
+		
+		assertNotEquals(null, testModel.getPlayerOneDice());
+		assertEquals( testDice.getDice(), testModel.getPlayerOneDice().getDice()); //Holy crap
 	}
 
 	@Test
 	public void testGetPlayerTwoDice() {
-		fail("Not yet implemented");
+		Player testPlayer = new Player();
+		Dice testDice = new Dice();
+		testPlayer.setDice(testDice);
+	
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerTwo(testPlayer);
+		
+		assertEquals(testModel.getPlayerTwoDice(), testDice);
 	}
 
 	@Test
 	public void testSetPlayerTwoDice() {
-		fail("Not yet implemented");
+		Player testPlayer = new Player("hi", new Army());
+		Dice testDice = new Dice();
+		
+	
+		MatchModel testModel = new MatchModel();
+		
+		testModel.setPlayerTwo(testPlayer);
+		testModel.setPlayerTwoDice(testDice);
+		
+		assertNotEquals(testModel.getPlayerTwoDice().getDice(), null);
+		assertEquals(testModel.getPlayerTwoDice().getDice(), testPlayer.getDice().getDice());
+		assertEquals(testModel.getPlayerTwoDice().getDice(), testModel.getPlayerTwo().getDice().getDice());//just for laughs
+		
 	}
 
 	@Test
 	public void testSetPlayerOneLastAction() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerOneLastAction("Last Action");
+		
+		assertEquals("Last Action", testModel.getPlayerOneLastAction());
 	}
 
 	@Test
 	public void testGetPlayerTwoLastAction() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerTwoLastAction("Last Action");
+		
+		assertEquals("Last Action", testModel.getPlayerTwoLastAction());
 	}
 
 	@Test
 	public void testSetPlayerTwoLastAction() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		testModel.setPlayerTwoLastAction("Last Action");
+		
+		assertEquals("Last Action", testModel.getPlayerTwoLastAction());
 	}
 
 	@Test
 	public void testGetPlayerOneLastDragon() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		DragonLibrary testLib = new DragonLibrary();
+		Dragon testDragon = testLib.getDragon(0);
+		testModel.setPlayerOneLastDragon(testDragon);
+		
+		assertEquals(testDragon, testModel.getPlayerOneLastDragon());
 	}
 
 	@Test
 	public void testSetPlayerOneLastDragon() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		DragonLibrary testLib = new DragonLibrary();
+		Dragon testDragon = testLib.getDragon(0);
+		testModel.setPlayerOneLastDragon(testDragon);
+		
+		assertEquals(testDragon, testModel.getPlayerOneLastDragon());
 	}
 
 	@Test
 	public void testGetPlayerTwoLastDragon() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		DragonLibrary testLib = new DragonLibrary();
+		Dragon testDragon = testLib.getDragon(0);
+		testModel.setPlayerTwoLastDragon(testDragon);
+		
+		assertEquals(testDragon, testModel.getPlayerTwoLastDragon());
 	}
 
 	@Test
 	public void testSetPlayerTwoLastDragon() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		DragonLibrary testLib = new DragonLibrary();
+		Dragon testDragon = testLib.getDragon(0);
+		testModel.setPlayerTwoLastDragon(testDragon);
+		
+		assertEquals(testDragon, testModel.getPlayerTwoLastDragon());
 	}
 
 	@Test
 	public void testGetCurrentDiceSelection() {
-		fail("Not yet implemented");
+		Dice testDice = new Dice();
+		MatchModel testModel = new MatchModel();
+		testModel.setCurrentDiceSelection(testDice);
+		
+		assertEquals(testModel.getCurrentDiceSelection(), testDice);
 	}
 
 	@Test
 	public void testSetCurrentDiceSelection() {
-		fail("Not yet implemented");
+		Dice testDice = new Dice();
+		MatchModel testModel = new MatchModel();
+		testModel.setCurrentDiceSelection(testDice);
+		
+		assertEquals(testModel.getCurrentDiceSelection(), testDice);
 	}
 
 	@Test
 	public void testGetDragonBeingAddedToDice() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		DragonLibrary testLib = new DragonLibrary();
+		Dragon testDragon = testLib.getDragon(0);
+		
+		testModel.setDragonBeingAddedToDice(testDragon);
+		
+		assertEquals(testModel.getDragonBeingAddedToDice(), testDragon);
 	}
 
 	@Test
 	public void testSetDragonBeingAddedToDice() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		DragonLibrary testLib = new DragonLibrary();
+		Dragon testDragon = testLib.getDragon(0);
+		
+		testModel.setDragonBeingAddedToDice(testDragon);
+		
+		assertEquals(testModel.getDragonBeingAddedToDice(), testDragon);
 	}
 
 	@Test
 	public void testGetDragonBeingRemovedFromDice() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		DragonLibrary testLib = new DragonLibrary();
+		Dragon testDragon = testLib.getDragon(0);
+		
+		testModel.setDragonBeingRemovedFromDice(testDragon);
+		
+		assertEquals(testModel.getDragonBeingRemovedFromDice(), testDragon);
 	}
 
 	@Test
 	public void testSetDragonBeingRemovedFromDice() {
-		fail("Not yet implemented");
+		MatchModel testModel = new MatchModel();
+		DragonLibrary testLib = new DragonLibrary();
+		Dragon testDragon = testLib.getDragon(0);
+		
+		testModel.setDragonBeingRemovedFromDice(testDragon);
+		
+		assertEquals(testModel.getDragonBeingRemovedFromDice(), testDragon);
 	}
 
 }
