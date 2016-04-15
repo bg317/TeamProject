@@ -91,4 +91,12 @@ public class Army {
     public void clearArmy() {
         army.clear();
     }
+    
+    public String toString() { 
+	    String retString = "";
+	    for (int index = 0; index < army.size(); index++)
+	    	retString += army.get(index).toString() + " ";
+    	return retString;
+	} 
+    
 }
