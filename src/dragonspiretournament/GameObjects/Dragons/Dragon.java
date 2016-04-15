@@ -210,5 +210,7 @@ public class Dragon {
 		this.strength = strength;
 	}
     
-    
+	public String toString() { 
+	    return name;
+	} 
 }
