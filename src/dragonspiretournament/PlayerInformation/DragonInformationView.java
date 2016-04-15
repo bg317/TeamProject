@@ -1,4 +1,5 @@
 package dragonspiretournament.PlayerInformation;
+
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 
