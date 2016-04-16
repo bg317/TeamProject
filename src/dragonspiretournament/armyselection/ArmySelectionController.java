@@ -2,6 +2,7 @@ package dragonspiretournament.armyselection;
 
 import java.util.ArrayList;
 import dragonspiretournament.GameObjects.Army;
+import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 
 public class ArmySelectionController {
@@ -81,5 +82,10 @@ public class ArmySelectionController {
 		selectModel.setPrev( allDragons.get( updatedPrevIndex ));
 		selectModel.setNext( allDragons.get( updatedNextIndex ));
 		
+	}
+
+	public static void confirmPlayersArmy( ArmySelectionModel selectModel ) {
+		Player player = selectModel.getPlayer();
+		player.setArmy( selectModel.getCurrentPlayerArmy() );
 	}
 }

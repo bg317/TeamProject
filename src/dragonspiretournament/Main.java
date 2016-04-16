@@ -3,6 +3,8 @@ package dragonspiretournament;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;
+import dragonspiretournament.armyselection.ArmySelectionController;
+import dragonspiretournament.armyselection.ArmySelectionModel;
 import dragonspiretournament.armyselection.ArmySelectionView;
 
 import dragonspiretournament.match.MatchView;
@@ -10,7 +12,12 @@ import dragonspiretournament.nameselection.NameSelectionView;
 import dragonspiretournament.title.TitleView;
 import dragonspiretournament.PlayerInformation.DragonInformationView;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 /**
  * The Class Main.
  * This is the main run for the Game.
@@ -24,22 +31,27 @@ public class Main {
 	 * @throws FileNotFoundException the file not found exception
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
-		ArmySelectionView armySelectView = new ArmySelectionView();
+		
+		Player playerOne = new Player();
+		Player playerTwo = new Player();
+		
+		ArmySelectionView armySelectViewOne;
+		ArmySelectionView armySelectViewTwo;
+		
+		NameSelectionView nameView = new NameSelectionView( playerOne, playerTwo );
+		armySelectViewOne = new ArmySelectionView( playerOne, playerTwo, false );
 		
 		Army playerOneArmy = new Army();
 		DragonLibrary dragLib = new DragonLibrary();
 		playerOneArmy.add( dragLib.getDragon(0));
 		playerOneArmy.add( dragLib.getDragon(1));
 		playerOneArmy.add( dragLib.getDragon(2));
-		Player playerOne = new Player("Name", playerOneArmy);
-		Player playerTwo = new Player("Name2", playerOneArmy);
-		MatchView matchView = new MatchView( playerOne, playerTwo );
 		
+		//MatchView matchView = new MatchView( playerOne, playerTwo );
+		
+		/*
 		TitleView titleView = new TitleView();
-		
-		NameSelectionView nameView = new NameSelectionView();
-		
-		DragonInformationView infoView = new DragonInformationView(dragLib.getDragon(3));
+		DragonInformationView infoView = new DragonInformationView(dragLib.getDragon(3)); */
 	}
 
 }

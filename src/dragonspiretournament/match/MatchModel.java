@@ -32,6 +32,11 @@ public class MatchModel {
 	private int playerTwoLastDamageRecv;
 	
 	
+	private boolean draw;
+	private boolean matchOver;
+	private Player winner;
+	
+	
 	public String getPlayerOneLastAction() {
 		return playerOneLastAction;
 	}
@@ -60,6 +65,7 @@ public class MatchModel {
 		this.currentDiceSelection = new Dice();
 		this.playerOneLastAction = "No dice has been rolled yet";
 		this.playerTwoLastAction = "No dice has been rolled yet";
+		this.matchOver = false;
 	}
 	
 	public MatchModel() {
@@ -70,6 +76,7 @@ public class MatchModel {
 		this.playerOneDice = new Dice();
 		this.playerTwoDice = new Dice();
 		this.currentDiceSelection = new Dice();
+		this.matchOver = false;
 	}
 
 	public Player getPlayerOne() {
@@ -187,5 +194,43 @@ public class MatchModel {
 	public void setPlayerTwoHealth(int playerTwoHealth) {
 		this.playerTwoHealth = playerTwoHealth;
 	}
+
+
+
+	public void setDraw(boolean b) {
+		this.draw = b;
+	}
+
+
+
+	public void setMatchOver(boolean b) {
+		this.matchOver = b;
+	}
+
+
+
+	public void setWinner( Player player ) {
+		this.winner = player;
+	}
+
+
+
+	public boolean isDraw() {
+		return draw;
+	}
+
+
+
+	public boolean isMatchOver() {
+		return matchOver;
+	}
+
+
+
+	public Player getWinner() {
+		return winner;
+	}
+	
+	
 	
 }

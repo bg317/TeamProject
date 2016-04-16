@@ -92,6 +92,24 @@ public class MatchController {
 		
 		updateRollActionText( matchModel );
 		updateRollActionDragon( matchModel );
+		
+		checkIfWin( playerOne, playerTwo, matchModel );
+	}
+	
+	public static void checkIfWin( Player playerOne, Player playerTwo, MatchModel matchModel ) {
+		int playerOneHP = playerOne.getStrongholdHP();
+		int playerTwoHP = playerTwo.getStrongholdHP();
+		
+		if ( playerOneHP < 1  && playerTwoHP < 1 ) { 
+			matchModel.setDraw( true );
+			matchModel.setMatchOver( true );
+		} else if ( playerOneHP < 1 && playerTwoHP > 1 ) {
+			matchModel.setMatchOver( true );
+			matchModel.setWinner( playerTwo );
+		} else if ( playerTwoHP < 1 && playerOneHP > 1 ) {
+			matchModel.setMatchOver( true );
+			matchModel.setWinner( playerOne );
+		}
 	}
 	
 	public static void updatePlayerLastDragon( Player player, Dragon dragon ) {

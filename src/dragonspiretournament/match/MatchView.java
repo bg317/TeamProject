@@ -13,6 +13,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import dragonspiretournament.GameObjects.Army;
@@ -51,6 +52,8 @@ public class MatchView {
 	private JButton btnConfirmSelection;
 	private JButton btnRoll;
 	
+	private static JOptionPane matchOverBox;
+	
 	
 	public MatchView( Player playerOne, Player playerTwo ) {
 		matchModel = new MatchModel( playerOne, playerTwo );
@@ -72,11 +75,11 @@ public class MatchView {
 		matchFrame.getContentPane().add(playerTwoArmy);
 		updateArmyPanel( playerTwoArmy, matchModel.getPlayerTwoArmy(), new DragonButton() );
 		
-		lblPlayerTwo = new JLabel("Player One ");
+		lblPlayerTwo = new JLabel( matchModel.getPlayerOne().getName() );
 		lblPlayerTwo.setBounds(36, 422, 121, 40);
 		matchFrame.getContentPane().add(lblPlayerTwo);
 		
-		lblPlayerTwoDragons = new JLabel("Player Two ");
+		lblPlayerTwoDragons = new JLabel( matchModel.getPlayerOne().getName() );
 		lblPlayerTwoDragons.setBounds(601, 48, 79, 40);
 		matchFrame.getContentPane().add(lblPlayerTwoDragons);
 		
@@ -116,6 +119,7 @@ public class MatchView {
 				MatchController.diceRoll(matchModel);
 				MatchController.clearDiceSelection(matchModel);
 				updateViewForDiceRoll();
+				checkIfMatchOver();
 			}
 		});
 		btnRoll.setVisible(false);
@@ -192,6 +196,18 @@ public class MatchView {
 		updatePlayersHealthBars();
 		updateLastPlayerOneAction();
 		updateLastPlayerTwoAction();
+		System.out.println( matchModel.isMatchOver() );
+	}
+	
+	public void checkIfMatchOver() { 
+		System.out.println( matchModel.isMatchOver() + " is match over? ");
+		if ( matchModel.isMatchOver() ) {
+			if ( matchModel.isDraw() ) {
+				JOptionPane.showMessageDialog( matchFrame, "Game has come to a draw!");
+			} else {
+				JOptionPane.showMessageDialog( matchFrame, "The player " + matchModel.getWinner().getName() + " has one the game!");
+			}
+		}
 	}
 	
 	public void updateArmyPanel( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {

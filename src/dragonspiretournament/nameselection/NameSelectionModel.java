@@ -20,7 +20,7 @@ public class NameSelectionModel {
 	/**
 	 * constructor
 	 */
-	NameSelectionModel()
+	public NameSelectionModel()
 	{
 		currentPlayer = ONE;
 		playerOneName = "Player 1";
@@ -95,6 +95,14 @@ public class NameSelectionModel {
 		{
 			return true;
 		}
+	}
+
+	public void setPlayerOne(Player player) {
+		this.player1 = player;
+	}
+	
+	public void setPlayerTwo( Player player ) {
+		this.player2 = player;
 	}
 }
 
