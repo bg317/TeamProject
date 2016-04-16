@@ -6,7 +6,33 @@
 [Documentation Entry Point](#docs)
 
 
-# <a name="authors"></a>DragonSpire Authors
+# Build and Play rules
+
+####Building
+
+To build this project. install maven following the directions for maven or the maven IDE plugin.
+
+To build this project from the command line, in its directory after downloading run
+```$ mvn exec:java -Dexec.mainClass="dragonspiretournament.Main"```
+
+To build this project from your IDE, run with your maven plugin with
+```exec:java -Dexec.mainClass="dragonspiretournament.Main```
+
+Alternatively you can import the project and run the dragonspiretournament.Main in whichever way you'd like. There is also a JAR file to run packaged with this. Type java -jar Dragonspiretournament-0.0.1-SNAPSHOT-jar-with-dependencies
+
+You can also build the JAR file to the target directory, in which case run the jar file with the suffix -with-dependencies.
+
+####Playing
+To play, you need two players. An initial screen will pop up to select a various set of Dragons. The first dragon selection screen will be player one. Player one can select from the library and turning wheel a dragon to add to his collection. Once player one has confirmed his or her selection, another selection window will pop up. This selection window is for player two to select and confirm his or her selection. Each dragon is represented as a shield and next release we will have an information window for each one. 
+
+After confirming both players' selections, move onto the match screen. The players can select a dragons to add to its dice collection, and a roll will select a random dragon to attack. 
+
+The dice selection currently selects for both players, so each player cannot have a unique dice until next release. 
+
+When rolling, an attack will occur which will be reflected in the status text for each player. The damage is the damage received. If you are out of HP you will either win or a draw will occur. Exit the game after match is over by selecting the X in the top right.
+
+#Authors
+# <a name="authors"></a>
 Brandon G.
 
 Lloyd A.
@@ -17,7 +43,7 @@ Larry S.
 
 Caleb D.
 
-
+# Rules
 # <a name="rules"></a>Game Rules and Other Info
 
 Dragonspire Tournament
@@ -113,6 +139,7 @@ These dragons are a kind of sentient plant related to the fabled mandrake. Grown
 
 Attack damage base: 5
 
+# docs
 # <a href="docs"></a> Documentation Entry Point
 
 https://github.com/bg317/TeamProject/tree/master/docs
