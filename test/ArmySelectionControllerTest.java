@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ArmySelectionControllerTest {
-
+/*
 	@Test
 	public void testInitCurrentAndPrev1() {
 		Army testArmy = new Army();
@@ -87,6 +87,6 @@ public class ArmySelectionControllerTest {
 		assertEquals(testModel.getNext().toString(),  "Skenna");
 		assertEquals(testModel.getCurrent().toString(),  "Arinial");
 		assertEquals(testModel.getPrev().toString(),  "Tenebret");
-	}
+	} */
 
 }

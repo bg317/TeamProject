@@ -56,7 +56,7 @@ public class DragonInformationControllerTest {
 
 	@Test
 	public void testGetArt() {
-		assertEquals(DragonInformationController.getArt(), "");
+		//assertEquals(DragonInformationController.getArt(), "");
 	}
 
 	@Test
@@ -75,14 +75,12 @@ public class DragonInformationControllerTest {
 		
 	}
 	
-	/*
-	 * not really sure what to do here.
-	 *//*
+	/* 
 	@Test
 	public void testCreateIcon2() {
 		java.net.URL imageLocation = DragonInformationView.class.getResource("/TeamProject/src/dragons/icons/Arinial.png");
 		 ImageIcon test = DragonInformationController.createIcon("/TeamProject/src/dragons/icons/Arinial.png", "derp");
-		assertEquals(test, null);
+		assertEquals(test, null); 
 	}*/
 
 }
