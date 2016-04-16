@@ -95,46 +95,46 @@ public class MatchView {
 		matchModel = new MatchModel( playerOne, playerTwo );
 
 		matchFrame = new JFrame("DragonSpire Tournament");
-		matchFrame.setSize(993, 661);
+		matchFrame.setSize(980, 700);
 		matchFrame.getContentPane().setLayout(null);
 		matchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		playerOneArmy = new JPanel();
 		playerOneArmy.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		playerOneArmy.setBounds(36, 11, 121, 400);
+		playerOneArmy.setBounds(41, 31, 54, 580);
 		matchFrame.getContentPane().add(playerOneArmy);
 		updateArmyPanel( playerOneArmy, matchModel.getPlayerOneArmy(), new DragonButton() );
 
 		playerTwoArmy = new JPanel();
 		playerTwoArmy.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		playerTwoArmy.setBounds(778, 111, 121, 400);
+		playerTwoArmy.setBounds(800, 31, 54, 580);
 		matchFrame.getContentPane().add(playerTwoArmy);
 		updateArmyPanel( playerTwoArmy, matchModel.getPlayerTwoArmy(), new DragonButton() );
 		
 		lblPlayerTwo = new JLabel( matchModel.getPlayerOne().getName() );
-		lblPlayerTwo.setBounds(36, 422, 121, 40);
+		lblPlayerTwo.setBounds(101, 492, 121, 40);
 		matchFrame.getContentPane().add(lblPlayerTwo);
 		
 		lblPlayerTwoDragons = new JLabel( matchModel.getPlayerTwo().getName() );
-		lblPlayerTwoDragons.setBounds(601, 48, 79, 40);
+		lblPlayerTwoDragons.setBounds(627, 48, 79, 40);
 		matchFrame.getContentPane().add(lblPlayerTwoDragons);
 		
 		playerOneHP = new JProgressBar(0, 25); //25 is the max strongholdHP
-		playerOneHP.setBounds(46, 467, 146, 14);
+		playerOneHP.setBounds(111, 537, 146, 14);
 		matchFrame.getContentPane().add(playerOneHP);
 		playerOneHP.setValue(50);
 		
 		playerTwoHP = new JProgressBar(0, 25); //25 is the max strongholdHP
-		playerTwoHP.setBounds(677, 86, 146, 14);
+		playerTwoHP.setBounds(637, 86, 146, 14);
 		matchFrame.getContentPane().add(playerTwoHP);
 		playerTwoHP.setValue(50);
-		
+
 		playerOneLastAction = new JLabel("No dragons rolled yet");
-		playerOneLastAction.setBounds(226, 105, 243, 108);
+		playerOneLastAction.setBounds(296, 105, 243, 108);
 		matchFrame.getContentPane().add(playerOneLastAction);
-		
+
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
-		playerTwoLastAction.setBounds(381, 220, 311, 108);		
+		playerTwoLastAction.setBounds(471, 220, 311, 108);		
 		matchFrame.setVisible(true);
 		matchFrame.getContentPane().add(playerTwoLastAction);
 		
@@ -143,11 +143,11 @@ public class MatchView {
 		matchFrame.getContentPane().add(playerOneLastDragon);
 		
 		playerTwoLastDragon = new DragonButton("");
-		playerTwoLastDragon.setBounds(226, 220, 146, 108);
+		playerTwoLastDragon.setBounds(306, 220, 146, 108);
 		matchFrame.getContentPane().add(playerTwoLastDragon);
 		
 		btnRoll = new JButton("Roll");
-		btnRoll.setBounds(485, 442, 89, 23);
+		btnRoll.setBounds(405, 442, 89, 23);
 		matchFrame.getContentPane().add(btnRoll);
 		btnRoll.addActionListener( new ActionListener() {
 			@Override
@@ -162,15 +162,15 @@ public class MatchView {
 		
 		currentDiceSelection = new JPanel();
 		currentDiceSelection.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		currentDiceSelection.setBounds(223, 492, 515, 93);
+		currentDiceSelection.setBounds(285, 492, 360, 54);
 		matchFrame.getContentPane().add(currentDiceSelection);
 		
-		lblAddDiceHere = new JLabel("Add dice here by selecting from your library");
-		lblAddDiceHere.setBounds(228, 467, 299, 14);
+		lblAddDiceHere = new JLabel("Add to dice here by selecting dragons from your army:");
+		lblAddDiceHere.setBounds(289, 467, 320, 14);
 		matchFrame.getContentPane().add(lblAddDiceHere);
 		
 		btnConfirmSelection = new JButton("Confirm Selection");
-		btnConfirmSelection.setBounds(417, 588, 157, 23);
+		btnConfirmSelection.setBounds(385, 554, 157, 23);
 		matchFrame.getContentPane().add(btnConfirmSelection);
 		btnConfirmSelection.addActionListener( new ActionListener() {
 			@Override
@@ -312,6 +312,8 @@ public class MatchView {
 		DragonButton dragBtn;
 		Dragon currentDrag;
 		diceSelectionPanel.removeAll();
+
+        currentDrag = dragonsItr.next();//Skips "Missed" Dragon
 		
 		while ( dragonsItr.hasNext() ) {
 			currentDrag = dragonsItr.next();

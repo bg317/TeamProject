@@ -104,7 +104,7 @@ public class ArmySelectionView {
 		nextWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		currentArmySelection = new JPanel();
-		currentArmySelection.setBounds(70, 441, 860, 67);	
+		currentArmySelection.setBounds(70, 441, 860, 54);	
 		currentArmySelection.setBorder(new LineBorder(Color.BLACK));
 		
 		updateSelectionPanel( currentArmySelection, selectionModel ); 
