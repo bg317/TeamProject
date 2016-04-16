@@ -36,7 +36,7 @@ public class DragonInformation {
 	 *
 	 * @param dragon the dragon
 	 */
-	DragonInformation(Dragon dragon)
+	public DragonInformation(Dragon dragon)
 	{
 		dragonName = dragon.getName();
 		iconLocation = dragon.getIcon();
