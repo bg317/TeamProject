@@ -32,14 +32,15 @@ public class Main {
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		Player playerOne = new Player();
-		Player playerTwo = new Player();
+		Player playerOne = new Player(" Player One ");
+		Player playerTwo = new Player(" Player Two ");
+
 		
 		ArmySelectionView armySelectViewOne;
 		ArmySelectionView armySelectViewTwo;
 		
-		NameSelectionView nameView = new NameSelectionView( playerOne, playerTwo );
-		armySelectViewOne = new ArmySelectionView( playerOne, playerTwo, false );
+		/*NameSelectionView nameView = new NameSelectionView( playerOne, playerTwo ); */
+		armySelectViewOne = new ArmySelectionView( playerOne, playerTwo, false ); 
 		
 		Army playerOneArmy = new Army();
 		DragonLibrary dragLib = new DragonLibrary();
