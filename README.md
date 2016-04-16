@@ -18,6 +18,8 @@ To build this project from the command line, in its directory after downloading 
 To build this project from your IDE, run with your maven plugin with
 ```exec:java -Dexec.mainClass="dragonspiretournament.Main```
 
+To test this project, run mvn test in the directory containing its pom.xml
+
 Alternatively you can import the project and run the dragonspiretournament.Main in whichever way you'd like. There is also a JAR file to run packaged with this. Type java -jar Dragonspiretournament-0.0.1-SNAPSHOT-jar-with-dependencies
 
 You can also build the JAR file to the target directory, in which case run the jar file with the suffix -with-dependencies.
