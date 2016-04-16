@@ -9,35 +9,35 @@ package dragonspiretournament.GameObjects.Dragons;
 
 public class Dragon {	
 
-    /** The Constant DEFAULT_DAMAGE. */
+    /** The Constant DEFAULT_DAMAGE for damage. */
     private static final int DEFAULT_DAMAGE = 5;
     
-    /** The Constant DEFAULT_MULTIPLIER. */
+    /** The Constant DEFAULT_MULTIPLIER for multiplier. */
     private static final double DEFAULT_MULTIPLIER = 2.0;
 
-    /** The damage. */
+    /** The damage dealt by the dragon. */
     private int damage;
     
-    /** The multiplier. */
+    /** The damage multiplier. */
     private double multiplier;
     
-    /** The name. */
+    /** The name of the Dragon. */
     private String name;
     
-    /** The type. */
+    /** The type of the Dragon. */
     private String type;
     
-    /** The strength. */
-    private String strength; //Type strong against
+    /** The type that the Dragon is strong against. */
+    private String strength;
     
-    /** The stat effect. */
-    private String statEffect; //Status effect
+    /** The status effect of the Dragon. */
+    private String statEffect;
     
-    /** The icon. */
-    private String icon; //Location of the image file
+    /** The location of the image file for the icon. */
+    private String icon;
     
-    /** The description. */
-    private String description; //Description of dragon
+    /** The location of the description file. */
+    private String description;
 
     /**
      * Creates Dragon with default damage and multiplier with no status effect.
@@ -106,9 +106,9 @@ public class Dragon {
     }
     
     /**
-     * Instantiates a new dragon.
+     * Instantiates a new dragon copy.
      *
-     * @param toCopy the to copy
+     * @param toCopy the Dragon to copy
      */
     public Dragon( Dragon toCopy ) {
     	this.name = toCopy.getName();
@@ -148,6 +148,7 @@ public class Dragon {
     /**
      * getName - returns the dragon's name.
      *
+     * @param  none
      * @return name of dragon
      */
 
@@ -158,6 +159,7 @@ public class Dragon {
     /**
      * getType - returns the dragon's type.
      *
+     * @param  none
      * @return type of dragon
      */
 
@@ -168,6 +170,7 @@ public class Dragon {
     /**
      * getStatEffect - returns the dragon's status effect.
      *
+     * @param  none
      * @return status effect of dragon
      */
 
@@ -178,6 +181,7 @@ public class Dragon {
     /**
      * getIcon - returns the file location of the dragon's icon.
      *
+     * @param  none
      * @return string of icon's location
      */
 
@@ -188,11 +192,42 @@ public class Dragon {
     /**
      * getDescription - returns the description of the dragon.
      *
+     * @param  none
      * @return description of the dragon
      */
 
     public String getDescription() {
         return description;
+    }
+    
+    /**
+     * getDamage - gets the base damage dealt by the dragon
+     *
+     * @param none
+     * @return the damage
+     */
+    public int getDamage(){
+        return damage;
+    }
+    
+    /**
+     * getDamageMultiplier - Gets the damage multiplier.
+     *
+     * @param   none
+     * @return  the damage multiplier
+     */
+    public double getDamageMultiplier(){
+        return multiplier;
+    }
+
+    /**
+     * getStrength - gets the type that the dragon is strong against
+     *
+     * @param none
+     * @return the strength
+     */
+    public String getStrength() {
+        return strength;
     }
 
     /**
@@ -214,45 +249,21 @@ public class Dragon {
     }
 
 	/**
-	 * Gets the strength.
-	 *
-	 * @return the strength
-	 */
-	public String getStrength() {
-		return strength;
-	}
-
-	/**
-	 * Sets the strength.
+	 * setStrength - sets the type that the dragon is strong against
 	 *
 	 * @param strength the new strength
 	 */
 	public void setStrength(String strength) {
 		this.strength = strength;
 	}
-    
+
 	/**
-	 * Gets the damage.
-	 *
-	 * @return the damage
-	 */
-	public int getDamage(){
-		return damage;
-	}
-	
-	/**
-	 * Gets the damage multiplier.
-	 *
-	 * @return the damage multiplier
-	 */
-	public double getDamageMultiplier(){
-		return multiplier;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString() { 
-	    return name;
-	} 
+     * toString - returns a string containing the dragon name
+     * 
+     * @param  none
+     * @return string containing the dragon name
+     */
+    public String toString() { 
+        return name;
+    } 
 }
