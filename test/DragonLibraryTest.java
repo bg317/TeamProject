@@ -1,7 +1,5 @@
-//package dragonspiretournament;
-
 /* DragonLibraryTest
- * Test casses to make sure the functions of the DragonLibrary class all work
+ * Test cases to make sure the functions of the DragonLibrary class all work
  * 
  * @author Team 29 (CD)
  * @version 4-15-16
@@ -30,7 +28,7 @@ public class DragonLibraryTest{
 	}
 	
 	@Test
-	//Test to see if getDragon(int index) is wokring
+	//Test to see if getDragon(int index) is working
 	public void testGetDragon(){
 		DragonLibrary testDragLib = new DragonLibrary();
 		Dragon testDrag;

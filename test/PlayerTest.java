@@ -1,4 +1,3 @@
-
 /* PlayerTest
  * Test casses to make sure the functions of the Player class all work
  * 
@@ -8,12 +7,8 @@
  */
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-
 import dragonspiretournament.GameObjects.Player;
-
 
 public class PlayerTest{
 	
@@ -29,8 +24,6 @@ public class PlayerTest{
 	//Test to see if setName(String name) and getName() is working
 	public void testSetGetName(){
 		Player testPlayer = new Player();
-		String name;
-		
 		testPlayer.setName("TestPlayer");
 		assertEquals(testPlayer.getName(), "TestPlayer");
 		testPlayer.setName("Steve");
@@ -41,8 +34,6 @@ public class PlayerTest{
 	//Test to see if setStrongholdHP(int health) and getStrongHoldHP() is working
 	public void testGetStrongholdHP(){
 		Player testPlayer = new Player();
-		int health;
-		
 		testPlayer.setStrongholdHP(15);
 		assertEquals(testPlayer.getStrongholdHP(), 15);
 		testPlayer.setStrongholdHP(20);
