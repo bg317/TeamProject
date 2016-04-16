@@ -31,23 +31,24 @@ public class ArmySelectionController {
 		int updatedCurrIndex;
 		int updatedNextIndex;
 		int updatedPrevIndex;
-		if ( currIndex == 1 ) { 
-			updatedPrevIndex = currIndex;
-			updatedNextIndex = 1;
-			updatedCurrIndex = 0;
-		} else if ( currIndex == 0 ) { 
-			updatedPrevIndex = currIndex;
-			updatedCurrIndex = totalDragons - 1;
+		
+		updatedPrevIndex = currIndex;
+		
+		if ( currIndex == totalDragons - 2 ) {
 			updatedNextIndex = 0;
+			updatedCurrIndex = currIndex + 1;
+			updatedPrevIndex = currIndex;
+		} else if ( currIndex == totalDragons - 1 ) {
+			updatedCurrIndex = 0;
+			updatedNextIndex = updatedCurrIndex + 1;
+			updatedPrevIndex = currIndex;
 		} else { 
 			updatedPrevIndex = currIndex;
-			updatedCurrIndex = currIndex - 1;
-			if ( currIndex + 1 == allDragons.size() ) {
-				updatedNextIndex = 0;
-			} else { 
-				updatedNextIndex = currIndex + 1;
-			}
+			updatedCurrIndex = currIndex + 1;
+			updatedNextIndex = currIndex + 2;
 		}
+		
+		
 		
 		selectModel.setCurrent( allDragons.get( updatedCurrIndex ));
 		selectModel.setPrev( allDragons.get( updatedPrevIndex ));
@@ -61,17 +62,18 @@ public class ArmySelectionController {
 		int updatedCurrIndex;
 		int updatedNextIndex;
 		int updatedPrevIndex;
-		if ( currIndex == totalDragons - 1 ) {
-			updatedNextIndex = 1;
-			updatedPrevIndex = currIndex;
-			updatedCurrIndex = 0;
-		} else {
-			if ( currIndex == totalDragons - 2 ) {
-				updatedNextIndex = 0;
-			} else {
-				updatedNextIndex = currIndex + 2;
-			}
+		
+		if ( currIndex == totalDragons - 2 ) {
 			updatedCurrIndex = currIndex + 1;
+			updatedNextIndex = 0;
+			updatedPrevIndex = currIndex;
+		} else if ( currIndex == totalDragons - 1 ) {
+			updatedCurrIndex = 0;
+			updatedNextIndex = updatedCurrIndex + 1;
+			updatedPrevIndex = currIndex;
+		} else {
+			updatedCurrIndex = currIndex + 1;
+			updatedNextIndex = currIndex + 2;
 			updatedPrevIndex = currIndex;
 		}
 		
