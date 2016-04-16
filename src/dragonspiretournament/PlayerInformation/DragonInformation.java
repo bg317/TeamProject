@@ -5,18 +5,36 @@ import java.util.Scanner;
 import java.io.FileReader;
 import java.io.*;
 
+/**
+ * The Class DragonInformation.
+ */
 public class DragonInformation {
 
+	/** The dragon name. */
 	private String dragonName;
+	
+	/** The icon location. */
 	private String iconLocation;
+	
+	/** The dragon type. */
 	private String dragonType;
+	
+	/** The dragon description. */
 	private String dragonDescription;
+	
+	/** The dragon full art. */
 	private String dragonFullArt;
+	
+	/** The dragon description location. */
 	private String dragonDescriptionLocation;
+	
+	/** The dragon advantage. */
 	private String dragonAdvantage;
 	
 	/**
 	 * constructor takes info from a dragon object to show in an info box.
+	 *
+	 * @param dragon the dragon
 	 */
 	DragonInformation(Dragon dragon)
 	{
@@ -90,6 +108,11 @@ public class DragonInformation {
 		return dragonFullArt;
 	}
 	
+	/**
+	 * Gets the advantage.
+	 *
+	 * @return the advantage
+	 */
 	public String getAdvantage()
 	{
 		return dragonAdvantage;

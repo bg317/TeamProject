@@ -21,10 +21,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The Class GameView.
+ */
 public class GameView {
 	
+	/** The title frame. */
 	private JFrame titleFrame;
 	
+	/**
+	 * Instantiates a new game view.
+	 */
 	public GameView() {
 		titleFrame = new JFrame("DragonSpire Tournament");
 		titleFrame.setSize(1036, 610);

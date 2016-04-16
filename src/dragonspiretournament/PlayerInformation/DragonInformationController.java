@@ -5,10 +5,16 @@ import javax.swing.ImageIcon;
 
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 
+/**
+ * The Class DragonInformationController.
+ */
 public class DragonInformationController {
 	
+	/** The dragon info. */
 	static DragonInformation dragonInfo;
-	 //only is true once we have a valid dragon stored
+	 
+ 	/** The dragon set. */
+ 	//only is true once we have a valid dragon stored
 	static boolean dragonSet = false;
 	
 	/**
@@ -41,6 +47,11 @@ public class DragonInformationController {
 		}
 	}
 	
+	/**
+	 * Gets the description.
+	 *
+	 * @return the description
+	 */
 	public static String getDescription()
 	{
 		if(dragonSet == true)
@@ -53,6 +64,11 @@ public class DragonInformationController {
 		}
 	}
 	
+	/**
+	 * Gets the art.
+	 *
+	 * @return the art
+	 */
 	public static String getArt()
 	{
 		if(dragonSet == true)
@@ -65,6 +81,11 @@ public class DragonInformationController {
 		}
 	}
 	
+	/**
+	 * Gets the icon.
+	 *
+	 * @return the icon
+	 */
 	public static String getIcon()
 	{
 		if(dragonSet == true)
@@ -77,6 +98,11 @@ public class DragonInformationController {
 		}
 	}
 	
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
 	public static String getType()
 	{
 		if(dragonSet == true)
@@ -89,6 +115,11 @@ public class DragonInformationController {
 		}
 	}
 	
+	/**
+	 * Gets the advantage.
+	 *
+	 * @return the advantage
+	 */
 	public static String getAdvantage()
 	{
 		if (dragonSet == true)
@@ -101,7 +132,13 @@ public class DragonInformationController {
 		}
 	}
 	
-	/** Returns an ImageIcon, or null if the path was invalid. */
+	/**
+	 *  Returns an ImageIcon, or null if the path was invalid.
+	 *
+	 * @param path the path
+	 * @param altText the alt text
+	 * @return the image icon
+	 */
 	public static ImageIcon createIcon(String path, String altText) {
 	    java.net.URL imageLocation = DragonInformationView.class.getResource(path);
 	    if (imageLocation != null) {

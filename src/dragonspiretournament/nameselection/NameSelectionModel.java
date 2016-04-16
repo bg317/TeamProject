@@ -2,23 +2,38 @@ package dragonspiretournament.nameselection;
 
 import dragonspiretournament.GameObjects.Player;
 
+/**
+ * The Class NameSelectionModel.
+ */
 public class NameSelectionModel {
 	
+	/** The one. */
 	//for ease of remembering which player we're dealing with
 	private final int ONE = 0;
+	
+	/** The two. */
 	private final int TWO = 1;
 	
-	 //keeps track of which name and player is being stored/changed
+	 /** The current player. */
+ 	//keeps track of which name and player is being stored/changed
 	private int currentPlayer;
+	
+	/** The player one name. */
 	//the stored names
 	private String playerOneName;
+	
+	/** The player two name. */
 	private String playerTwoName;
+	
+	/** The player1. */
 	//player objects to be passed the name
 	private Player player1;
+	
+	/** The player2. */
 	private Player player2;
 	
 	/**
-	 * constructor
+	 * constructor.
 	 */
 	public NameSelectionModel()
 	{
@@ -97,10 +112,20 @@ public class NameSelectionModel {
 		}
 	}
 
+	/**
+	 * Sets the player one.
+	 *
+	 * @param player the new player one
+	 */
 	public void setPlayerOne(Player player) {
 		this.player1 = player;
 	}
 	
+	/**
+	 * Sets the player two.
+	 *
+	 * @param player the new player two
+	 */
 	public void setPlayerTwo( Player player ) {
 		this.player2 = player;
 	}

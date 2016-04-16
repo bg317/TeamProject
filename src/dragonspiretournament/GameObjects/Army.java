@@ -4,20 +4,19 @@ import java.util.ArrayList;
 import dragonspiretournament.GameObjects.Dragons.*;
 
 /**
- * Class to dragon army data
+ * Class to dragon army data.
  *
  * @author Team 29 (LA)
- * 
  * @version Apr 10, 2016
  */
 
 public class Army {
+    
+    /** The army. */
     private ArrayList<Dragon> army;
 
     /**
      * Creates an empty army.
-     * 
-     * @param none
      */
 
     public Army() {
@@ -25,10 +24,8 @@ public class Army {
     }
 
     /**
-     * getSize - Returns a count of the number of dragons in the army
-     * 
-     * @param none
-     * 
+     * getSize - Returns a count of the number of dragons in the army.
+     *
      * @return number of dragons in army
      */
 
@@ -38,10 +35,9 @@ public class Army {
     }
 
     /**
-     * getDragon - returns the Dragon at a specified point in the army
-     * 
-     * @param  index Position in the army
-     * 
+     * getDragon - returns the Dragon at a specified point in the army.
+     *
+     * @param index the index
      * @return dragon at the position requested
      */
 
@@ -50,10 +46,8 @@ public class Army {
     }
 
     /**
-     * getArmy - returns the entire dragon army
-     * 
-     * @param  none
-     * 
+     * getArmy - returns the entire dragon army.
+     *
      * @return ArrayList containing all of the dragons in the army
      */
 
@@ -73,8 +67,8 @@ public class Army {
 
     /**
      * remove - Removes a dragon from the army,
-     *          All dragons move up one position in the army
-     * 
+     *          All dragons move up one position in the army.
+     *
      * @param index Location of the dragon
      */
 
@@ -83,15 +77,16 @@ public class Army {
     }
 
     /**
-     * clearArmy - Removes all dragons from the army
-     * 
-     * @param none
+     * clearArmy - Removes all dragons from the army.
      */
 
     public void clearArmy() {
         army.clear();
     }
     
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     public String toString() { 
 	    String retString = "";
 	    for (int index = 0; index < army.size(); index++)

@@ -2,8 +2,12 @@ package dragonspiretournament.nameselection;
 
 import dragonspiretournament.GameObjects.Player;
 
+/**
+ * The Class NameSelectionController.
+ */
 public class NameSelectionController {
 	
+	/** The name selector. */
 	static NameSelectionModel nameSelector = new NameSelectionModel();
 	/**
 	 * Gets the name of the current player.
@@ -16,7 +20,8 @@ public class NameSelectionController {
 	
 	/**
 	 * Sets the name of the current player.
-	 * @param The name to set as the current player's name.
+	 *
+	 * @param name the new name
 	 */
 	public static void setName(String name)
 	{
@@ -32,10 +37,20 @@ public class NameSelectionController {
 		return nameSelector.getNext();
 	}
 	
+	/**
+	 * Sets the player one.
+	 *
+	 * @param player the new player one
+	 */
 	public static void setPlayerOne( Player player ) {
 		nameSelector.setPlayerOne( player );
 	}
 	
+	/**
+	 * Sets the player two.
+	 *
+	 * @param player the new player two
+	 */
 	public static void setPlayerTwo( Player player ) {
 		nameSelector.setPlayerTwo( player );
 	}

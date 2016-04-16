@@ -5,8 +5,16 @@ import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 
+/**
+ * The Class ArmySelectionController.
+ */
 public class ArmySelectionController {
 
+	/**
+	 * Inits the current and prev.
+	 *
+	 * @param selectModel the select model
+	 */
 	public static void initCurrentAndPrev( ArmySelectionModel selectModel ) {
 		ArrayList<Dragon> allDragons = selectModel.getAllLibraryDragons();
 		if ( selectModel.getCurrent() == null ) {
@@ -16,15 +24,32 @@ public class ArmySelectionController {
 		}
 	}
 	
+	/**
+	 * Removes the from army.
+	 *
+	 * @param selection the selection
+	 * @param dragon the dragon
+	 */
 	public static void removeFromArmy( Army selection, Dragon dragon ) {
 		ArrayList<Dragon> armyList = selection.getArmy();
 		armyList.remove( dragon );
 	}
 	
+	/**
+	 * Adds the to army.
+	 *
+	 * @param selectModel the select model
+	 * @param dragon the dragon
+	 */
 	public static void addToArmy( ArmySelectionModel selectModel, Dragon dragon ) {
 		selectModel.getCurrentPlayerArmy().add(dragon);
 	}
 	
+	/**
+	 * Shift preview left.
+	 *
+	 * @param selectModel the select model
+	 */
 	public static void shiftPreviewLeft( ArmySelectionModel selectModel ) {
 		ArrayList<Dragon> allDragons = selectModel.getAllLibraryDragons();
 		int totalDragons = allDragons.size();
@@ -56,6 +81,11 @@ public class ArmySelectionController {
 		selectModel.setNext( allDragons.get( updatedNextIndex ));
 	}
 	
+	/**
+	 * Shift preview right.
+	 *
+	 * @param selectModel the select model
+	 */
 	public static void shiftPreviewRight( ArmySelectionModel selectModel ) {
 		ArrayList<Dragon> allDragons = selectModel.getAllLibraryDragons();
 		int totalDragons = allDragons.size();
@@ -84,6 +114,11 @@ public class ArmySelectionController {
 		
 	}
 
+	/**
+	 * Confirm players army.
+	 *
+	 * @param selectModel the select model
+	 */
 	public static void confirmPlayersArmy( ArmySelectionModel selectModel ) {
 		Player player = selectModel.getPlayer();
 		player.setArmy( selectModel.getCurrentPlayerArmy() );

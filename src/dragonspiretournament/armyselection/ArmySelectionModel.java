@@ -7,20 +7,44 @@ import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 
+/**
+ * The Class ArmySelectionModel.
+ */
 public class ArmySelectionModel {
 	
+	/** The player. */
 	private Player player;
+	
+	/** The drag lib. */
 	private DragonLibrary dragLib;
+	
+	/** The current. */
 	private Dragon current;
+	
+	/** The prev. */
 	private Dragon prev;
+	
+	/** The next. */
 	private Dragon next;
+	
+	/** The current player army. */
 	private Army currentPlayerArmy;
 
 	
+	/**
+	 * Gets the current player army.
+	 *
+	 * @return the current player army
+	 */
 	public Army getCurrentPlayerArmy() {
 		return currentPlayerArmy;
 	}
 
+	/**
+	 * Sets the current player army.
+	 *
+	 * @param currentPlayerArmy the new current player army
+	 */
 	public void setCurrentPlayerArmy(Army currentPlayerArmy) {
 		this.currentPlayerArmy = currentPlayerArmy;
 	}
@@ -30,9 +54,6 @@ public class ArmySelectionModel {
 	 *
 	 * @param player the player
 	 * @param dragLib the drag lib
-	 * @param current the current
-	 * @param prev the prev
-	 * @param next the next
 	 */
 	public ArmySelectionModel(Player player, DragonLibrary dragLib) {
 		this.player = player;
@@ -73,6 +94,11 @@ public class ArmySelectionModel {
 		this.player = player;
 	}
 	
+	/**
+	 * Gets the all library dragons.
+	 *
+	 * @return the all library dragons
+	 */
 	public ArrayList<Dragon> getAllLibraryDragons() { 
 		return dragLib.getLibrary();
 	}
