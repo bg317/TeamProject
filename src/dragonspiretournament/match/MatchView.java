@@ -138,11 +138,11 @@ public class MatchView {
 		matchFrame.setVisible(true);
 		matchFrame.getContentPane().add(playerTwoLastAction);
 		
-		playerOneLastDragon = new DragonButton("New button");
+		playerOneLastDragon = new DragonButton("");
 		playerOneLastDragon.setBounds(479, 99, 146, 108);
 		matchFrame.getContentPane().add(playerOneLastDragon);
 		
-		playerTwoLastDragon = new DragonButton("New button");
+		playerTwoLastDragon = new DragonButton("");
 		playerTwoLastDragon.setBounds(226, 220, 146, 108);
 		matchFrame.getContentPane().add(playerTwoLastDragon);
 		
