@@ -115,7 +115,7 @@ public class MatchView {
 		lblPlayerTwo.setBounds(36, 422, 121, 40);
 		matchFrame.getContentPane().add(lblPlayerTwo);
 		
-		lblPlayerTwoDragons = new JLabel( matchModel.getPlayerOne().getName() );
+		lblPlayerTwoDragons = new JLabel( matchModel.getPlayerTwo().getName() );
 		lblPlayerTwoDragons.setBounds(601, 48, 79, 40);
 		matchFrame.getContentPane().add(lblPlayerTwoDragons);
 		
