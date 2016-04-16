@@ -28,22 +28,43 @@ public class ArmySelectionView {
 	
 	/** The army selection window. */
 	JFrame armySelectionWindow;
+	
+	/** The selection model. */
 	ArmySelectionModel selectionModel;
 	
+	/** The main panel. */
 	JPanel mainPanel;
+	
+	/** The prev window. */
 	JPanel prevWindow;
+	
+	/** The curr window. */
 	JPanel currWindow;
+	
+	/** The next window. */
 	JPanel nextWindow;
+	
+	/** The current army selection. */
 	JPanel currentArmySelection;
 	
+	/** The select dragon btn. */
 	JButton selectDragonBtn;
+	
+	/** The prev button. */
 	JButton prevButton;
+	
+	/** The next button. */
 	JButton nextButton;
 	
+	/** The is two. */
 	Boolean isTwo;
 	
 	/**
 	 * Instantiates a new army selection view.
+	 *
+	 * @param playerOne the player one
+	 * @param playerTwo the player two
+	 * @param isTwo the is two
 	 */
 	public ArmySelectionView( Player playerOne, Player playerTwo, Boolean isTwo ) {
 		selectionModel = new ArmySelectionModel();
@@ -149,6 +170,9 @@ public class ArmySelectionView {
 		armySelectionWindow.setVisible(true);
 	}
 	
+	/**
+	 * Update preview panels.
+	 */
 	//Updates previous, current, and next preview panels for dragon selection.
 	public void updatePreviewPanels() {
 		updatePanel( currWindow, selectionModel.getCurrent() );
@@ -158,7 +182,7 @@ public class ArmySelectionView {
 	
 	
 	/**
-	 * Updates a panel to display the dragon passed in
+	 * Updates a panel to display the dragon passed in.
 	 *
 	 * @param panel the panel
 	 * @param dragon the dragon
@@ -171,6 +195,8 @@ public class ArmySelectionView {
 	
 	
 	/**
+	 * Update selection panel.
+	 *
 	 * @param selectionPanel The Panel that is displaying the user's selction
 	 * @param armySelectModel The model containing the user's army
 	 * Updates the panel displaying the user's current selection

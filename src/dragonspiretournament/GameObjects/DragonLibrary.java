@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import dragonspiretournament.GameObjects.Dragons.*;
 
 /**
- * Class to create a library to store data on all dragons available
+ * Class to create a library to store data on all dragons available.
  *
  * @author Team 29 (LA)
- * 
  * @version Apr 10, 2016
  */
 
 public class DragonLibrary {
 	
+	/** The dragon library. */
 	private ArrayList<Dragon> dragonLibrary;
 
 	/**
-	 * Creates a dragon library containing one of each dragon
-	 * 
-	 * @param none
+	 * Creates a dragon library containing one of each dragon.
 	 */
 
 	public DragonLibrary() {
@@ -48,10 +46,9 @@ public class DragonLibrary {
 	}
 
 	/**
-	 * Returns the Dragon located a specific position in the library
-	 * 
-	 * @param  index Library index
-	 * 
+	 * Returns the Dragon located a specific position in the library.
+	 *
+	 * @param index the index
 	 * @return Dragon located at specific index
 	 */
 
@@ -60,10 +57,8 @@ public class DragonLibrary {
 	}
 
     /**
-     * Returns the entire Dragon Library
-     * 
-     * @param  none
-     * 
+     * Returns the entire Dragon Library.
+     *
      * @return ArrayList containing all dragons in the library
      */
 
@@ -72,10 +67,8 @@ public class DragonLibrary {
     }
 
     /**
-     * Returns the size of the dragon library
-     * 
-     * @param  none
-     * 
+     * Returns the size of the dragon library.
+     *
      * @return integer size of dragon library
      */
 

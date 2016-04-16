@@ -3,22 +3,33 @@ package dragonspiretournament.GameObjects;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 
 /**
- * Class to store player data
+ * Class to store player data.
  *
  * @author Team 29 (LA)
- * 
  * @version Apr 10, 2016
  */
 
 public class Player {
 
+    /** The name. */
     private String name;
+    
+    /** The army. */
     private Army army;
+    
+    /** The dice. */
     private Dice dice;
+    
+    /** The stronghold hp. */
     private int strongholdHP;
+    
+    /** The last damage. */
     private int lastDamage;
+    
+    /** The last dragon. */
     private Dragon lastDragon;
 
+    /** The Constant MAX_HP. */
     private static final int MAX_HP = 25;
 
     /**
@@ -37,8 +48,8 @@ public class Player {
     }
 
     /**
-     * Creates a player using a specified name and army
-     * 
+     * Creates a player using a specified name and army.
+     *
      * @param playerName  Name of player
      * @param army        Player's army of dragons
      */
@@ -53,8 +64,8 @@ public class Player {
     }
 
     /**
-     * Creates a player using a specified name and HP
-     * 
+     * Creates a player using a specified name and HP.
+     *
      * @param playerName Name of player
      * @param hitPoints  Number of hit points
      */
@@ -69,7 +80,7 @@ public class Player {
     }
     
     /**
-     * Generates an empty player
+     * Generates an empty player.
      */
     public Player() {
         name = "No Name";
@@ -81,22 +92,18 @@ public class Player {
 	}
 
 	/**
-     * getName - returns the name of the player
-     * 
-     * @param  none
-     * 
-     * @return String of name of player
-     */
+	 * getName - returns the name of the player.
+	 *
+	 * @return String of name of player
+	 */
 
     public String getName() {
         return name;
     }
 
     /**
-     * getArmy - returns the current player army
-     * 
-     * @param  none
-     * 
+     * getArmy - returns the current player army.
+     *
      * @return player's army
      */
 
@@ -105,10 +112,8 @@ public class Player {
     }
 
     /**
-     * getDice - returns the current player dice
-     * 
-     * @param  none
-     * 
+     * getDice - returns the current player dice.
+     *
      * @return player's dice
      */
 
@@ -117,10 +122,8 @@ public class Player {
     }
 
     /**
-     * getStrongholdHP - returns the current player's stronghold HP
-     * 
-     * @param  none
-     * 
+     * getStrongholdHP - returns the current player's stronghold HP.
+     *
      * @return integer representing stronghold hit points
      */
 
@@ -129,10 +132,8 @@ public class Player {
     }
     
     /**
-     * getLastDamage - returns the last damage dealt to opposing player
-     * 
-     * @param  none
-     * 
+     * getLastDamage - returns the last damage dealt to opposing player.
+     *
      * @return integer representing last damage dealt
      */
 
@@ -141,10 +142,8 @@ public class Player {
     }
 
     /**
-     * getLastDragon - returns the dragon last used to deal damage
-     * 
-     * @param  none
-     * 
+     * getLastDragon - returns the dragon last used to deal damage.
+     *
      * @return Dragon last used to deal damage
      */
 
@@ -153,9 +152,9 @@ public class Player {
     }
 
     /**
-     * setName - renames player according to input
-     * 
-     * @param  playerName new player name
+     * setName - renames player according to input.
+     *
+     * @param playerName the new name
      */
 
     public void setName(String playerName) {
@@ -163,8 +162,8 @@ public class Player {
     }
 
     /**
-     * setArmy - sets the current army
-     * 
+     * setArmy - sets the current army.
+     *
      * @param playerArmy army to be assigned to player
      */
 
@@ -173,8 +172,8 @@ public class Player {
     }
 
     /**
-     * setDice - sets the current dice
-     * 
+     * setDice - sets the current dice.
+     *
      * @param playerDice dice to be assigned to player
      */
 
@@ -183,8 +182,8 @@ public class Player {
     }
 
     /**
-     * setStrongholdHP - sets the current stronghold's hit points
-     * 
+     * setStrongholdHP - sets the current stronghold's hit points.
+     *
      * @param newHP new total hit points
      */
 
@@ -193,8 +192,8 @@ public class Player {
     }
 
     /**
-     * setLastDamage - sets the last damage dealt by player
-     * 
+     * setLastDamage - sets the last damage dealt by player.
+     *
      * @param newDamage last amount of damage dealt by player to the other player
      */
 
@@ -203,8 +202,8 @@ public class Player {
     }
 
     /**
-     * setLastDragon - sets the dragon last used by the player
-     * 
+     * setLastDragon - sets the dragon last used by the player.
+     *
      * @param newDragon last dragon used
      */
 

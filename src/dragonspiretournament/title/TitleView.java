@@ -8,12 +8,24 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TitleView.
+ */
 public class TitleView {
 	
+	/** The title frame. */
 	private JFrame titleFrame;
+	
+	/** The title label. */
 	private JLabel titleLabel;
+	
+	/** The start button. */
 	private JButton startButton;
 	
+	/**
+	 * Instantiates a new title view.
+	 */
 	public TitleView() {
 		titleFrame = new JFrame("DragonSpire Tournament");
 		titleFrame.getContentPane().setLayout(new BorderLayout());

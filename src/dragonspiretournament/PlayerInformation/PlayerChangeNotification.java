@@ -13,15 +13,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * The Class PlayerChangeNotification.
+ */
 public class PlayerChangeNotification extends JDialog implements ActionListener{
 
-	/**
-	 *  Unique ID for the action Listener
-	 */
+	/**  Unique ID for the action Listener. */
 	private static final long serialVersionUID = 4000;
 	//I think this number identifies the event caller so you don't have to 
 	// parse String[] el =  e.getSource().toString().split("text="); 
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		setVisible(false); 
@@ -31,7 +35,7 @@ public class PlayerChangeNotification extends JDialog implements ActionListener{
 	
 	/**
 	 *  Default Constructor
-	 *  Indicates to the player it is his opponents turn
+	 *  Indicates to the player it is his opponents turn.
 	 */
 	public PlayerChangeNotification(){
 		JOptionPane.showMessageDialog( null, "Please Change Players");

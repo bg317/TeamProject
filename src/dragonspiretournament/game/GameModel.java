@@ -11,6 +11,9 @@ import dragonspiretournament.nameselection.NameSelectionModel;
 import dragonspiretournament.PlayerInformation.DragonInformation;
 
 
+/**
+ * The Class GameModel.
+ */
 public class GameModel {
     
 }

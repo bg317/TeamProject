@@ -19,31 +19,68 @@ import javax.swing.JPanel;
 
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 
+/**
+ * The Class DragonInformationView.
+ */
 public class DragonInformationView {
 
+	/** The dragon name. */
 	//values to use in the display
 	private String dragonName;
+	
+	/** The dragon description. */
 	private String dragonDescription;
+	
+	/** The dragon icon location. */
 	private String dragonIconLocation;
+	
+	/** The dragon art location. */
 	private String dragonArtLocation;
+	
+	/** The dragon element. */
 	private String dragonElement;
+	
+	/** The dragon advantage. */
 	private String dragonAdvantage;
 	
 	
+	/** The info frame. */
 	private JFrame infoFrame;
 	
+	/** The total panel. */
 	//all components to be added to the JPanel totalPanel
 	private JPanel totalPanel;
+	
+	/** The name label. */
 	private JLabel nameLabel;
+	
+	/** The description label. */
 	private JLabel descriptionLabel;
+	
+	/** The stats panel. */
 	private JPanel statsPanel;
+	
+	/** The element label. */
 	private JLabel elementLabel;
+	
+	/** The description panel. */
 	private JPanel descriptionPanel;
+	
+	/** The close button. */
 	private JButton closeButton;
+	
+	/** The icon. */
 	private ImageIcon icon;
+	
+	/** The main image. */
 	private ImageButton mainImage;
 
 	
+	/**
+	 * Instantiates a new dragon information view.
+	 *
+	 * @param dragon the dragon
+	 */
 	//constructor, takes in dragon information when created
 	public DragonInformationView(Dragon dragon)
 	{

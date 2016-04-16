@@ -4,24 +4,25 @@ import java.util.ArrayList;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 
 /**
- * Class to store dice data
+ * Class to store dice data.
  *
  * @author Team 29 (LA)
- * 
  * @version Apr 10, 2016
  */
 
 public class Dice {
 
+    /** The dice faces. */
     private ArrayList<Dragon> diceFaces;
+    
+    /** The max faces. */
     private int maxFaces; //Maximum number of faces allowed on dice
 
+    /** The Constant DEFAULT_MAX. */
     private static final int DEFAULT_MAX = 6;
 
     /**
      * Creates a dice with no faces. Max number of faces is default
-     * 
-     * @param none
      */
 
     public Dice() {
@@ -30,8 +31,8 @@ public class Dice {
     }
 
     /**
-     * Creates a dice with no faces, except the first spot for "missed" attacks
-     * 
+     * Creates a dice with no faces, except the first spot for "missed" attacks.
+     *
      * @param faces Maximum number of faces on the dice
      */
 
@@ -46,9 +47,8 @@ public class Dice {
     /**
      * getFace - returns the dragon located at the specified dice face.
      *           If the index is out of bounds, null is returned.
-     * 
-     * @param  index Location of the dice face
-     * 
+     *
+     * @param index the index
      * @return Dragon on the dice face
      */
 
@@ -64,10 +64,8 @@ public class Dice {
     }
 
     /**
-     * getDice - returns all of the dice faces
-     * 
-     * @param  none
-     * 
+     * getDice - returns all of the dice faces.
+     *
      * @return ArrayList containing the dragon on each dice face
      */
 
@@ -76,10 +74,8 @@ public class Dice {
     }
 
     /**
-     * getFaceCount - Returns a count of the number of faces with dragons
-     * 
-     * @param none
-     * 
+     * getFaceCount - Returns a count of the number of faces with dragons.
+     *
      * @return number of dice faces with dragons
      */
 
@@ -112,9 +108,7 @@ public class Dice {
     }
 
     /**
-     * clearDice - Removes all dragons from all dice faces, except the "missed" slot
-     * 
-     * @param none
+     * clearDice - Removes all dragons from all dice faces, except the "missed" slot.
      */
 
     public void clearDice() {

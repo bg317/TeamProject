@@ -13,26 +13,51 @@ import javax.swing.SwingConstants;
 
 import dragonspiretournament.GameObjects.Player;
 
+/**
+ * The Class NameSelectionView.
+ */
 public class NameSelectionView {
 	
+	/** The name frame. */
 	//not sure if we want a frame here, but this is for testing purposes
 	private JFrame nameFrame;
 	
+	/** The total panel. */
 	//all components to be added to the JPanel totalPanel, and totalPanel will be added to the frame
 	private JPanel totalPanel;
+	
+	/** The instruction label. */
 	private JLabel instructionLabel;
+	
+	/** The name entry. */
 	private JTextField nameEntry;
+	
+	/** The submit button. */
 	private JButton submitButton;
+	
+	/** The entry and submit. */
 	private JPanel entryAndSubmit;
 	
+	/** The instruction text. */
 	//variables to hold text that changes
 	private String instructionText;
+	
+	/** The current player. */
 	private String currentPlayer;
 	
+	/** The player two. */
 	private Player playerTwo;
+	
+	/** The player one. */
 	private Player playerOne;
 	
 	
+	/**
+	 * Instantiates a new name selection view.
+	 *
+	 * @param playerOne the player one
+	 * @param playerTwo the player two
+	 */
 	//constructor
 	public NameSelectionView( Player playerOne, Player playerTwo )
 	{
@@ -76,13 +101,26 @@ public class NameSelectionView {
 		nameFrame.setVisible(true);
 	}
 	
+	/**
+	 * The listener interface for receiving button events.
+	 * The class that is interested in processing a button
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addButtonListener<code> method. When
+	 * the button event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ButtonEvent
+	 */
 	//for determining whether we are going to get the second player input or move to start the game
 	 private class ButtonListener implements ActionListener
 	   {
 		 
 		 /**
-		  * when the button is pressed
-		  */
+ 		 * when the button is pressed.
+ 		 *
+ 		 * @param e the e
+ 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
