@@ -66,6 +66,7 @@ public class Dice {
     /**
      * getDice - returns all of the dice faces.
      *
+     * @param  none
      * @return ArrayList containing the dragon on each dice face
      */
 
@@ -76,6 +77,7 @@ public class Dice {
     /**
      * getFaceCount - Returns a count of the number of faces with dragons.
      *
+     * @param  none
      * @return number of dice faces with dragons
      */
 
@@ -109,6 +111,8 @@ public class Dice {
 
     /**
      * clearDice - Removes all dragons from all dice faces, except the "missed" slot.
+     * 
+     * @param  none
      */
 
     public void clearDice() {

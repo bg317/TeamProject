@@ -46,7 +46,7 @@ public class DragonLibrary {
 	}
 
 	/**
-	 * Returns the Dragon located a specific position in the library.
+	 * getDragon - returns the Dragon located a specific position in the library.
 	 *
 	 * @param index the index
 	 * @return Dragon located at specific index
@@ -57,8 +57,9 @@ public class DragonLibrary {
 	}
 
     /**
-     * Returns the entire Dragon Library.
+     * getLibrary - returns the entire Dragon Library.
      *
+     * @param  none
      * @return ArrayList containing all dragons in the library
      */
 
@@ -67,8 +68,9 @@ public class DragonLibrary {
     }
 
     /**
-     * Returns the size of the dragon library.
+     * getSize - returns the size of the dragon library.
      *
+     * @param  none
      * @return integer size of dragon library
      */
 

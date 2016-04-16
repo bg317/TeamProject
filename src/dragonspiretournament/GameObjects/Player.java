@@ -11,25 +11,25 @@ import dragonspiretournament.GameObjects.Dragons.Dragon;
 
 public class Player {
 
-    /** The name. */
+    /** The name of the player. */
     private String name;
     
-    /** The army. */
+    /** The army of the player. */
     private Army army;
     
-    /** The dice. */
+    /** The dice of the player. */
     private Dice dice;
     
-    /** The stronghold hp. */
+    /** The stronghold hp of the player. */
     private int strongholdHP;
     
-    /** The last damage. */
+    /** The last damage dealt by the player. */
     private int lastDamage;
     
-    /** The last dragon. */
+    /** The last dragon used by the player. */
     private Dragon lastDragon;
 
-    /** The Constant MAX_HP. */
+    /** The Constant MAX_HP of the stronghold. */
     private static final int MAX_HP = 25;
 
     /**
@@ -94,6 +94,7 @@ public class Player {
 	/**
 	 * getName - returns the name of the player.
 	 *
+     * @param  none
 	 * @return String of name of player
 	 */
 
@@ -104,6 +105,7 @@ public class Player {
     /**
      * getArmy - returns the current player army.
      *
+     * @param  none
      * @return player's army
      */
 
@@ -114,6 +116,7 @@ public class Player {
     /**
      * getDice - returns the current player dice.
      *
+     * @param  none
      * @return player's dice
      */
 
@@ -124,6 +127,7 @@ public class Player {
     /**
      * getStrongholdHP - returns the current player's stronghold HP.
      *
+     * @param  none
      * @return integer representing stronghold hit points
      */
 
@@ -134,6 +138,7 @@ public class Player {
     /**
      * getLastDamage - returns the last damage dealt to opposing player.
      *
+     * @param  none
      * @return integer representing last damage dealt
      */
 
@@ -144,6 +149,7 @@ public class Player {
     /**
      * getLastDragon - returns the dragon last used to deal damage.
      *
+     * @param  none
      * @return Dragon last used to deal damage
      */
 
