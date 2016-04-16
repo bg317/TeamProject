@@ -28,6 +28,10 @@ public class Dice {
     public Dice() {
         diceFaces = new ArrayList<Dragon>();
         maxFaces = DEFAULT_MAX;
+
+        Dragon missed = new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt");
+
+        diceFaces.add(missed); //Adds missed to first face of dice
     }
 
     /**
@@ -41,6 +45,7 @@ public class Dice {
         maxFaces = faces;
         
         Dragon missed = new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt");
+
         diceFaces.add(missed); //Adds missed to first face of dice
     }
 

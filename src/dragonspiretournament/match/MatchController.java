@@ -84,8 +84,8 @@ public class MatchController {
 		playerOneDrag = playerOneDice.getFace(playerOneRoll);
 		playerTwoDrag = playerTwoDice.getFace(playerTwoRoll);
 		
-		updatePlayerLastDragon( playerOne, playerOneDrag );
-		updatePlayerLastDragon( playerTwo, playerTwoDrag );
+		updatePlayerLastDragon( playerOne, playerTwoDrag );
+		updatePlayerLastDragon( playerTwo, playerOneDrag );
 		
 		doDragonAttack( playerTwo, playerOneDrag, playerTwoDrag );
 		doDragonAttack( playerOne, playerTwoDrag, playerOneDrag );
