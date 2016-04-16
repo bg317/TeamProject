@@ -1,5 +1,3 @@
-
-
 /* Dragon information controller test
  * Tests to make sure the dragon information controller is working
  * @author larry
@@ -10,10 +8,7 @@
  */
 
 import static org.junit.Assert.*;
-import javax.swing.ImageIcon;
-
 import org.junit.Test;
-
 import dragonspiretournament.PlayerInformation.DragonInformationController;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 

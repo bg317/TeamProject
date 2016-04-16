@@ -1,5 +1,3 @@
-//package dragonspiretournament;
-
 /* DragonTest
  * Test cases to make sure the functions of the Dragon class all work
  * 
@@ -7,13 +5,10 @@
  * @version 4-14-16
  * 
  */
+
 import dragonspiretournament.GameObjects.Dragons.Dragon;
-import dragonspiretournament.*;
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-//import dragonspiretournament.GameObjects.Dragon;
 
 public class DragonTest{
 	

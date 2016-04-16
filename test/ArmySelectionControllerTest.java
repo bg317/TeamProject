@@ -18,6 +18,7 @@ import org.junit.Test;
 public class ArmySelectionControllerTest {
 /*
 	@Test
+	// Tests the controller initializer
 	public void testInitCurrentAndPrev1() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -29,11 +30,10 @@ public class ArmySelectionControllerTest {
 		assertEquals(testModel.getNext().toString(),  "Arinial");
 		assertEquals(testModel.getCurrent().toString(),  "Tenebret");
 		assertEquals(testModel.getPrev().toString(),  "Igneagnus");
-		
-		
 	}
 	
 	@Test
+	// Tests the Remove from Army
 	public void testRemoveFromArmy() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -46,6 +46,7 @@ public class ArmySelectionControllerTest {
 	}
 
 	@Test
+	// Tests the Add to Army
 	public void testAddToArmy() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -55,11 +56,11 @@ public class ArmySelectionControllerTest {
 		
 		assertEquals(testModel.getCurrentPlayerArmy().getSize(),  0);//precondition
 		ArmySelectionController.addToArmy(testModel, testLib.getDragon(1));//make the controller work on that model
-		assertEquals(testModel.getCurrentPlayerArmy().getSize(),  1);//see if it worked 
-		
+		assertEquals(testModel.getCurrentPlayerArmy().getSize(),  1);//see if it worked 	
 	}
 
 	@Test
+	// Tests the Shift Preview Left
 	public void testShiftPreviewLeft() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -75,6 +76,7 @@ public class ArmySelectionControllerTest {
 	}
 
 	@Test
+	// Tests the Shift Preview Right
 	public void testShiftPreviewRight() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
