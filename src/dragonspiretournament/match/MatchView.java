@@ -262,7 +262,7 @@ public class MatchView {
 			if ( matchModel.isDraw() ) {
 				JOptionPane.showMessageDialog( matchFrame, "Game has come to a draw!");
 			} else {
-				JOptionPane.showMessageDialog( matchFrame, "The player " + matchModel.getWinner().getName() + " has one the game!");
+				JOptionPane.showMessageDialog( matchFrame, "The player " + matchModel.getWinner().getName() + " has won the game!");
 			}
 		}
 	}
