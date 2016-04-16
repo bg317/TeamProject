@@ -254,10 +254,10 @@ public class MatchView {
 	}
 	
 	/**
-	 * Check if match over.
+	 * Check if match is over.
 	 */
 	public void checkIfMatchOver() { 
-		System.out.println( matchModel.isMatchOver() + " is match over? ");
+//		System.out.println( matchModel.isMatchOver() + " is match over? "); //Used in testing
 		if ( matchModel.isMatchOver() ) {
 			if ( matchModel.isDraw() ) {
 				JOptionPane.showMessageDialog( matchFrame, "Game has come to a draw!");
