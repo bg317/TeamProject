@@ -12,8 +12,11 @@
 
 To build this project. install maven following the directions for maven or the maven IDE plugin.
 
-To run this project, run 
-$ mvn exec:java -Dexec.mainClass="dragonspiretournament.Main"
+To build this project from the command line, in its directory after downloading run
+```$ mvn exec:java -Dexec.mainClass="dragonspiretournament.Main"```
+
+To build this project from your IDE, run with your maven plugin with
+```exec:java -Dexec.mainClass="dragonspiretournament.Main```
 
 Alternatively you can import the project and run the dragonspiretournament.Main in whichever way you'd like. There is also a JAR file to run packaged with this. Type java -jar Dragonspiretournament-0.0.1-SNAPSHOT-jar-with-dependencies
 
