@@ -13,8 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import dragonspiretournament.GameObjects.Army;
+import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.DragonButton;
+import dragonspiretournament.match.MatchView;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -38,11 +40,20 @@ public class ArmySelectionView {
 	JButton prevButton;
 	JButton nextButton;
 	
+	Boolean isTwo;
+	
 	/**
 	 * Instantiates a new army selection view.
 	 */
-	public ArmySelectionView() {
+	public ArmySelectionView( Player playerOne, Player playerTwo, Boolean isTwo ) {
 		selectionModel = new ArmySelectionModel();
+		if ( !isTwo ) {
+			selectionModel.setPlayer( playerOne );
+		} else {
+			selectionModel.setPlayer( playerTwo );
+		}
+		this.isTwo = isTwo;
+		
 		ArmySelectionController.initCurrentAndPrev(selectionModel);
 		armySelectionWindow = new JFrame("Select your army");
 		armySelectionWindow.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
@@ -108,6 +119,24 @@ public class ArmySelectionView {
 		nextButton = new JButton("Next");
 		nextButton.setBounds(823, 347, 89, 23);
 		mainPanel.add(nextButton);
+		
+		JButton btnConfirmSelection = new JButton("Confirm Selection");
+		btnConfirmSelection.setBounds(746, 557, 177, 23);
+		mainPanel.add(btnConfirmSelection);
+		btnConfirmSelection.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				ArmySelectionController.confirmPlayersArmy( selectionModel );
+				if ( !isTwo ) {
+					new ArmySelectionView( playerOne, playerTwo, true );
+					armySelectionWindow.setVisible(false);
+				} else {
+					armySelectionWindow.setVisible(false);
+					new MatchView( playerOne, playerTwo );
+				}
+			}
+		});
+		
 		nextButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
@@ -182,5 +211,4 @@ public class ArmySelectionView {
 			}
 		});
 	}
-	
 }

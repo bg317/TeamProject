@@ -72,6 +72,12 @@ public class Player {
      * Generates an empty player
      */
     public Player() {
+        name = "No Name";
+        army = null;
+        dice = null;
+        strongholdHP = MAX_HP;
+        lastDamage = -1;
+        lastDragon = null;
 	}
 
 	/**

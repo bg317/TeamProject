@@ -1,5 +1,7 @@
 package dragonspiretournament.nameselection;
 
+import dragonspiretournament.GameObjects.Player;
+
 public class NameSelectionController {
 	
 	static NameSelectionModel nameSelector = new NameSelectionModel();
@@ -28,6 +30,14 @@ public class NameSelectionController {
 	public static boolean goToNextFrame()
 	{
 		return nameSelector.getNext();
+	}
+	
+	public static void setPlayerOne( Player player ) {
+		nameSelector.setPlayerOne( player );
+	}
+	
+	public static void setPlayerTwo( Player player ) {
+		nameSelector.setPlayerTwo( player );
 	}
 
 }

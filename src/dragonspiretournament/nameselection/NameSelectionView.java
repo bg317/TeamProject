@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import dragonspiretournament.GameObjects.Player;
+
 public class NameSelectionView {
 	
 	//not sure if we want a frame here, but this is for testing purposes
@@ -27,10 +29,16 @@ public class NameSelectionView {
 	private String instructionText;
 	private String currentPlayer;
 	
+	private Player playerTwo;
+	private Player playerOne;
+	
 	
 	//constructor
-	public NameSelectionView()
+	public NameSelectionView( Player playerOne, Player playerTwo )
 	{
+		
+		NameSelectionController.setPlayerOne( playerOne );
+		NameSelectionController.setPlayerTwo( playerTwo );
 		//preparing the text that changes before sending it to the elements
 		//the text we want will be found by the controller
 
@@ -38,8 +46,6 @@ public class NameSelectionView {
 		currentPlayer = NameSelectionController.getPlayer();
 		
 		instructionText = currentPlayer + " enter your name: ";
-		
-		
 		
 		//creating a frame
 		nameFrame = new JFrame("Dragonspire Tournament--Name Selection");
