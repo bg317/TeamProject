@@ -32,8 +32,9 @@ public class Main {
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		Player playerOne = new Player();
-		Player playerTwo = new Player();
+		Player playerOne = new Player(" Player One ");
+		Player playerTwo = new Player(" Player Two ");
+
 		
 		ArmySelectionView armySelectViewOne;
 		ArmySelectionView armySelectViewTwo;
