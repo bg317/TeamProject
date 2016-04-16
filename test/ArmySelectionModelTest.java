@@ -18,6 +18,7 @@ import dragonspiretournament.armyselection.ArmySelectionModel;
 public class ArmySelectionModelTest {
 
 	@Test
+	// Tests the Get Current Player Army
 	public void testGetCurrentPlayerArmy() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -30,6 +31,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Set Current Player Army
 	public void testSetCurrentPlayerArmy() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -43,6 +45,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the OverLoaded constructor
 	public void testArmySelectionModelPlayerDragonLibrary() {//overloaded constructor test
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -56,6 +59,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Default constructor
 	public void testArmySelectionModel() {//default constructor
 		ArmySelectionModel testModel = new ArmySelectionModel();
 		assertNotEquals(testModel, null);
@@ -64,6 +68,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Player Getter
 	public void testGetPlayer() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -75,6 +80,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Player Setter
 	public void testSetPlayer() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -87,6 +93,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the All Library Dragons Getter
 	public void testGetAllLibraryDragons() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -98,6 +105,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Dragon Library Getter
 	public void testGetDragLib() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -109,6 +117,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Dragon Library Setter
 	public void testSetDragLib() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -120,6 +129,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Current Getter
 	public void testGetCurrent() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -132,6 +142,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Current Setter
 	public void testSetCurrent() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -143,6 +154,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Previous Dragon Getter
 	public void testGetPrev() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -154,6 +166,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Previous Dragon Setter
 	public void testSetPrev() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -165,6 +178,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Next Dragon Getter
 	public void testGetNext() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -176,6 +190,7 @@ public class ArmySelectionModelTest {
 	}
 
 	@Test
+	// Tests the Previous Dragon Setter
 	public void testSetNext() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();

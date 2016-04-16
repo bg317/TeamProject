@@ -5,20 +5,20 @@
  * @version 4-14-16
  * 
  */
+
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Dice;
 import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.match.MatchModel;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class MatchModelTest {
 
 	@Test
+	//Tests The Last Action Getter
 	public void testGetPlayerOneLastAction() {
 		MatchModel testModel = new MatchModel();
 		testModel.setPlayerOneLastAction("Last Action");
@@ -27,6 +27,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests Overloaded constructor
 	public void testMatchModelPlayerPlayer() {
 		Player testPlayer1 = new Player("Name1", new Army());
 		Player testPlayer2 = new Player("Name2", new Army());
@@ -39,6 +40,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests the default constructor
 	public void testMatchModel() {
 		MatchModel testModel = new MatchModel();
 		
@@ -48,6 +50,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Getter
 	public void testGetPlayerOne() {
 		Player testPlayer1 = new Player("Name1", new Army());
 		MatchModel testModel = new MatchModel(testPlayer1, testPlayer1);
@@ -57,6 +60,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Setter
 	public void testSetPlayerOne() {
 		Player testPlayer1 = new Player("Name1", new Army());
 		MatchModel testModel = new MatchModel();
@@ -67,6 +71,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player Two Getter
 	public void testGetPlayerTwo() {
 		Player testPlayer1 = new Player("Name1", new Army());
 		MatchModel testModel = new MatchModel();
@@ -77,6 +82,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Setter
 	public void testSetPlayerTwo() {
 		Player testPlayer1 = new Player("Name1", new Army());
 		MatchModel testModel = new MatchModel();
@@ -87,6 +93,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Army Getter
 	public void testGetPlayerOneArmy() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -101,6 +108,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Army Setter
 	public void testSetPlayerOneArmy() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -115,6 +123,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player Two Army Getter
 	public void testGetPlayerTwoArmy() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -129,6 +138,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player Two Army Setter
 	public void testSetPlayerTwoArmy() {
 		Army testArmy = new Army();
 		DragonLibrary testLib = new DragonLibrary();
@@ -143,6 +153,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Dice Getter
 	public void testGetPlayerOneDice() {
 		Player testPlayer = new Player();
 		Dice testDice = new Dice();
@@ -155,6 +166,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Army Setter
 	public void testSetPlayerOneDice() { //dont know why this is failing
 	//	Player testPlayer = new Player();
 		Dice testDice = new Dice();
@@ -169,6 +181,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player Two Dice Getter
 	public void testGetPlayerTwoDice() {
 		Player testPlayer = new Player();
 		Dice testDice = new Dice();
@@ -181,6 +194,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player Two Dice Getter
 	public void testSetPlayerTwoDice() {
 		Player testPlayer = new Player("hi", new Army());
 		Dice testDice = new Dice();
@@ -198,6 +212,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Set Last Action
 	public void testSetPlayerOneLastAction() {
 		MatchModel testModel = new MatchModel();
 		testModel.setPlayerOneLastAction("Last Action");
@@ -206,6 +221,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Get Last Action
 	public void testGetPlayerTwoLastAction() {
 		MatchModel testModel = new MatchModel();
 		testModel.setPlayerTwoLastAction("Last Action");
@@ -214,6 +230,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player Two Get Last Action
 	public void testSetPlayerTwoLastAction() {
 		MatchModel testModel = new MatchModel();
 		testModel.setPlayerTwoLastAction("Last Action");
@@ -222,6 +239,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Get Last Dragon
 	public void testGetPlayerOneLastDragon() {
 		MatchModel testModel = new MatchModel();
 		DragonLibrary testLib = new DragonLibrary();
@@ -232,6 +250,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player One Set Last Dragon
 	public void testSetPlayerOneLastDragon() {
 		MatchModel testModel = new MatchModel();
 		DragonLibrary testLib = new DragonLibrary();
@@ -242,6 +261,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player Two Get Last Dragon
 	public void testGetPlayerTwoLastDragon() {
 		MatchModel testModel = new MatchModel();
 		DragonLibrary testLib = new DragonLibrary();
@@ -252,6 +272,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests The Player Two Set Last Dragon
 	public void testSetPlayerTwoLastDragon() {
 		MatchModel testModel = new MatchModel();
 		DragonLibrary testLib = new DragonLibrary();
@@ -262,6 +283,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests Current Dice Selection Getter
 	public void testGetCurrentDiceSelection() {
 		Dice testDice = new Dice();
 		MatchModel testModel = new MatchModel();
@@ -271,6 +293,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests Current Dice Selection Setter
 	public void testSetCurrentDiceSelection() {
 		Dice testDice = new Dice();
 		MatchModel testModel = new MatchModel();
@@ -280,6 +303,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests Dragon Being Added Getter
 	public void testGetDragonBeingAddedToDice() {
 		MatchModel testModel = new MatchModel();
 		DragonLibrary testLib = new DragonLibrary();
@@ -291,6 +315,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests My Patience Writing these stupid comments
 	public void testSetDragonBeingAddedToDice() {
 		MatchModel testModel = new MatchModel();
 		DragonLibrary testLib = new DragonLibrary();
@@ -302,6 +327,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests Dragon being removed Getter
 	public void testGetDragonBeingRemovedFromDice() {
 		MatchModel testModel = new MatchModel();
 		DragonLibrary testLib = new DragonLibrary();
@@ -313,6 +339,7 @@ public class MatchModelTest {
 	}
 
 	@Test
+	//Tests the Dragon being removed Setter
 	public void testSetDragonBeingRemovedFromDice() {
 		MatchModel testModel = new MatchModel();
 		DragonLibrary testLib = new DragonLibrary();

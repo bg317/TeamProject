@@ -21,6 +21,7 @@ public class ArmyTest{
 	//Test to see if Army() constructor works
 	public void testArmy(){
 		Army testArmy = new Army();
+		
 		assertNotNull(testArmy);
 	}
 	
@@ -30,6 +31,7 @@ public class ArmyTest{
 		Army testArmy = new Army();
 		Dragon testDrag = new Dragon("TestName", "TestType", "TestStrength", "TestIcon", "TestDescription");
 		testArmy.add(testDrag);
+		
 		assertEquals(testArmy.getSize(), 1);
 		assertEquals(testArmy.toString(), "TestName ");
 	}
@@ -42,12 +44,15 @@ public class ArmyTest{
 		Dragon testDrag2 = new Dragon("TestName2", "TestType2", "TestStrength2", "TestIcon2", "TestDescription2");
 		testArmy.add(testDrag);
 		testArmy.add(testDrag2);
+		
 		assertEquals(testArmy.getSize(), 2);
 		assertEquals(testArmy.toString(), "TestName TestName2 ");
+		
 		Dragon testDrag3 = new Dragon("TestName3", "TestType3", "TestStrength3", "TestIcon3", "TestDescription3");
 		Dragon testDrag4 = new Dragon("TestName4", "TestType4", "TestStrength4", "TestIcon4", "TestDescription4");
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
+		
 		assertEquals(testArmy.getSize(), 4);
 		assertEquals(testArmy.toString(), "TestName TestName2 TestName3 TestName4 ");
 	}
@@ -60,11 +65,14 @@ public class ArmyTest{
 		Dragon testDrag2 = new Dragon("TestName2", "TestType2", "TestStrength2", "TestIcon2", "TestDescription2");
 		testArmy.add(testDrag);
 		testArmy.add(testDrag2);
+		
 		assertEquals(testArmy.getSize(), 2);
+		
 		Dragon testDrag3 = new Dragon("TestName3", "TestType3", "TestStrength3", "TestIcon3", "TestDescription3");
 		Dragon testDrag4 = new Dragon("TestName4", "TestType4", "TestStrength4", "TestIcon4", "TestDescription4");
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
+		
 		assertEquals(testArmy.getSize(), 4);
 		testArmy.remove(0);
 		assertEquals(testArmy.getSize(), 3);
@@ -90,6 +98,7 @@ public class ArmyTest{
 		testArmy.add(testDrag2);
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
+		
 		assertEquals(testArmy.toString(), "TestName TestName2 TestName3 TestName4 ");
 	}
 	
@@ -107,6 +116,7 @@ public class ArmyTest{
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
 		testDrag5 = testArmy.getDragon(1);
+		
 		assertEquals(testDrag5.getName(), "TestName2");
 	}
 	
@@ -124,6 +134,7 @@ public class ArmyTest{
 		testArmy.add(testDrag3);
 		testArmy.add(testDrag4);
 		testArmy2 = testArmy;
+		
 		assertEquals(testArmy.getArmy().toString(), testArmy2.getArmy().toString());
 	}
 }

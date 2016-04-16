@@ -1,7 +1,5 @@
-//package dragonspiretournament;
-
 /* DiceTest
- * Test casses to make sure the functions of the Dice class all work
+ * Test cases to make sure the functions of the Dice class all work
  * 
  * @author Team 29 (CD)
  * @version 4-15-16
@@ -107,7 +105,6 @@ public class DiceTest{
 	//Test to see if Dice(int faces) constructor is working
 	public void testDiceCustomFace(){
 		Dice testDice = new Dice(6);
-		Dragon missDrag;
 		
 		assertNotEquals(testDice, null);
 		Dragon testDrag4;
