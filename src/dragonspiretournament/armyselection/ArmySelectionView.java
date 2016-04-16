@@ -92,7 +92,7 @@ public class ArmySelectionView {
 		prevWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		currWindow = new JPanel();
-		currWindow.setBounds(334, 111, 298, 210);
+		currWindow.setBounds(344, 111, 298, 210);
 		mainPanel.add(currWindow);
 		currWindow.add(new DragonButton( this.selectionModel.getCurrent()));
 		currWindow.setBorder(new LineBorder(Color.BLACK));
@@ -114,7 +114,7 @@ public class ArmySelectionView {
 			
 		
 		selectDragonBtn = new JButton("Add Dragon");
-		selectDragonBtn.setBounds(439, 387, 89, 23);
+		selectDragonBtn.setBounds(419, 387, 89, 23);
 		selectDragonBtn.setSize(new Dimension(150,50));
 		mainPanel.add(selectDragonBtn);
 		selectDragonBtn.addActionListener(new ActionListener() {
