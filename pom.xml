@@ -8,6 +8,7 @@
   
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>test</testSourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -22,13 +23,23 @@
       <configuration>
         <archive>
           <manifest>
-            <mainClass>Main</mainClass>
+          	<addClasspath>true</addClasspath>
+            <mainClass>dragonspiretournament.Main</mainClass>
           </manifest>
         </archive>
         <descriptorRefs>
           <descriptorRef>jar-with-dependencies</descriptorRef>
         </descriptorRefs>
       </configuration>
+       <executions>
+    <execution>
+      <id>make-assembly</id>
+      <phase>package</phase>
+      <goals>
+        <goal>single</goal>
+      </goals>
+    </execution>
+  </executions>
     </plugin>
     
     <plugin>
@@ -56,6 +67,11 @@
 	    <artifactId>snakeyaml</artifactId>
 	    	<version>1.5</version>
         </dependency>
+        <dependency>
+  			<groupId>junit</groupId>
+  			<artifactId>junit</artifactId>
+  			<version>4.12</version>
+		</dependency>
  	</dependencies>
  	
 </project>
