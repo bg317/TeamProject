@@ -20,6 +20,7 @@ import org.junit.Test;
 public class MatchControllerTest {
 
 	@Test
+	//Tests Do Dragon Attack
 	public void testDoDragonAttack() {
 		Player testPlayer = new Player("testPlayer", new Army());
 		Dragon testDrag1 = new DragonLibrary().getDragon(0);
@@ -32,6 +33,7 @@ public class MatchControllerTest {
 	}
 
 	@Test
+	//Tests Update Player Stronghold HP
 	public void testUpdatePlayerStrongholdHP() {
 		Player testPlayer = new Player("testPlayer", new Army());
 		MatchController.updatePlayerStrongholdHP(testPlayer, 10);
@@ -40,15 +42,16 @@ public class MatchControllerTest {
 	}
 
 	@Test
+	//Tests Update Player Dice
 	public void testUpdatePlayerDice() {
 		Player testPlayer = new Player("testPlayer", new Army());
-		Dice testDice = new Dice();
 		Dragon testDrag1 = new DragonLibrary().getDragon(0);
 		
 		MatchController.updatePlayerDice(testPlayer, testDrag1);
 		
 		assertEquals(testPlayer.getDice().getDice().get(0), testDrag1);
 	}
+	
 	/*
 	@Test
 	public void testDiceRoll() {
@@ -69,6 +72,7 @@ public class MatchControllerTest {
 	*/
 
 	@Test
+	//Tests Update Dragon to Add
 	public void testUpdateDragonToAdd() {
 		MatchModel testModel = new MatchModel();
 		Dragon testDrag1 = new DragonLibrary().getDragon(0);
@@ -78,6 +82,7 @@ public class MatchControllerTest {
 	}
 
 	@Test
+	//Tests Update Dragon to Delete
 	public void testUpdateDragonToDelete() {
 		MatchModel testModel = new MatchModel();
 		Dragon testDrag1 = new DragonLibrary().getDragon(0);
@@ -87,6 +92,7 @@ public class MatchControllerTest {
 	}
 
 	@Test
+	//Tests Remove From Dice Selection
 	public void testRemoveFromDiceSelection() {//Not sure what to test Here
 		MatchModel testModel = new MatchModel();
 		//Dragon testDrag1 = new DragonLibrary().getDragon(0);
@@ -96,6 +102,7 @@ public class MatchControllerTest {
 	}
 
 	@Test
+	//Tests Player One Dice Setter
 	public void testSetPlayerOneDice() {
 		Player testPlayer = new Player("test", new Army());
 		MatchModel testModel = new MatchModel();
@@ -108,6 +115,7 @@ public class MatchControllerTest {
 	}
 
 	@Test
+	//Tests Player Two Dice Setter
 	public void testSetPlayerTwoDice() {
 		Player testPlayer = new Player("test", new Army());
 		MatchModel testModel = new MatchModel();
