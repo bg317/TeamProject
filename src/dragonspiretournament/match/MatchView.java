@@ -119,12 +119,12 @@ public class MatchView {
 		lblPlayerTwoDragons.setBounds(601, 48, 79, 40);
 		matchFrame.getContentPane().add(lblPlayerTwoDragons);
 		
-		playerOneHP = new JProgressBar(0, 100);
+		playerOneHP = new JProgressBar(0, 25); //25 is the max strongholdHP
 		playerOneHP.setBounds(46, 467, 146, 14);
 		matchFrame.getContentPane().add(playerOneHP);
 		playerOneHP.setValue(50);
 		
-		playerTwoHP = new JProgressBar(0, 100);
+		playerTwoHP = new JProgressBar(0, 25); //25 is the max strongholdHP
 		playerTwoHP.setBounds(677, 86, 146, 14);
 		matchFrame.getContentPane().add(playerTwoHP);
 		playerTwoHP.setValue(50);
