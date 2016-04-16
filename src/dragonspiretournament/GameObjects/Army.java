@@ -29,6 +29,7 @@ public class Army {
     /**
      * getSize - Returns a count of the number of dragons in the army.
      *
+     * @param  none
      * @return number of dragons in army
      */
 
@@ -40,7 +41,7 @@ public class Army {
     /**
      * getDragon - returns the Dragon at a specified point in the army.
      *
-     * @param index the index
+     * @param  index the index of the Dragon
      * @return dragon at the position requested
      */
 
@@ -51,6 +52,7 @@ public class Army {
     /**
      * getArmy - returns the entire dragon army.
      *
+     * @param  none
      * @return ArrayList containing all of the dragons in the army
      */
 
@@ -60,7 +62,7 @@ public class Army {
 
     /**
      * add - Adds a dragon to the last army position.
-     *       If 
+     *       If army is at max size, the dragon is not added.
      * 
      * @param newDragon Dragon to be added
      */
@@ -83,20 +85,25 @@ public class Army {
 
     /**
      * clearArmy - Removes all dragons from the army.
+     * 
+     * @param  none
      */
 
     public void clearArmy() {
         army.clear();
-    }
-    
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
+    }    
+
+    /**
+     * toString - returns a string containing the dragon army
+     * 
+     * @param  none
+     * @return string containing the dragon army
      */
+
     public String toString() { 
-	    String retString = "";
-	    for (int index = 0; index < army.size(); index++)
-	    	retString += army.get(index).toString() + " ";
-    	return retString;
-	} 
-    
+        String retString = "";
+        for (int index = 0; index < army.size(); index++)
+            retString += army.get(index).toString() + " ";
+        return retString;
+    } 
 }
