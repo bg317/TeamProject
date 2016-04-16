@@ -38,8 +38,8 @@ public class Main {
 		ArmySelectionView armySelectViewOne;
 		ArmySelectionView armySelectViewTwo;
 		
-		NameSelectionView nameView = new NameSelectionView( playerOne, playerTwo );
-		armySelectViewOne = new ArmySelectionView( playerOne, playerTwo, false );
+		/*NameSelectionView nameView = new NameSelectionView( playerOne, playerTwo ); */
+		armySelectViewOne = new ArmySelectionView( playerOne, playerTwo, false ); 
 		
 		Army playerOneArmy = new Army();
 		DragonLibrary dragLib = new DragonLibrary();
