@@ -12,8 +12,11 @@ import dragonspiretournament.GameObjects.Dragons.*;
 
 public class Army {
     
-    /** The army. */
+    /** ArrayList of Dragons that make up the army. */
     private ArrayList<Dragon> army;
+
+    /** The Constant MAX_ARMY_SIZE*/
+    private static final int MAX_ARMY_SIZE = 12;
 
     /**
      * Creates an empty army.
@@ -57,12 +60,14 @@ public class Army {
 
     /**
      * add - Adds a dragon to the last army position.
+     *       If 
      * 
      * @param newDragon Dragon to be added
      */
 
     public void add(Dragon newDragon) {
-        army.add(newDragon);
+        if(army.size() < MAX_ARMY_SIZE)
+            army.add(newDragon);
     }
 
     /**

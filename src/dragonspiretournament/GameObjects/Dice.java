@@ -15,10 +15,10 @@ public class Dice {
     /** The dice faces. */
     private ArrayList<Dragon> diceFaces;
     
-    /** The max faces. */
-    private int maxFaces; //Maximum number of faces allowed on dice
+    /** The max number of faces allowed on dice. */
+    private int maxFaces;
 
-    /** The Constant DEFAULT_MAX. */
+    /** The Constant DEFAULT_MAX, for the max number of faces. */
     private static final int DEFAULT_MAX = 6;
 
     /**
