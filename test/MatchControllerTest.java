@@ -49,7 +49,7 @@ public class MatchControllerTest {
 		
 		MatchController.updatePlayerDice(testPlayer, testDrag1);
 		
-		assertEquals(testPlayer.getDice().getDice().get(0), testDrag1);
+		assertEquals(testPlayer.getDice().getDice().get(1), testDrag1);
 	}
 	
 	/*
