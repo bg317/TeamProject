@@ -30,10 +30,10 @@ public class DiceTest{
 		Dragon testDrag = new Dragon("TestName", "TestType", "TestStrength", "TestIcon", "TestDescription");
 		
 		testDice.add(testDrag);
-		assertEquals(testDice.getFaceCount(), 1);
+		assertEquals(testDice.getFaceCount(), 2);
 		testDice.add(testDrag);
 		testDice.add(testDrag);
-		assertEquals(testDice.getFaceCount(), 3);
+		assertEquals(testDice.getFaceCount(), 4);
 	}
 	
 	@Test
@@ -49,12 +49,12 @@ public class DiceTest{
 		testDice.add(testDrag3);
 		testDice.add(testDrag);
 		testDice.remove(2);
-		assertEquals(testDice.getFaceCount(), 3);
+		assertEquals(4, testDice.getFaceCount());
 		testDice.remove(1);
 		testDice.remove(1);
-		assertEquals(testDice.getFaceCount(), 1);
+		assertEquals(2, testDice.getFaceCount());
 		testDice.remove(0);
-		assertEquals(testDice.getFaceCount(), 1); //the decrement might be brokn based on this behavior
+		assertEquals(2, testDice.getFaceCount()); //the decrement might be brokn based on this behavior
 	}
 	
 	@Test
@@ -93,11 +93,11 @@ public class DiceTest{
 		testDice.add(testDrag2);
 		testDice.add(testDrag3);
 		//testDice.add(testDrag4);
-		testDrag4 = testDice.getFace(0);
-		assertEquals(testDrag4.getName(), "TestName");
 		testDrag4 = testDice.getFace(1);
-		assertEquals(testDrag4.getName(), "TestName2");
+		assertEquals(testDrag4.getName(), "TestName");
 		testDrag4 = testDice.getFace(2);
+		assertEquals(testDrag4.getName(), "TestName2");
+		testDrag4 = testDice.getFace(3);
 		assertEquals(testDrag4.getName(), "TestName3");
 	}
 	
@@ -119,14 +119,14 @@ public class DiceTest{
 		Dice testDice2 = new Dice(8);
 		Dragon testDrag = new Dragon("TestName", "TestType", "TestStrength", "TestIcon", "TestDescription");
 		
-		assertEquals(testDice2.getFaceCount(), 1);
-		assertEquals(testDice.getFaceCount(), 0);
+		assertEquals(1, testDice2.getFaceCount());
+		assertEquals(1, testDice.getFaceCount());
 		testDice.add(testDrag);
 		testDice.add(testDrag);
 		testDice.add(testDrag);
 		testDice2.add(testDrag);
-		assertEquals(testDice2.getFaceCount(), 2);
-		assertEquals(testDice.getFaceCount(), 3);
+		assertEquals(2, testDice2.getFaceCount());
+		assertEquals(4, testDice.getFaceCount());
 	}
 	
 	@Test

@@ -1,4 +1,5 @@
 /* ArmySelectionControllerTest
+
  * makes sure the controller can do everything it need to.
  * 
  * @author larry

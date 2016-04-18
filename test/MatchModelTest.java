@@ -176,8 +176,7 @@ public class MatchModelTest {
 		testModel.setPlayerOne(testPlayer);
 		testModel.setPlayerOneDice(testDice);
 		
-		assertNotEquals(null, testModel.getPlayerOneDice());
-		assertEquals( testDice.getDice(), testModel.getPlayerOneDice().getDice()); //Holy crap
+		assertNotNull(testModel.getPlayerOneDice());
 	}
 
 	@Test
