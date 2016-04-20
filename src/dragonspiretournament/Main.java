@@ -1,12 +1,12 @@
 package dragonspiretournament;
 
+import dragonspiretournament.Game.GameState;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.armyselection.ArmySelectionController;
 import dragonspiretournament.armyselection.ArmySelectionModel;
 import dragonspiretournament.armyselection.ArmySelectionView;
-
 import dragonspiretournament.match.MatchView;
 import dragonspiretournament.nameselection.NameSelectionView;
 import dragonspiretournament.title.TitleView;
@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
 /**
  * The Class Main.
  * This is the main run for the Game.
@@ -32,6 +33,8 @@ public class Main {
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		
+		GameState gameState = new GameState();
+		
 		Player playerOne = new Player(" Player One ");
 		Player playerTwo = new Player(" Player Two ");
 
@@ -40,7 +43,8 @@ public class Main {
 		ArmySelectionView armySelectViewTwo;
 		
 		/*NameSelectionView nameView = new NameSelectionView( playerOne, playerTwo ); */
-		armySelectViewOne = new ArmySelectionView( playerOne, playerTwo, false ); 
+		gameState.setPlayerOneArmySelection( true );
+		armySelectViewOne = new ArmySelectionView( playerOne, playerTwo, gameState ); 
 		
 		Army playerOneArmy = new Army();
 		DragonLibrary dragLib = new DragonLibrary();

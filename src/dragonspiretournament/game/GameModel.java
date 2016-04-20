@@ -1,4 +1,4 @@
-package dragonspiretournament.game;
+package dragonspiretournament.Game;
 
 import dragonspiretournament.armyselection.ArmySelectionModel;
 import dragonspiretournament.GameObjects.Army;

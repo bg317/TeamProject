@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import dragonspiretournament.Game.GameState;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Dice;
 import dragonspiretournament.GameObjects.Player;
@@ -91,7 +92,7 @@ public class MatchView {
 	 * @param playerOne the player one
 	 * @param playerTwo the player two
 	 */
-	public MatchView( Player playerOne, Player playerTwo ) {
+	public MatchView( Player playerOne, Player playerTwo, GameState gameState ) {
 		matchModel = new MatchModel( playerOne, playerTwo );
 
 		matchFrame = new JFrame("DragonSpire Tournament");

@@ -1,4 +1,4 @@
-package dragonspiretournament.game;
+package dragonspiretournament.Game;
 
 import javax.swing.ImageIcon;
 
