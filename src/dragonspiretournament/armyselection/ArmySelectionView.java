@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import dragonspiretournament.Game.GameState;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
@@ -56,9 +57,6 @@ public class ArmySelectionView {
 	/** The next button. */
 	JButton nextButton;
 	
-	/** The is two. */
-	Boolean isTwo;
-	
 	/**
 	 * Instantiates a new army selection view.
 	 *
@@ -66,14 +64,16 @@ public class ArmySelectionView {
 	 * @param playerTwo the player two
 	 * @param isTwo the is two
 	 */
-	public ArmySelectionView( Player playerOne, Player playerTwo, Boolean isTwo ) {
+	public ArmySelectionView( Player playerOne, Player playerTwo, GameState gameState ) {
+		
 		selectionModel = new ArmySelectionModel();
-		if ( !isTwo ) {
+		
+		// Set the player being selected for the army.
+		if ( gameState.getPlayerOneArmySelection() && !gameState.getPlayerTwoArmySelection() ) {
 			selectionModel.setPlayer( playerOne );
 		} else {
 			selectionModel.setPlayer( playerTwo );
 		}
-		this.isTwo = isTwo;
 		
 		ArmySelectionController.initCurrentAndPrev(selectionModel);
 		armySelectionWindow = new JFrame("Select your army");
@@ -148,12 +148,14 @@ public class ArmySelectionView {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				ArmySelectionController.confirmPlayersArmy( selectionModel );
-				if ( !isTwo ) {
-					new ArmySelectionView( playerOne, playerTwo, true );
+				if ( gameState.getPlayerOneArmySelection() && !gameState.getPlayerTwoArmySelection() ) {
+					gameState.setPlayerTwoArmySelection( true );
+					new ArmySelectionView( playerOne, playerTwo, gameState );
 					armySelectionWindow.setVisible(false);
 				} else {
 					armySelectionWindow.setVisible(false);
-					new MatchView( playerOne, playerTwo );
+					gameState.setPlayerOneDiceSelection( true );
+					new MatchView( playerOne, playerTwo, gameState );
 				}
 			}
 		});
