@@ -1,6 +1,6 @@
 package dragonspiretournament;
 
-import dragonspiretournament.Game.GameState;
+import dragonspiretournament.game.GameState;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;

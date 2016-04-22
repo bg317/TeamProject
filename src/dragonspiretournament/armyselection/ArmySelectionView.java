@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import dragonspiretournament.Game.GameState;
+import dragonspiretournament.game.GameState;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
