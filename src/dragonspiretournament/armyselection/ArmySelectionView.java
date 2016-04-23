@@ -18,6 +18,7 @@ import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.DragonButton;
 import dragonspiretournament.match.MatchView;
+import dragonspiretournament.game.GameController;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,10 +26,10 @@ import java.util.Iterator;
 /**
  * The Class ArmySelectionView.
  */
-public class ArmySelectionView {
+public class ArmySelectionView extends JPanel {
 	
 	/** The army selection window. */
-	JFrame armySelectionWindow;
+	JPanel armySelectionWindow;
 	
 	/** The selection model. */
 	ArmySelectionModel selectionModel;
@@ -76,13 +77,16 @@ public class ArmySelectionView {
 		}
 		
 		ArmySelectionController.initCurrentAndPrev(selectionModel);
-		armySelectionWindow = new JFrame("Select your army");
-		armySelectionWindow.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
-		armySelectionWindow.setSize(1200, 748);
-		armySelectionWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//armySelectionWindow = new JFrame("Select your army");
+		//armySelectionWindow.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		//armySelectionWindow.setSize(1200, 748);
+		//armySelectionWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		armySelectionWindow = new JPanel(new GridLayout(0, 1, 0, 0));
+		armySelectionWindow.setPreferredSize(new Dimension(1200, 748));
+		this.setLayout(new GridLayout(1,1));
 		
 		mainPanel = new JPanel();
-		armySelectionWindow.getContentPane().add(mainPanel);
+		armySelectionWindow.add(mainPanel);
 		mainPanel.setLayout(null);
 		
 		prevWindow = new JPanel();
@@ -150,12 +154,16 @@ public class ArmySelectionView {
 				ArmySelectionController.confirmPlayersArmy( selectionModel );
 				if ( gameState.getPlayerOneArmySelection() && !gameState.getPlayerTwoArmySelection() ) {
 					gameState.setPlayerTwoArmySelection( true );
-					new ArmySelectionView( playerOne, playerTwo, gameState );
+					//make another selection card(??)
+					//new ArmySelectionView( playerOne, playerTwo, gameState );
 					armySelectionWindow.setVisible(false);
 				} else {
 					armySelectionWindow.setVisible(false);
 					gameState.setPlayerOneDiceSelection( true );
-					new MatchView( playerOne, playerTwo, gameState );
+					//create a new match card(??)
+					GameController.createMatchView( playerOne, playerTwo, gameState );
+					GameController.changeView("matchView");
+					//new MatchView( playerOne, playerTwo, gameState );
 				}
 			}
 		});
@@ -170,6 +178,8 @@ public class ArmySelectionView {
 		});
 		
 		armySelectionWindow.setVisible(true);
+		
+		this.add(armySelectionWindow);
 	}
 	
 	/**

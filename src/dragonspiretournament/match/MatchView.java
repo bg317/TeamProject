@@ -32,13 +32,13 @@ import java.awt.Color;
 /**
  * The Class MatchView.
  */
-public class MatchView {
+public class MatchView extends JPanel {
 	
 	/** The match model. */
 	private MatchModel matchModel;
 		
 	/** The match frame. */
-	private JFrame matchFrame;
+	private JPanel matchFrame;
 	
 	/** The player two army. */
 	private JPanel playerTwoArmy;
@@ -92,64 +92,73 @@ public class MatchView {
 	 * @param playerOne the player one
 	 * @param playerTwo the player two
 	 */
-	public MatchView( Player playerOne, Player playerTwo, GameState gameState ) {
+	public MatchView( Player playerOne, Player playerTwo) {
 		matchModel = new MatchModel( playerOne, playerTwo );
 
-		matchFrame = new JFrame("DragonSpire Tournament");
-		matchFrame.setSize(980, 700);
-		matchFrame.getContentPane().setLayout(null);
-		matchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//matchFrame = new JFrame("DragonSpire Tournament");
+		//matchFrame.setSize(980, 700);
+		//matchFrame.getContentPane().setLayout(null);
+		//matchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		matchFrame = new JPanel();
+		matchFrame.setPreferredSize(new Dimension(980, 700));
+		matchFrame.setLayout(null);
+		
+		this.setPreferredSize(new Dimension(980, 700));
+		//this.setLayout(new GridLayout(1,1));
+		
+		
 		
 		playerOneArmy = new JPanel();
 		playerOneArmy.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		playerOneArmy.setBounds(41, 31, 54, 580);
-		matchFrame.getContentPane().add(playerOneArmy);
+		playerOneArmy.setBounds(74, 31, 54, 580);
+		matchFrame.add(playerOneArmy);
 		updateArmyPanel( playerOneArmy, matchModel.getPlayerOneArmy(), new DragonButton() );
 
 		playerTwoArmy = new JPanel();
 		playerTwoArmy.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		playerTwoArmy.setBounds(800, 31, 54, 580);
-		matchFrame.getContentPane().add(playerTwoArmy);
+		playerTwoArmy.setBounds(835, 31, 54, 580);
+		matchFrame.add(playerTwoArmy);
 		updateArmyPanel( playerTwoArmy, matchModel.getPlayerTwoArmy(), new DragonButton() );
 		
 		lblPlayerTwo = new JLabel( matchModel.getPlayerOne().getName() );
-		lblPlayerTwo.setBounds(101, 492, 121, 40);
-		matchFrame.getContentPane().add(lblPlayerTwo);
+		lblPlayerTwo.setBounds(140, 492, 121, 40);
+		matchFrame.add(lblPlayerTwo);
 		
 		lblPlayerTwoDragons = new JLabel( matchModel.getPlayerTwo().getName() );
-		lblPlayerTwoDragons.setBounds(627, 48, 79, 40);
-		matchFrame.getContentPane().add(lblPlayerTwoDragons);
+		lblPlayerTwoDragons.setBounds(662, 48, 79, 40);
+		matchFrame.add(lblPlayerTwoDragons);
 		
 		playerOneHP = new JProgressBar(0, 25); //25 is the max strongholdHP
-		playerOneHP.setBounds(111, 537, 146, 14);
-		matchFrame.getContentPane().add(playerOneHP);
+		playerOneHP.setBounds(146, 537, 146, 14);
+		matchFrame.add(playerOneHP);
 		playerOneHP.setValue(50);
 		
 		playerTwoHP = new JProgressBar(0, 25); //25 is the max strongholdHP
-		playerTwoHP.setBounds(637, 86, 146, 14);
-		matchFrame.getContentPane().add(playerTwoHP);
+		playerTwoHP.setBounds(672, 86, 146, 14);
+		matchFrame.add(playerTwoHP);
 		playerTwoHP.setValue(50);
 
 		playerOneLastAction = new JLabel("No dragons rolled yet");
-		playerOneLastAction.setBounds(296, 105, 243, 108);
-		matchFrame.getContentPane().add(playerOneLastAction);
+		playerOneLastAction.setBounds(346, 105, 243, 108);
+		matchFrame.add(playerOneLastAction);
 
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
-		playerTwoLastAction.setBounds(471, 220, 311, 108);		
+		playerTwoLastAction.setBounds(509, 220, 311, 108);		
 		matchFrame.setVisible(true);
-		matchFrame.getContentPane().add(playerTwoLastAction);
+		matchFrame.add(playerTwoLastAction);
 		
 		playerOneLastDragon = new DragonButton("");
-		playerOneLastDragon.setBounds(479, 99, 146, 108);
-		matchFrame.getContentPane().add(playerOneLastDragon);
+		playerOneLastDragon.setBounds(506, 99, 146, 108);
+		matchFrame.add(playerOneLastDragon);
 		
 		playerTwoLastDragon = new DragonButton("");
-		playerTwoLastDragon.setBounds(306, 220, 146, 108);
-		matchFrame.getContentPane().add(playerTwoLastDragon);
+		playerTwoLastDragon.setBounds(341, 220, 146, 108);
+		matchFrame.add(playerTwoLastDragon);
 		
 		btnRoll = new JButton("Roll");
-		btnRoll.setBounds(405, 442, 89, 23);
-		matchFrame.getContentPane().add(btnRoll);
+		btnRoll.setBounds(440, 442, 89, 23);
+		matchFrame.add(btnRoll);
 		btnRoll.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -163,16 +172,16 @@ public class MatchView {
 		
 		currentDiceSelection = new JPanel();
 		currentDiceSelection.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		currentDiceSelection.setBounds(285, 492, 360, 54);
-		matchFrame.getContentPane().add(currentDiceSelection);
+		currentDiceSelection.setBounds(320, 492, 360, 54);
+		matchFrame.add(currentDiceSelection);
 		
 		lblAddDiceHere = new JLabel("Add to dice here by selecting dragons from your army:");
-		lblAddDiceHere.setBounds(289, 467, 320, 14);
-		matchFrame.getContentPane().add(lblAddDiceHere);
+		lblAddDiceHere.setBounds(324, 467, 320, 14);
+		matchFrame.add(lblAddDiceHere);
 		
 		btnConfirmSelection = new JButton("Confirm Selection");
-		btnConfirmSelection.setBounds(385, 554, 157, 23);
-		matchFrame.getContentPane().add(btnConfirmSelection);
+		btnConfirmSelection.setBounds(420, 554, 157, 23);
+		matchFrame.add(btnConfirmSelection);
 		btnConfirmSelection.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -186,6 +195,9 @@ public class MatchView {
 			}
 		});
 		btnConfirmSelection.setVisible(true);
+		
+		
+		this.add(matchFrame);
 		
 		matchFrame.repaint();
 	}
@@ -276,9 +288,11 @@ public class MatchView {
 	 * @param dragBtn the drag btn
 	 */
 	public void updateArmyPanel( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
-		
+		System.out.println("inside update army panel");
 		ArrayList<Dragon> dragons = playerArmy.getArmy();
+		System.out.println("still updating army panel");
 		Iterator<Dragon> dragonsItr = dragons.iterator();
+		
 		Dragon currentDrag;
 		playersArmy.removeAll();
 		
