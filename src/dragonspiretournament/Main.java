@@ -1,6 +1,7 @@
 package dragonspiretournament;
 
 import dragonspiretournament.game.GameState;
+import dragonspiretournament.game.GameView;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.DragonLibrary;
 import dragonspiretournament.GameObjects.Player;
@@ -11,6 +12,7 @@ import dragonspiretournament.match.MatchView;
 import dragonspiretournament.nameselection.NameSelectionView;
 import dragonspiretournament.title.TitleView;
 import dragonspiretournament.PlayerInformation.DragonInformationView;
+import dragonspiretournament.game.GameController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,7 +55,9 @@ public class Main {
 		playerOneArmy.add( dragLib.getDragon(2));
 		
 		//MatchView matchView = new MatchView( playerOne, playerTwo );
-		
+		//calls the game controller to create the game view
+		GameController.createGame();
+		//GameView gameView = new GameView();
 		/*
 		TitleView titleView = new TitleView();
 		DragonInformationView infoView = new DragonInformationView(dragLib.getDragon(3)); */

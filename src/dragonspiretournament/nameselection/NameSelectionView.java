@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.PopupMenu;
+import java.awt.Dimension;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -155,9 +157,11 @@ public class NameSelectionView extends JPanel {
 		
 		//nameFrame.setVisible(true);
 		
-		//adding to the popupmenu for cardLayout
+		//adding for cardLayout
+		this.setLayout(new GridLayout(1,1));
+		this.setPreferredSize(new Dimension(500,500));
 		this.add(totalPanel);
-		//this.setSize(500,500);
+		this.setBackground(Color.white);
 		this.setVisible(true);
 		System.out.println("inside constructor without parameters");
 	}
