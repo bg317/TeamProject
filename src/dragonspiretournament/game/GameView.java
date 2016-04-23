@@ -6,6 +6,9 @@ import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 import dragonspiretournament.title.TitleController;
 import dragonspiretournament.nameselection.NameSelectionView;
 import dragonspiretournament.title.TitleView;
+import dragonspiretournament.armyselection.ArmySelectionView;
+import dragonspiretournament.GameObjects.Player;
+import dragonspiretournament.match.MatchView;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -43,12 +46,18 @@ public class GameView {
 	/** the name selection view */
 	NameSelectionView nameView;
 	
+	/** the army select view*/
+	ArmySelectionView armySelectView;
+	
+	/** the match view*/
+	MatchView matchView;
+	
 	/**
 	 * Instantiates a new game view.
 	 */
 	public GameView() {
 		titleFrame = new JFrame("Dragonspire Tournament");
-		titleFrame.setSize(1036, 610);
+		titleFrame.setSize(1036, 700);
 		
 		titleFrame.setVisible(true);
 		
@@ -81,6 +90,33 @@ public class GameView {
 	{
 		CardLayout cardLayout = (CardLayout) wrapperPanel.getLayout();
 		cardLayout.show(wrapperPanel, ViewToShow);
+		
+		wrapperPanel.repaint();
+	}
+	
+	/**
+	 * creates the army selection view after we have player names
+	 * @param playerOne the info on player one.
+	 * @param playerTwo the info on player two.
+	 * @param gameState the current game state.
+	 */
+	public void createArmySelectionView(Player playerOne, Player playerTwo, GameState gameState)
+	{
+		armySelectView = new ArmySelectionView(playerOne, playerTwo, gameState);
+		System.out.println("army select view created");
+		
+		//adds a card to the wrapper panel for the army selection view
+		wrapperPanel.add(armySelectView, "armySelect");
+
+		wrapperPanel.repaint();
+	}
+	
+	public void createMatchView(Player playerOne, Player playerTwo, GameState gameState)
+	{
+		matchView = new MatchView(playerOne, playerTwo);
+		
+		//adds a card to the wrapper panel for the match view
+		wrapperPanel.add(matchView, "matchView");
 		
 		wrapperPanel.repaint();
 	}

@@ -1,6 +1,7 @@
 package dragonspiretournament.nameselection;
 
 import dragonspiretournament.GameObjects.Player;
+import dragonspiretournament.game.GameController;
 
 /**
  * The Class NameSelectionController.
@@ -53,6 +54,27 @@ public class NameSelectionController {
 	 */
 	public static void setPlayerTwo( Player player ) {
 		nameSelector.setPlayerTwo( player );
+	}
+	
+	/**
+	 * Gives the final names to the game controller.
+	 * @param playerOne the data for player one.
+	 * @param playertwo the data for player two.
+	 */
+	public static void finalizeNames()
+	{
+		GameController.createPlayers(nameSelector.getPlayerOne(), nameSelector.getPlayerTwo());
+	}
+	
+	/**
+	 * Now that names are selected, indicate that we're done with the name select and should 
+	 * move on to select army.
+	 */
+	public static void goToChooseArmy()
+	{
+		System.out.println("going to choose army screen");
+		GameController.createArmySelectionView(nameSelector.getPlayerOne(), nameSelector.getPlayerTwo());
+		GameController.changeView("armySelect");
 	}
 
 }

@@ -195,7 +195,9 @@ public class NameSelectionView extends JPanel {
 			//then moving on to the game if we're on player 2
 			if (NameSelectionController.goToNextFrame() == true)
 			{
-				//start game
+				//finalize names/start game
+				NameSelectionController.finalizeNames();
+				NameSelectionController.goToChooseArmy();
 			}
 			//go to player 2 if on player 1
 			else

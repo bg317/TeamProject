@@ -85,8 +85,6 @@ public class NameSelectionModel {
 			player2.setName(playerTwoName);
 		}
 		
-		//create a player with the name information
-		
 	}
 	
 	//gets the next place to go--either the second player entry (false) or the start of the game (true)
@@ -128,6 +126,24 @@ public class NameSelectionModel {
 	 */
 	public void setPlayerTwo( Player player ) {
 		this.player2 = player;
+	}
+	
+	/**
+	 * gets the first player information
+	 * @return player one's information.
+	 */
+	public Player getPlayerOne()
+	{
+		return player1;
+	}
+	
+	/**
+	 * gets the second player information.
+	 * @return player two's information.
+	 */
+	public Player getPlayerTwo()
+	{
+		return player2;
 	}
 }
 
