@@ -120,7 +120,7 @@ public class MatchView extends JPanel {
 		playerTwoArmy.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		playerTwoArmy.setBounds(835, 31, 54, 580);
 		matchFrame.add(playerTwoArmy);
-		updateArmyPanel( playerTwoArmy, matchModel.getPlayerTwoArmy(), new DragonButton() );
+		updateArmyPanelOther( playerTwoArmy, matchModel.getPlayerTwoArmy(), new DragonButton() );
 		
 		lblPlayerTwo = new JLabel( matchModel.getPlayerOne().getName() );
 		lblPlayerTwo.setBounds(140, 492, 121, 40);
@@ -316,7 +316,33 @@ public class MatchView extends JPanel {
 		
 		playersArmy.updateUI();	
 	}
-	
+
+    /**
+     * Update army panel for the other player
+     *
+     * @param playersArmy the players army
+     * @param playerArmy the player army
+     * @param dragBtn the drag btn
+     */
+    public void updateArmyPanelOther( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
+        System.out.println("inside update army panel <other player>");
+        ArrayList<Dragon> dragons = playerArmy.getArmy();
+        System.out.println("still updating army panel <other player>");
+        Iterator<Dragon> dragonsItr = dragons.iterator();
+        
+        Dragon currentDrag;
+        playersArmy.removeAll();
+        
+        while ( dragonsItr.hasNext() ) {
+            currentDrag = dragonsItr.next();
+            dragBtn = new DragonButton( currentDrag );
+            playersArmy.add(dragBtn);
+        }
+        
+        playersArmy.updateUI(); 
+    }
+    
+
 	/**
 	 * Update dice selection panel.
 	 *
