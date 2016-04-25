@@ -170,24 +170,36 @@ public class MatchController {
 		matchModel.setPlayerTwoLastDragon( twoLast );
 	}
 	
-	/**
-	 * Adds the to dice selection.
-	 *
-	 * @param matchModel the match model
-	 * @param addedDragon the added dragon
-	 */
-	public static void addToDiceSelection( MatchModel matchModel, Dragon addedDragon ) {
-		Dice currentDice = matchModel.getCurrentDiceSelection();
-		currentDice.add( addedDragon );
-	}
-	
+    /**
+     * Adds the to dice selection of player one
+     *
+     * @param matchModel the match model
+     * @param addedDragon the added dragon
+     */
+    public static void addToDiceSelectionOne( MatchModel matchModel, Dragon addedDragon ) {
+        Dice currentDice = matchModel.getPlayerOneDiceSelection();
+        currentDice.add( addedDragon );
+    }
+    
+    /**
+     * Adds the to dice selection of player two
+     *
+     * @param matchModel the match model
+     * @param addedDragon the added dragon
+     */
+    public static void addToDiceSelectionTwo( MatchModel matchModel, Dragon addedDragon ) {
+        Dice currentDice = matchModel.getPlayerTwoDiceSelection();
+        currentDice.add( addedDragon );
+    }
+    
 	/**
 	 * Clear dice selection.
 	 *
 	 * @param matchModel the match model
 	 */
 	public static void clearDiceSelection( MatchModel matchModel ) {
-		matchModel.getCurrentDiceSelection().clearDice();
+        matchModel.getPlayerOneDiceSelection().clearDice();
+        matchModel.getPlayerTwoDiceSelection().clearDice();
 	}
 
 	/**
@@ -212,23 +224,34 @@ public class MatchController {
 	}
 
 	/**
-	 * Removes the from dice selection.
+	 * Removes the dragon from the player one dice selection.
 	 *
 	 * @param matchModel the match model
 	 */
-	public static void removeFromDiceSelection( MatchModel matchModel ) {
-		Dice selectionDice = matchModel.getCurrentDiceSelection();
+	public static void removeFromDiceSelectionOne( MatchModel matchModel ) {
+		Dice selectionDice = matchModel.getPlayerOneDiceSelection();
 		Dragon departingDrag = matchModel.getDragonBeingRemovedFromDice();
 		selectionDice.getDice().remove( departingDrag );
 	}
-	
+
+    /**
+     * Removes the dragon from the player one dice selection.
+     *
+     * @param matchModel the match model
+     */
+    public static void removeFromDiceSelectionTwo( MatchModel matchModel ) {
+        Dice selectionDice = matchModel.getPlayerTwoDiceSelection();
+        Dragon departingDrag = matchModel.getDragonBeingRemovedFromDice();
+        selectionDice.getDice().remove( departingDrag );
+    }
+
 	/**
 	 * Sets the player one dice.
 	 *
 	 * @param matchModel the new player one dice
 	 */
 	public static void setPlayerOneDice( MatchModel matchModel ) {
-		Dice currentDice = matchModel.getCurrentDiceSelection();
+		Dice currentDice = matchModel.getPlayerOneDiceSelection();
 		Player playerOne = matchModel.getPlayerOne();
 		playerOne.setDice( currentDice );
 	}
@@ -239,7 +262,7 @@ public class MatchController {
 	 * @param matchModel the new player two dice
 	 */
 	public static void setPlayerTwoDice( MatchModel matchModel ) {
-		Dice selectionDice = matchModel.getCurrentDiceSelection();
+		Dice selectionDice = matchModel.getPlayerTwoDiceSelection();
 		Player playerTwo = matchModel.getPlayerTwo();
 		playerTwo.setDice( selectionDice );
 	}
