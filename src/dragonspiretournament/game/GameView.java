@@ -59,6 +59,8 @@ public class GameView {
 	public GameView() {
 		titleFrame = new JFrame("Dragonspire Tournament");
 		titleFrame.setSize(1036, 700);
+		titleFrame.setLocationRelativeTo(null);
+		titleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		titleFrame.setVisible(true);
 		
@@ -77,6 +79,7 @@ public class GameView {
 		//make the frame visible
 		titleFrame.setVisible(true);
 		wrapperPanel.repaint();
+		
 		
 	}
 	

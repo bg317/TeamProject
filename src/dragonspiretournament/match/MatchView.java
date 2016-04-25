@@ -23,6 +23,7 @@ import dragonspiretournament.GameObjects.Dice;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.DragonButton;
+import dragonspiretournament.PlayerInformation.DragonInformationView;
 import dragonspiretournament.title.TitleController;
 import javax.swing.JSplitPane;
 import javax.swing.JProgressBar;
@@ -172,13 +173,33 @@ public class MatchView extends JPanel {
 		matchFrame.setVisible(true);
 		matchFrame.add(playerTwoLastAction);
 		
-		playerOneLastDragon = new DragonButton("");
+		playerOneLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"));
 		playerOneLastDragon.setBounds(506, 99, 146, 108);
 		matchFrame.add(playerOneLastDragon);
+		playerOneLastDragon.addActionListener( new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				DragonButton actionPerfomedOn = (DragonButton) arg0.getSource();
+				Dragon dragonToDisplay = actionPerfomedOn.getAssociatedDragon();
+				DragonInformationView dragonInformation = new DragonInformationView( dragonToDisplay );
+			}
+			
+		});
 		
-		playerTwoLastDragon = new DragonButton("");
+		playerTwoLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"));
 		playerTwoLastDragon.setBounds(301, 220, 146, 108);
 		matchFrame.add(playerTwoLastDragon);
+		playerTwoLastDragon.addActionListener( new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				DragonButton actionPerfomedOn = (DragonButton) arg0.getSource();
+				Dragon dragonToDisplay = actionPerfomedOn.getAssociatedDragon();
+				DragonInformationView dragonInformation = new DragonInformationView( dragonToDisplay );
+			}
+			
+		});
 		
 		btnRoll = new JButton("Roll");
 		btnRoll.setBounds(440, 442, 89, 23);
@@ -192,7 +213,8 @@ public class MatchView extends JPanel {
 				checkIfMatchOver();
                 showDiceSelectionOne();
                 showPlayerOneArmies();
-                JOptionPane.showMessageDialog( matchFrame, "It is " + playerOne.getName() + "'s turn now!");
+                if ( !matchModel.isMatchOver() )
+                	JOptionPane.showMessageDialog( matchFrame, "It is " + playerOne.getName() + "'s turn now!");
 			}
 		});
 		btnRoll.setVisible(false);
@@ -224,7 +246,8 @@ public class MatchView extends JPanel {
                 showPlayerTwoArmies();
                 hideDiceSelectionOne();
                 showDiceSelectionTwo();
-                JOptionPane.showMessageDialog( matchFrame, "It is " + playerTwo.getName() + "'s turn now!");
+                if ( !matchModel.isMatchOver() )
+                	JOptionPane.showMessageDialog( matchFrame, "It is " + playerTwo.getName() + "'s turn now!");
             }
         });
         btnConfirmSelectionPlayerOne.setVisible(true);
@@ -387,9 +410,7 @@ public class MatchView extends JPanel {
      * @param dragBtn the drag btn
      */
     public void updateArmyPanelOne( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
-        System.out.println("inside update army panel");
         ArrayList<Dragon> dragons = playerArmy.getArmy();
-        System.out.println("still updating army panel");
         Iterator<Dragon> dragonsItr = dragons.iterator();
         
         Dragon currentDrag;
@@ -422,9 +443,7 @@ public class MatchView extends JPanel {
      */
 
     public void updateArmyPanelTwo( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
-        System.out.println("inside update army panel");
         ArrayList<Dragon> dragons = playerArmy.getArmy();
-        System.out.println("still updating army panel");
         Iterator<Dragon> dragonsItr = dragons.iterator();
         
         Dragon currentDrag;
@@ -456,9 +475,7 @@ public class MatchView extends JPanel {
      * @param dragBtn the drag btn
      */
     public void updateArmyPanelOther( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
-        System.out.println("inside update army panel <other player>");
         ArrayList<Dragon> dragons = playerArmy.getArmy();
-        System.out.println("still updating army panel <other player>");
         Iterator<Dragon> dragonsItr = dragons.iterator();
         
         Dragon currentDrag;

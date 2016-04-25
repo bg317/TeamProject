@@ -17,11 +17,14 @@ import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.DragonButton;
+import dragonspiretournament.PlayerInformation.DragonInformation;
+import dragonspiretournament.PlayerInformation.DragonInformationView;
 import dragonspiretournament.match.MatchView;
 import dragonspiretournament.game.GameController;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JLabel;
 
 /**
  * The Class ArmySelectionView.
@@ -51,6 +54,8 @@ public class ArmySelectionView extends JPanel {
 	
 	/** The select dragon btn. */
 	JButton selectDragonBtn;
+	
+	DragonButton currDragBtn;
 	
 	/** The prev button. */
 	JButton prevButton;
@@ -98,7 +103,9 @@ public class ArmySelectionView extends JPanel {
 		currWindow = new JPanel();
 		currWindow.setBounds(344, 111, 298, 210);
 		mainPanel.add(currWindow);
-		currWindow.add(new DragonButton( this.selectionModel.getCurrent()));
+		currDragBtn = new DragonButton( this.selectionModel.getCurrent());
+		setupCurrentDragonButtonListener( currDragBtn );
+		currWindow.add( currDragBtn );
 		currWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		nextWindow = new JPanel();
@@ -148,6 +155,10 @@ public class ArmySelectionView extends JPanel {
 		JButton btnConfirmSelection = new JButton("Confirm Selection");
 		btnConfirmSelection.setBounds(746, 557, 177, 23);
 		mainPanel.add(btnConfirmSelection);
+		
+		JLabel playerPickMessage = new JLabel(selectionModel.getPlayer().getName() + ", select your Army!");
+		playerPickMessage.setBounds(70, 25, 194, 33);
+		mainPanel.add(playerPickMessage);
 		btnConfirmSelection.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
@@ -184,6 +195,19 @@ public class ArmySelectionView extends JPanel {
 		this.add(armySelectionWindow);
 	}
 	
+	private void setupCurrentDragonButtonListener(DragonButton dragBtn) {
+		dragBtn.addActionListener( new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				DragonButton actionPerfomedOn = (DragonButton) arg0.getSource();
+				Dragon dragonToDisplay = actionPerfomedOn.getAssociatedDragon();
+				DragonInformationView dragonInformation = new DragonInformationView( dragonToDisplay );
+			}
+			
+		});
+	}
+
 	/**
 	 * Update preview panels.
 	 */
@@ -202,8 +226,10 @@ public class ArmySelectionView extends JPanel {
 	 * @param dragon the dragon
 	 */
 	public void updatePanel( JPanel panel, Dragon dragon ) {
+		DragonButton dragBtn = new DragonButton ( dragon );
+		setupCurrentDragonButtonListener( dragBtn );
 		panel.removeAll();
-		panel.add( new DragonButton( dragon ));
+		panel.add( dragBtn );
 		panel.updateUI();
 	}
 	
