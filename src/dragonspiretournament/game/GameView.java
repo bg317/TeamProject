@@ -102,7 +102,11 @@ public class GameView {
 	 */
 	public void createArmySelectionView(Player playerOne, Player playerTwo, GameState gameState)
 	{
-		armySelectView = new ArmySelectionView(playerOne, playerTwo, gameState);
+	    //First match of the program
+	    if(!gameState.getPlayerOneArmySelection())
+	        gameState.setPlayerOneArmySelection(true);
+
+	    armySelectView = new ArmySelectionView(playerOne, playerTwo, gameState);
 		System.out.println("army select view created");
 		
 		//adds a card to the wrapper panel for the army selection view
