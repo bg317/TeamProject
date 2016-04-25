@@ -77,4 +77,8 @@ public class NameSelectionController {
 		GameController.changeView("armySelect");
 	}
 
+	public static void resetPlayers() 
+	{
+	    nameSelector.resetPlayers();
+	}
 }
