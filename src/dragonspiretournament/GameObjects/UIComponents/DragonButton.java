@@ -74,6 +74,9 @@ public class DragonButton extends JButton{
 	public void setAssociatedDragon(Dragon associatedDragon) {
 		this.associatedDragon = associatedDragon;
 		this.setIcon( new ImageIcon( associatedDragon.getIcon() ));
+		ToolTipManager.sharedInstance().setInitialDelay(10);
+        ToolTipManager.sharedInstance().setDismissDelay(60000);
+		this.setToolTipText(associatedDragon.getName());
 	}
 
 	
