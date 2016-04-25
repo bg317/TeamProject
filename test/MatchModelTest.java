@@ -283,22 +283,46 @@ public class MatchModelTest {
 
 	@Test
 	//Tests Current Dice Selection Getter
-	public void testGetCurrentDiceSelection() {
+	public void testGetCurrentDiceSelectionOne() {
 		Dice testDice = new Dice();
 		MatchModel testModel = new MatchModel();
-		testModel.setCurrentDiceSelection(testDice);
-		
-		assertEquals(testModel.getCurrentDiceSelection(), testDice);
+		//testModel.setCurrentDiceSelection(testDice);
+		testModel.setPlayerOneDiceSelection(testDice);
+		//assertEquals(testModel.getCurrentDiceSelection(), testDice);
+		assertEquals(testModel.getPlayerOneDiceSelection(), testDice);
 	}
 
 	@Test
 	//Tests Current Dice Selection Setter
-	public void testSetCurrentDiceSelection() {
+	public void testSetCurrentDiceSelectionOne() {
 		Dice testDice = new Dice();
 		MatchModel testModel = new MatchModel();
-		testModel.setCurrentDiceSelection(testDice);
-		
-		assertEquals(testModel.getCurrentDiceSelection(), testDice);
+		//testModel.setCurrentDiceSelection(testDice);
+		testModel.setPlayerOneDiceSelection(testDice);
+		//assertEquals(testModel.getCurrentDiceSelection(), testDice);
+		assertEquals(testModel.getPlayerOneDiceSelection(), testDice);
+	}
+	
+	@Test
+	//Tests Current Dice Selection Getter
+	public void testGetCurrentDiceSelectionTwo() {
+		Dice testDice = new Dice();
+		MatchModel testModel = new MatchModel();
+		//testModel.setCurrentDiceSelection(testDice);
+		testModel.setPlayerTwoDiceSelection(testDice);
+		//assertEquals(testModel.getCurrentDiceSelection(), testDice);
+		assertEquals(testModel.getPlayerTwoDiceSelection(), testDice);
+	}
+
+	@Test
+	//Tests Current Dice Selection Setter
+	public void testSetCurrentDiceSelectionTwo() {
+		Dice testDice = new Dice();
+		MatchModel testModel = new MatchModel();
+		//testModel.setCurrentDiceSelection(testDice);
+		testModel.setPlayerTwoDiceSelection(testDice);
+		//assertEquals(testModel.getCurrentDiceSelection(), testDice);
+		assertEquals(testModel.getPlayerTwoDiceSelection(), testDice);
 	}
 
 	@Test

@@ -92,12 +92,22 @@ public class MatchControllerTest {
 	}
 
 	@Test
-	//Tests Remove From Dice Selection
-	public void testRemoveFromDiceSelection() {//Not sure what to test Here
+	//Tests Remove From Dice One Selection
+	public void testRemoveFromDiceSelectionOne() {//Not sure what to test Here
 		MatchModel testModel = new MatchModel();
 		//Dragon testDrag1 = new DragonLibrary().getDragon(0);
-		MatchController.removeFromDiceSelection(testModel);
-		
+		//MatchController.removeFromDiceSelection(testModel);
+		MatchController.removeFromDiceSelectionOne(testModel);
+		assertEquals(testModel.getDragonBeingRemovedFromDice(), null);
+	}
+	
+	@Test
+	//Tests Remove From Dice Two Selection
+	public void testRemoveFromDiceSelectionTwo() {//Not sure what to test Here
+		MatchModel testModel = new MatchModel();
+		//Dragon testDrag1 = new DragonLibrary().getDragon(0);
+		//MatchController.removeFromDiceSelection(testModel);
+		MatchController.removeFromDiceSelectionTwo(testModel);
 		assertEquals(testModel.getDragonBeingRemovedFromDice(), null);
 	}
 
@@ -108,7 +118,8 @@ public class MatchControllerTest {
 		MatchModel testModel = new MatchModel();
 		testModel.setPlayerOne(testPlayer);
 		Dice testDice = new Dice(); 
-		testModel.setCurrentDiceSelection(testDice);
+	//	testModel.setCurrentDiceSelection(testDice);
+		testModel.setPlayerOneDiceSelection(testDice);
 		MatchController.setPlayerOneDice(testModel);
 		
 		assertEquals(testModel.getPlayerOne().getDice().getDice(), testDice.getDice());
@@ -121,10 +132,11 @@ public class MatchControllerTest {
 		MatchModel testModel = new MatchModel();
 		testModel.setPlayerTwo(testPlayer);
 		Dice testDice = new Dice(); 
-		testModel.setCurrentDiceSelection(testDice);
+		//testModel.setCurrentDiceSelection(testDice);
+		testModel.setPlayerTwoDice(testDice);
 		MatchController.setPlayerTwoDice(testModel);
 		
-		assertEquals(testModel.getPlayerTwo().getDice().getDice(), testDice.getDice());
+		assertEquals(testModel.getPlayerTwo().getDice().getDice().toString(), testDice.getDice().toString());
 	}
 
 }
