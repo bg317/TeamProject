@@ -4,6 +4,7 @@ import dragonspiretournament.GameObjects.Dragons.Dragon;
 
 import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 import dragonspiretournament.title.TitleController;
+import dragonspiretournament.nameselection.NameSelectionController;
 import dragonspiretournament.nameselection.NameSelectionView;
 import dragonspiretournament.title.TitleView;
 import dragonspiretournament.armyselection.ArmySelectionView;
@@ -67,14 +68,11 @@ public class GameView {
 		titleFrame.setLayout(new GridLayout(1,1));
 		
 		//creating elements to add to the card layout
-		nameView = new NameSelectionView();
-		nameView.setBackground(Color.white);
 		titleView = new TitleView();
 		titleView.setBackground(Color.white);
 		
 		//adding elements to the card layout
 		wrapperPanel.add(titleView, "titleView");
-		wrapperPanel.add(nameView, "nameView");
 		titleFrame.getContentPane().add(wrapperPanel);
 		//make the frame visible
 		titleFrame.setVisible(true);
@@ -92,6 +90,17 @@ public class GameView {
 		cardLayout.show(wrapperPanel, ViewToShow);
 		
 		wrapperPanel.repaint();
+	}
+
+	public void createNameSelectionView()
+	{
+        NameSelectionController.resetPlayers();
+	    nameView = new NameSelectionView();
+
+        //adds a card to the wrapper panel for the name selection view
+        wrapperPanel.add(nameView, "nameView");
+
+        wrapperPanel.repaint();	
 	}
 	
 	/**

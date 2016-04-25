@@ -145,5 +145,18 @@ public class NameSelectionModel {
 	{
 		return player2;
 	}
+
+	/**
+	 * resets players back to default values
+	 */
+	public void resetPlayers()
+	{
+        currentPlayer = ONE;
+        playerOneName = "Player 1";
+        playerTwoName = "Player 2";
+        
+        player1 = new Player(playerOneName);
+        player2 = new Player(playerTwoName);
+	}
 }
 

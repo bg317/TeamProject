@@ -154,10 +154,12 @@ public class ArmySelectionView extends JPanel {
 				ArmySelectionController.confirmPlayersArmy( selectionModel );
 				if ( gameState.getPlayerOneArmySelection() && !gameState.getPlayerTwoArmySelection() ) {
 					gameState.setPlayerTwoArmySelection( true );
-					//make another selection card(??)
+					GameController.createArmySelectionView(playerOne, playerTwo);
+					GameController.changeView("armySelect");
 					//new ArmySelectionView( playerOne, playerTwo, gameState );
-					armySelectionWindow.setVisible(false);
+					//armySelectionWindow.setVisible(false);
 				} else {
+                    gameState.setPlayerTwoArmySelection( false );
 					armySelectionWindow.setVisible(false);
 					gameState.setPlayerOneDiceSelection( true );
 					//create a new match card(??)

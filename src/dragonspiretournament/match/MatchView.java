@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import dragonspiretournament.game.GameController;
 import dragonspiretournament.game.GameState;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Dice;
@@ -140,7 +141,7 @@ public class MatchView extends JPanel {
 		playerTwoHP.setValue(50);
 
 		playerOneLastAction = new JLabel("No dragons rolled yet");
-		playerOneLastAction.setBounds(346, 105, 243, 108);
+		playerOneLastAction.setBounds(306, 105, 243, 108);
 		matchFrame.add(playerOneLastAction);
 
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
@@ -153,7 +154,7 @@ public class MatchView extends JPanel {
 		matchFrame.add(playerOneLastDragon);
 		
 		playerTwoLastDragon = new DragonButton("");
-		playerTwoLastDragon.setBounds(341, 220, 146, 108);
+		playerTwoLastDragon.setBounds(301, 220, 146, 108);
 		matchFrame.add(playerTwoLastDragon);
 		
 		btnRoll = new JButton("Roll");
@@ -274,8 +275,10 @@ public class MatchView extends JPanel {
 		if ( matchModel.isMatchOver() ) {
 			if ( matchModel.isDraw() ) {
 				JOptionPane.showMessageDialog( matchFrame, "Game has come to a draw!");
+				GameController.changeView("titleView");
 			} else {
 				JOptionPane.showMessageDialog( matchFrame, "The player " + matchModel.getWinner().getName() + " has won the game!");
+                GameController.changeView("titleView");
 			}
 		}
 	}
@@ -328,7 +331,7 @@ public class MatchView extends JPanel {
 		Dragon currentDrag;
 		diceSelectionPanel.removeAll();
 
-        currentDrag = dragonsItr.next();//Skips "Missed" Dragon
+        currentDrag = dragonsItr.next(); //Skips "Missed" Dragon
 		
 		while ( dragonsItr.hasNext() ) {
 			currentDrag = dragonsItr.next();

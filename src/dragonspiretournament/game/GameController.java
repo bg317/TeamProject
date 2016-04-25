@@ -76,7 +76,17 @@ public class GameController {
 		
 		playerTwo.setArmy(playerTwoArmy);
 	}
-	
+
+    /**
+     * calls the method in game view to create a new card for the name selection screen.
+     * @param playerOne the player object containing information on player one, passed from name selection.
+     * @param playerTwo the player object containing information on player two, passed from name selection.
+     */
+    public static void createNameSelectionView()
+    {
+        gameView.createNameSelectionView();
+    }
+
 	/**
 	 * calls the method in game view to create a new card for the army selection screen.
 	 * @param playerOne the player object containing information on player one, passed from name selection.
