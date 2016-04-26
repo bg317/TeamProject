@@ -73,7 +73,7 @@ Turn Begin:<br/>
 Game End:<br/>
 1) Winner is shown on screen<br/>
 2) Leaderboards are updated<br/>
-3) Close pop-up or click "Okay", go to Title Select Screen<br/>
+3) Click "OK" or close pop-up (go to Title Select Screen)<br/>
 
 Leaderboard:<br/>
 choice 1: Back (go to Title Select Screen)<br/>
