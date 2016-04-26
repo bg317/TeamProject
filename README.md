@@ -35,15 +35,15 @@ When rolling, an attack will occur which will be reflected in the status text fo
 
 # <a name="authors"></a>Authors
 
-Brandon G.  (bg317 / pin 317)
+Brandon G.  (id: bg317)
 
-Lloyd A.    (lkcallen)
+Lloyd A.    (id: lkcallen)
 
-Cheri T.    (cmthom10)
+Cheri T.    (id: cmthom10)
 
-Larry S.    (lstandage135)
+Larry S.    (id: lstandage135)
 
-Caleb D.    (calebdav)
+Caleb D.    (id: calebdav)
 
 # <a name="rules"></a>Game Rules and Other Info
 
@@ -152,8 +152,7 @@ Attack damage base: 5
 
 Type Strong Against: Solar
 
-
-# <a href="docs"></a> Documentation Entry Point
+# <a name="docs" href="docs"></a>Documentation Entry Point
 
 https://github.com/bg317/TeamProject/tree/master/docs
 
