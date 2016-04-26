@@ -33,19 +33,18 @@ The dice selection currently selects for both players, so each player cannot hav
 
 When rolling, an attack will occur which will be reflected in the status text for each player. The damage is the damage received. If you are out of HP you will either win or a draw will occur. Exit the game after match is over by selecting the X in the top right.
 
-#Authors
-# <a name="authors"></a>
-Brandon G.
+# <a name="authors"></a>Authors
 
-Lloyd A.
+Brandon G.  (bg317 / pin 317)
 
-Cheri T.
+Lloyd A.    (lkcallen)
 
-Larry S. 
+Cheri T.    (cmthom10)
 
-Caleb D.
+Larry S.    (lstandage135)
 
-# Rules
+Caleb D.    (calebdav)
+
 # <a name="rules"></a>Game Rules and Other Info
 
 Dragonspire Tournament
@@ -60,26 +59,24 @@ Choice 1: Start  (go to Game Begin)<br/>
 Choice 2: Leaderboard (go to Leaderboard)<br/>
 
 Game Begin:<br/>
-1) Both players choose 12 dragons to bring into battle<br/>
+1) Both players choose up to 12 dragons to bring into battle<br/>
 2) Both players’ strongholds start with a base of 25 hp<br/>
-3) go to turn begin<br/>
+3) Go to Turn Begin<br/>
 
 Turn Begin:<br/>
-1) player 1 & 2 choose 5 dragons of 12 to fill 5 slots on a 6-sided die (player 1 goes first on odds, player 2 on evens)<br/>
-2) player 1 & 2 rolls die for damage (player 1 rolls first on odds, player 2 on evens)<br/>
-3) damage is applied to each side<br/>
-4) if both strongholds’ hp is above 0, go back to step 1<br/>
-5) if a stronghold’s hp is at 0, go to Game End<br/>
+1) Player 1 & 2 choose up to 5 dragons of 12 to fill 5 slots on a 6-sided die (player 1 goes first on odds, player 2 on evens)<br/>
+2) Player 1 & 2 rolls die for damage<br/>
+3) Damage is applied to each side<br/>
+4) If both strongholds’ hp is above 0, go back to step 1<br/>
+5) If a stronghold’s hp is at 0, go to Game End<br/>
 
 Game End:<br/>
 1) Winner is shown on screen<br/>
 2) Leaderboards are updated<br/>
-3)Choice 1: Play Again? (go to Game Begin)<br/>
-4)Choice 2: End Game (go to Title Select Screen)<br/>
-5) Choice 3: View Leaderboard (go to Leaderboard)<br/>
+3) Close pop-up or click "Okay", go to Title Select Screen<br/>
 
 Leaderboard:<br/>
-choice 1: Done (go to Title Select Screen)<br/>
+choice 1: Back (go to Title Select Screen)<br/>
 
 --
 Dragon flavor text:
@@ -93,6 +90,8 @@ A dragon commonly employed by wizards. They are born of an igneous rock submerge
 
 Attack damage Base: 5
 
+Type Strong Against: Flora
+
 <strong>Tenebret</strong><br/>
 
 Element: Ice<br/>
@@ -100,6 +99,8 @@ Element: Ice<br/>
 This dragon emerges fully formed from ancient, undisturbed ice flows on moonless nights. It imprints on the first wizard it sees after emerging. Tenebrets have the curious trait of always being surrounded by a swirling front of frigid air; stingy wizards sometimes employ them as full-time refrigerators.
 
 Attack damage base: 5
+
+Type Strong Against: Lava
 
 <strong>Arinial</strong><br/>
 
@@ -109,6 +110,8 @@ Arinals are golem dragons born from chunks of ore. Arinials will eat any metal t
 
 Attack damage base: 5
 
+Type Strong Against: Ice
+
 <strong>Skenna</strong></br>
 
 Element: Goo</br>
@@ -116,6 +119,8 @@ Element: Goo</br>
 Their beards are made of the adhesive paste that they produce in a gland in their mouths. The shapes and forms of their beards are quite complex and are believed to be a kind of self-expression. Since their adhesive paste hardens into a cement-like substance, skennas are popular among wizards who like to handle their own home repairs.
 
 Attack damage base: 5
+
+Type Strong Against: Storm
 
 <strong>Fladoen</strong><br/>
 
@@ -125,6 +130,8 @@ Fladoens like to hum and sing, and will repeat back tunes that are played for th
 
 Attack damage base: 5
 
+Type Strong Against: Goo
+
 <strong>Galthi</strong><br/>
 
 Element: Storm<br/>
@@ -132,6 +139,8 @@ Element: Storm<br/>
 Often mistaken for a familiar by regular folk, these dragons are small enough to ride on their masters’ shoulders, but no less potent than their larger counterparts. They are the protector of choice for the traveling wizard.  Galthi are born of a gecko that has ingested a rare electrical reagent called a Cloudsphere. It is commonly believed that the first Galthi was created by mistake. No one would purposely waste a Cloudsphere like that, would they?
 
 Attack damage base: 5
+
+Type Strong Against: Metal
 
 <strong>Trudrake</strong><br/>
 
@@ -141,7 +150,9 @@ These dragons are a kind of sentient plant related to the fabled mandrake. Grown
 
 Attack damage base: 5
 
-# docs
+Type Strong Against: Solar
+
+
 # <a href="docs"></a> Documentation Entry Point
 
 https://github.com/bg317/TeamProject/tree/master/docs
