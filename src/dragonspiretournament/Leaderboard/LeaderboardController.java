@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import dragonspiretournament.PlayerDatabase.DragonDB;
 import dragonspiretournament.PlayerDatabase.PlayerEntry;
+import dragonspiretournament.game.GameController;
 
 public class LeaderboardController{
 	
@@ -14,5 +15,8 @@ public class LeaderboardController{
 		db.sort();
 		return db.get();
 	}
-	
+
+	public static void goToTitleView() {
+	    GameController.changeView("titleView");
+	}
 }

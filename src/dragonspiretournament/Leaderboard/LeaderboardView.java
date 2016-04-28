@@ -13,6 +13,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 
 import dragonspiretournament.Leaderboard.LeaderboardModel;
+import dragonspiretournament.title.TitleController;
 
 public class LeaderboardView extends JPanel {
 	
@@ -71,7 +72,7 @@ public class LeaderboardView extends JPanel {
 		//mainPanel.setLayout(null);
 		
 		infoPanel = new JPanel();
-		infoPanel.setBounds(50, 50, 380, 600);
+		infoPanel.setBounds(50, 50, 380, 550);
 		infoPanel.setLayout(null);
         infoPanel.setBorder(new LineBorder(Color.BLACK));
 		leaderboardFrame.add(infoPanel);
@@ -89,9 +90,15 @@ public class LeaderboardView extends JPanel {
 		leaderboardFrame.add(winsLabel);
 		
 		backButton = new JButton("Back");
-		backButton.setBounds(350, 675, 75, 50);
+		backButton.setBounds(350, 610, 75, 23);
 		leaderboardFrame.add(backButton);
-		
+
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                LeaderboardController.goToTitleView();                
+            }
+        });
+
 		for(int i = 0; i < info.size(); i++){
 			ranks = new JLabel(i + 1 + "", JLabel.LEFT);
 			ranks.setBounds(5, i * 17, 50, 20);
