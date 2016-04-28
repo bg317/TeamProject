@@ -23,11 +23,6 @@ public class LeaderboardModel{
 		}
 		return result;
 	}
-	
-	public static void main(String[] args){
-		LeaderboardModel info = new LeaderboardModel();
-		System.out.println(info.toString());
-	}
 
 	public int size() {
 		return playerArray.size();

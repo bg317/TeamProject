@@ -105,5 +105,13 @@ public class GameController {
 		gameState = gameStateEdit;
 		gameView.createMatchView(playerOne, playerTwo, gameStateEdit);
 	}
-    
+
+    /**
+     * creates the leaderboard view when selected.
+     */
+    public static void createLeaderboardView()
+    {
+        gameView.createLeaderboardView(gameState);
+    }
+
 }

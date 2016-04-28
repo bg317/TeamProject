@@ -10,6 +10,7 @@ import dragonspiretournament.title.TitleView;
 import dragonspiretournament.armyselection.ArmySelectionView;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.match.MatchView;
+import dragonspiretournament.Leaderboard.LeaderboardView;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -29,7 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import javax.swing.SwingConstants;
 /**
  * The Class GameView.
  */
@@ -52,6 +53,9 @@ public class GameView {
 	
 	/** the match view*/
 	MatchView matchView;
+	
+	/** the leaderboard view*/
+	LeaderboardView leaderboardView;
 	
 	/**
 	 * Instantiates a new game view.
@@ -137,5 +141,12 @@ public class GameView {
 		wrapperPanel.repaint();
 	}
 
-    
+    public void createLeaderboardView(GameState gameState)
+    {
+        leaderboardView = new LeaderboardView();
+        
+        wrapperPanel.add(leaderboardView, "leaderboardView");
+        
+        wrapperPanel.repaint();
+    }
 }

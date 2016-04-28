@@ -25,8 +25,14 @@ public class TitleView extends JPanel {
 	/** The title label. */
 	private JLabel titleLabel;
 	
+	/** The button panel. */
+	private JPanel buttonPanel;
+
 	/** The start button. */
 	private JButton startButton;
+	
+	/** The leaderboard button. */
+	private JButton leaderboardButton;
 	
 	/**
 	 * Instantiates a new title view.
@@ -41,15 +47,26 @@ public class TitleView extends JPanel {
 		titleFrame.setBackground(Color.white);
 		
 		titleLabel = new JLabel("<html><p> <h2>Dragonspire Tournament</h2></br><div style= 'text-align: center;'>Press Start to continue!</div></p></html>", SwingConstants.CENTER);
+        titleFrame.add(titleLabel, BorderLayout.CENTER);
+        
+        buttonPanel = new JPanel(new BorderLayout());
 		startButton = new JButton("Start");
-		titleFrame.add(startButton, BorderLayout.SOUTH);
-		titleFrame.add(titleLabel, BorderLayout.CENTER);
+		buttonPanel.add(startButton, BorderLayout.NORTH);
+		leaderboardButton = new JButton("Leaderboard");
+		buttonPanel.add(leaderboardButton, BorderLayout.SOUTH);
+		titleFrame.add(buttonPanel, BorderLayout.SOUTH);
 		
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TitleController.doSomething();
 				
 			}
+		});
+		
+		leaderboardButton.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        TitleController.goToLeaderboard();
+		    }
 		});
 		
 		this.add(titleFrame);

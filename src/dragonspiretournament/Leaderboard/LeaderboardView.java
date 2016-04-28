@@ -1,11 +1,11 @@
 package dragonspiretournament.Leaderboard;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,16 +14,16 @@ import java.awt.Color;
 
 import dragonspiretournament.Leaderboard.LeaderboardModel;
 
-public class LeaderboardView{
+public class LeaderboardView extends JPanel {
 	
 	/** The leaderboard model */
 	private LeaderboardModel info;
 	
 	/** The Leaderboard frame */
-	private JFrame leaderboardFrame;
+	private JPanel leaderboardFrame;
 	
 	/** The main panel */
-	private JPanel mainPanel;
+	//private JPanel mainPanel;
 	
 	/** The main panel */
 	private JPanel infoPanel;
@@ -52,40 +52,45 @@ public class LeaderboardView{
 	/**
 	 * Instantiates a new leaderboard view.
 	 */
-	public LeaderboardView(){
+	public LeaderboardView() {
 		info = new LeaderboardModel();
 		
-		leaderboardFrame = new JFrame("Leaderboard");
-		leaderboardFrame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
-		leaderboardFrame.setSize(500, 800);
-		leaderboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		leaderboardFrame.setVisible(true);
+		//leaderboardFrame = new JFrame("Leaderboard");
+		//leaderboardFrame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		//leaderboardFrame.setSize(500, 800);
+		//leaderboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//leaderboardFrame.setVisible(true);
+
+		leaderboardFrame = new JPanel();
+		leaderboardFrame.setPreferredSize(new Dimension(500, 800));
+		leaderboardFrame.setLayout(null);
 		
-		mainPanel = new JPanel();
-		leaderboardFrame.getContentPane().add(mainPanel);
-		mainPanel.setLayout(null);
+		
+		//mainPanel = new JPanel();
+		//leaderboardFrame.getContentPane().add(mainPanel);
+		//mainPanel.setLayout(null);
 		
 		infoPanel = new JPanel();
 		infoPanel.setBounds(50, 50, 380, 600);
 		infoPanel.setLayout(null);
-		mainPanel.add(infoPanel);
-		infoPanel.setBorder(new LineBorder(Color.BLACK));
+        infoPanel.setBorder(new LineBorder(Color.BLACK));
+		leaderboardFrame.add(infoPanel);
 		
 		rank = new JLabel("Rank");
 		rank.setBounds(50, 20, 30, 30);
-		mainPanel.add(rank);
+		leaderboardFrame.add(rank);
 		
 		playerNames = new JLabel("Player Name");
 		playerNames.setBounds(120, 20, 300, 30);
-		mainPanel.add(playerNames);
+		leaderboardFrame.add(playerNames);
 		
 		winsLabel = new JLabel("W/L/T");
 		winsLabel.setBounds(350, 20, 100, 30);
-		mainPanel.add(winsLabel);
+		leaderboardFrame.add(winsLabel);
 		
 		backButton = new JButton("Back");
 		backButton.setBounds(350, 675, 75, 50);
-		mainPanel.add(backButton);
+		leaderboardFrame.add(backButton);
 		
 		for(int i = 0; i < info.size(); i++){
 			ranks = new JLabel(i + 1 + "", JLabel.LEFT);
@@ -99,7 +104,9 @@ public class LeaderboardView{
 			infoPanel.add(stats);
 			infoPanel.repaint();
 		}
-		
+
+		this.add(leaderboardFrame);
+		this.setVisible(true);
 	}
 
 }

@@ -17,4 +17,8 @@ public class TitleController {
 		GameController.changeView("nameView");
 	}
 
+	public static void goToLeaderboard() {
+	    GameController.createLeaderboardView();
+	    GameController.changeView("leaderboardView");
+	}
 }
