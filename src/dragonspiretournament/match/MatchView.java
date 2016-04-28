@@ -92,8 +92,20 @@ public class MatchView extends JPanel {
     
     /** The btn confirm selection. */
     private JButton btnConfirmSelectionPlayerTwo;
-	
-	/** The btn roll. */
+
+    /** The btn last dice for player one. */
+    private JButton btnLastDicePlayerOne;
+    
+    /** The btn last dice for player two. */
+    private JButton btnLastDicePlayerTwo;
+
+    /** The btn clear dice for player one. */
+    private JButton btnClearDicePlayerOne;
+    
+    /** The btn clear dice for player two. */
+    private JButton btnClearDicePlayerTwo;    
+
+    /** The btn roll. */
 	private JButton btnRoll;
 	
 	
@@ -165,16 +177,16 @@ public class MatchView extends JPanel {
 		playerTwoHP.setValue(50);
 
 		playerOneLastAction = new JLabel("No dragons rolled yet");
-		playerOneLastAction.setBounds(306, 105, 243, 108);
+		playerOneLastAction.setBounds(306, 175, 243, 108);
 		matchFrame.add(playerOneLastAction);
 
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
-		playerTwoLastAction.setBounds(509, 220, 311, 108);		
+		playerTwoLastAction.setBounds(509, 290, 311, 108);		
 		matchFrame.setVisible(true);
 		matchFrame.add(playerTwoLastAction);
 		
 		playerOneLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"));
-		playerOneLastDragon.setBounds(506, 99, 146, 108);
+		playerOneLastDragon.setBounds(506, 169, 146, 108);
 		matchFrame.add(playerOneLastDragon);
 		playerOneLastDragon.addActionListener( new ActionListener() {
 
@@ -188,7 +200,7 @@ public class MatchView extends JPanel {
 		});
 		
 		playerTwoLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"));
-		playerTwoLastDragon.setBounds(301, 220, 146, 108);
+		playerTwoLastDragon.setBounds(301, 290, 146, 108);
 		matchFrame.add(playerTwoLastDragon);
 		playerTwoLastDragon.addActionListener( new ActionListener() {
 
@@ -202,7 +214,7 @@ public class MatchView extends JPanel {
 		});
 		
 		btnRoll = new JButton("Roll");
-		btnRoll.setBounds(440, 442, 89, 23);
+		btnRoll.setBounds(440, 486, 89, 38);
 		matchFrame.add(btnRoll);
 		btnRoll.addActionListener( new ActionListener() {
 			@Override
@@ -213,8 +225,10 @@ public class MatchView extends JPanel {
 				checkIfMatchOver();
                 showDiceSelectionOne();
                 showPlayerOneArmies();
-                if ( !matchModel.isMatchOver() )
+                if ( !matchModel.isMatchOver() ) {
                 	JOptionPane.showMessageDialog( matchFrame, "It is " + playerOne.getName() + "'s turn now!");
+                    lblAddDiceHere.setVisible(true);
+                }
 			}
 		});
 		btnRoll.setVisible(false);
@@ -240,6 +254,7 @@ public class MatchView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 matchModel.getPlayerOne().setDice( matchModel.getPlayerOneDiceSelection() );
+                matchModel.setPlayerOneLastDice( matchModel.getPlayerOneDiceSelection() );
                 btnConfirmSelectionPlayerOne.setVisible(false);
                 btnConfirmSelectionPlayerTwo.setVisible(true);
                 hidePlayerOneArmies();
@@ -259,14 +274,66 @@ public class MatchView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 matchModel.getPlayerTwo().setDice( matchModel.getPlayerTwoDiceSelection() );
+                matchModel.setPlayerTwoLastDice( matchModel.getPlayerTwoDiceSelection() );
                 btnConfirmSelectionPlayerTwo.setVisible(false);
                 btnRoll.setVisible(true);
                 hidePlayerTwoArmies();
                 hideDiceSelectionTwo();
+                lblAddDiceHere.setVisible(false);
             }
         });
         btnConfirmSelectionPlayerTwo.setVisible(false);
+
+        btnLastDicePlayerOne = new JButton("Last Dice");
+        btnLastDicePlayerOne.setBounds(690, 493, 100, 23);
+        matchFrame.add(btnLastDicePlayerOne);
+        btnLastDicePlayerOne.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                matchModel.setPlayerOneDiceSelection( matchModel.getPlayerOneLastDice() );
+                updateDiceSelectionPanelOne( PlayerOneDiceSelection );
+            }
+        });
+        btnLastDicePlayerOne.setVisible(false);
         
+        btnLastDicePlayerTwo = new JButton("Last Dice");
+        btnLastDicePlayerTwo.setBounds(690, 493, 100, 23);
+        matchFrame.add(btnLastDicePlayerTwo);
+        btnLastDicePlayerTwo.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                matchModel.setPlayerTwoDiceSelection( matchModel.getPlayerTwoLastDice() );
+                updateDiceSelectionPanelTwo( PlayerTwoDiceSelection );
+            }
+        });
+        btnLastDicePlayerTwo.setVisible(false);
+        
+        btnClearDicePlayerOne = new JButton("Clear Dice");
+        btnClearDicePlayerOne.setBounds(690, 522, 100, 23);
+        matchFrame.add(btnClearDicePlayerOne);
+        btnClearDicePlayerOne.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dice empty = new Dice();
+                matchModel.setPlayerOneDiceSelection( empty );
+                updateDiceSelectionPanelOne( PlayerOneDiceSelection );
+            }
+        });
+        btnClearDicePlayerOne.setVisible(false);
+        
+        btnClearDicePlayerTwo = new JButton("Clear Dice");
+        btnClearDicePlayerTwo.setBounds(690, 522, 100, 23);
+        matchFrame.add(btnClearDicePlayerTwo);
+        btnClearDicePlayerTwo.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dice empty = new Dice();
+                matchModel.setPlayerTwoDiceSelection( empty );
+                updateDiceSelectionPanelTwo( PlayerTwoDiceSelection );
+            }
+        });
+        btnClearDicePlayerTwo.setVisible(false);
+
 		
 		this.add(matchFrame);
 		
@@ -346,6 +413,8 @@ public class MatchView extends JPanel {
         PlayerOneDiceSelection.setVisible(false);
         PlayerOneDiceSelection.removeAll();
         PlayerOneDiceSelection.updateUI();
+        btnLastDicePlayerOne.setVisible(false);
+        btnClearDicePlayerOne.setVisible(false);
     }
     
     /**
@@ -355,6 +424,8 @@ public class MatchView extends JPanel {
         PlayerTwoDiceSelection.setVisible(false);
         PlayerTwoDiceSelection.removeAll();
         PlayerTwoDiceSelection.updateUI();
+        btnLastDicePlayerTwo.setVisible(false);
+        btnClearDicePlayerTwo.setVisible(false);
     }
     
     /**
@@ -364,6 +435,8 @@ public class MatchView extends JPanel {
         PlayerOneDiceSelection.setVisible(true);
         PlayerOneDiceSelection.removeAll();
         PlayerOneDiceSelection.updateUI();
+        if( matchModel.getPlayerOneLastDice() != null )
+            btnLastDicePlayerOne.setVisible(true);
     }
     
     /**
@@ -373,6 +446,8 @@ public class MatchView extends JPanel {
         PlayerTwoDiceSelection.setVisible(true);
         PlayerTwoDiceSelection.removeAll();
         PlayerTwoDiceSelection.updateUI();
+        if( matchModel.getPlayerTwoLastDice() != null )
+            btnLastDicePlayerTwo.setVisible(true);
     }
     
 	/**
@@ -522,7 +597,11 @@ public class MatchView extends JPanel {
         }
         
         diceSelectionPanel.updateUI();
-        
+
+        if( matchModel.getPlayerOneDiceSelection().getFaceCount() > 1 )
+            btnClearDicePlayerOne.setVisible(true);
+        else
+            btnClearDicePlayerOne.setVisible(false);
     }
     
     /**
@@ -556,6 +635,12 @@ public class MatchView extends JPanel {
         }
         
         diceSelectionPanel.updateUI();
+        
+        if( matchModel.getPlayerTwoDiceSelection().getFaceCount() > 1 )
+            btnClearDicePlayerTwo.setVisible(true);
+        else
+            btnClearDicePlayerTwo.setVisible(false);
+            
         
     }
     

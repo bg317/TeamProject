@@ -63,6 +63,12 @@ public class MatchModel {
 	
 	/** The player two last damage recv. */
 	private int playerTwoLastDamageRecv;
+    
+    /** The player one last dice. */
+    private Dice playerOneLastDice;
+    
+    /** The player two last dice. */
+    private Dice playerTwoLastDice;
 	
 	
 	/** The draw. */
@@ -103,6 +109,8 @@ public class MatchModel {
 		this.playerTwoHealth = playerTwo.getStrongholdHP();
         this.playerOneDiceSelection = new Dice();
         this.playerTwoDiceSelection = new Dice();
+        this.playerOneLastDice = null;
+        this.playerTwoLastDice = null;
 		this.playerOneLastAction = "No dice has been rolled yet";
 		this.playerTwoLastAction = "No dice has been rolled yet";
 		this.matchOver = false;
@@ -120,6 +128,8 @@ public class MatchModel {
 		this.playerTwoDice = new Dice();
         this.playerOneDiceSelection = new Dice();
         this.playerTwoDiceSelection = new Dice();
+        this.playerOneLastDice = null;
+        this.playerTwoLastDice = null;
 		this.matchOver = false;
 	}
 
@@ -330,6 +340,46 @@ public class MatchModel {
         this.playerTwoDiceSelection = currentDiceSelection;
     }
 
+    /**
+     * Gets the player one last dic.
+     *
+     * @return the player one last dice
+     */
+    public Dice getPlayerOneLastDice() {
+        return playerOneLastDice;
+    }
+
+    /**
+     * Sets the player one last dice.
+     *
+     * @param playerOneLastDice the new player one last dice
+     */
+    public void setPlayerOneLastDice(Dice playerOneLastDice) {
+        this.playerOneLastDice = new Dice();
+        for(int index = 1; index < playerOneLastDice.getFaceCount(); index++)
+            this.playerOneLastDice.add( playerOneLastDice.getFace(index) );
+    }
+
+    /**
+     * Gets the player two last dice.
+     *
+     * @return the player two last dice
+     */
+    public Dice getPlayerTwoLastDice() {
+        return playerTwoLastDice;
+    }
+
+    /**
+     * Sets the player two last dice.
+     *
+     * @param playerTwoLastDice the new player two last dice
+     */
+    public void setPlayerTwoLastDice(Dice playerTwoLastDice) {
+        this.playerTwoLastDice = new Dice();
+        for(int index = 1; index < playerTwoLastDice.getFaceCount(); index++)
+            this.playerTwoLastDice.add( playerTwoLastDice.getFace(index) );
+    }
+
 	/**
 	 * Gets the dragon being added to dice.
 	 *
@@ -338,6 +388,7 @@ public class MatchModel {
 	public Dragon getDragonBeingAddedToDice() {
 		return dragonBeingAddedToDice;
 	}
+
 
 	/**
 	 * Sets the dragon being added to dice.
