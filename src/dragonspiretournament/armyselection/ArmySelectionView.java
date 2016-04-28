@@ -157,7 +157,7 @@ public class ArmySelectionView extends JPanel {
 		mainPanel.add(btnConfirmSelection);
 		
 		JLabel playerPickMessage = new JLabel(selectionModel.getPlayer().getName() + ", select your Army!");
-		playerPickMessage.setBounds(70, 25, 194, 33);
+		playerPickMessage.setBounds(350, 85, 194, 33);
 		mainPanel.add(playerPickMessage);
 		btnConfirmSelection.addActionListener( new ActionListener() {
 			@Override
