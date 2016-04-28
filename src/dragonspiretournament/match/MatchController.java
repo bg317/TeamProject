@@ -3,6 +3,9 @@ package dragonspiretournament.match;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dice;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
+import dragonspiretournament.PlayerDatabase.DragonDB;
+import dragonspiretournament.PlayerDatabase.PlayerEntry;
+
 import java.util.Random;
 
 /**
@@ -108,15 +111,81 @@ public class MatchController {
 		int playerTwoHP = playerTwo.getStrongholdHP();
 		
 		if ( playerOneHP < 1  && playerTwoHP < 1 ) { 
+			updatePlayerTie( playerOne );
+			updatePlayerTie( playerTwo );
 			matchModel.setDraw( true );
 			matchModel.setMatchOver( true );
 		} else if ( playerOneHP < 1 && playerTwoHP > 1 ) {
+			updatePlayerLoss( playerOne );
+			updatePlayerWin( playerTwo );
 			matchModel.setMatchOver( true );
 			matchModel.setWinner( playerTwo );
 		} else if ( playerTwoHP < 1 && playerOneHP > 1 ) {
+			updatePlayerWin( playerOne );
+			updatePlayerLoss( playerTwo );
 			matchModel.setMatchOver( true );
 			matchModel.setWinner( playerOne );
 		}
+	}
+	
+	/**
+	 * Updates player in the leaderboard database with a tie
+	 * 
+	 * @param play Player to be updated in leaderboard database
+	 */
+	public static void updatePlayerTie(Player play){
+		DragonDB database = new DragonDB();
+		PlayerEntry playerToEdit;
+		String playerName = play.getName();
+		
+		database.read();
+		if( database.exists( playerName ) ){
+			playerToEdit = database.Find( playerName );
+			playerToEdit.setTies( 1 + playerToEdit.getTies() );
+		}else{
+			database.add( playerName, 0, 0, 1 );
+		}
+		database.write();
+	}
+	
+	/**
+	 * Updates player in the leaderboard database with a loss
+	 * 
+	 * @param play Player to be updated in leaderboard database
+	 */
+	public static void updatePlayerLoss(Player play){
+		DragonDB database = new DragonDB();
+		PlayerEntry playerToEdit;
+		String playerName = play.getName();
+		
+		database.read();
+		if( database.exists( playerName ) ){
+			playerToEdit = database.Find( playerName );
+			playerToEdit.setLosses( 1 + playerToEdit.getLosses() );
+		}else{
+			database.add( playerName, 0, 1, 0 );
+		}
+		database.write();
+	}
+	
+	/**
+	 * Updates player in the leaderboard database with a loss
+	 * 
+	 * @param play Player to be updated in leaderboard database
+	 */
+	public static void updatePlayerWin(Player play){
+		DragonDB database = new DragonDB();
+		PlayerEntry playerToEdit;
+		String playerName = play.getName();
+		
+		database.read();
+		if( database.exists( playerName ) ){
+			playerToEdit = database.Find( playerName );
+			playerToEdit.setWins( 1 + playerToEdit.getWins() );
+		}else{
+			database.add( playerName, 1, 0, 0 );
+		}
+		database.write();
 	}
 	
 	/**

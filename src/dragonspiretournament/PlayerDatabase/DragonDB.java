@@ -38,8 +38,9 @@ public class DragonDB {
 			
 			inFile.close();
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog( null, "DragonGame.dat is not a valid filename. prepare for failure");
-			e.printStackTrace();
+			write();
+			//JOptionPane.showMessageDialog( null, "DragonGame.dat is not a valid filename. prepare for failure");
+			//e.printStackTrace();
 		}
 	}
 
