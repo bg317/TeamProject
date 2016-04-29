@@ -103,7 +103,7 @@ public class ArmySelectionView extends JPanel {
 		prevWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		currWindow = new JPanel();
-		currWindow.setBounds(344, 111, 298, 210);
+		currWindow.setBounds(344, 111, 298, 218);
 		mainPanel.add(currWindow);
 		currDragBtn = new DragonButton( this.selectionModel.getCurrent(),  "M");
 		setupCurrentDragonButtonListener( currDragBtn );
@@ -272,6 +272,7 @@ public class ArmySelectionView extends JPanel {
 				selectionPanel.updateUI();
 			}
 		}
+        selectionPanel.updateUI();
 		
 	}
 	

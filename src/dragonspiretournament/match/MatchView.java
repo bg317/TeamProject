@@ -182,10 +182,12 @@ public class MatchView extends JPanel {
 
 		playerOneLastAction = new JLabel("No dragons rolled yet");
 		playerOneLastAction.setBounds(306, 175, 243, 108);
+		playerOneLastAction.setFont(new Font(playerOneLastAction.getFont().getFontName(), Font.BOLD, 14));
 		matchFrame.add(playerOneLastAction);
 
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
-		playerTwoLastAction.setBounds(509, 290, 311, 108);		
+		playerTwoLastAction.setBounds(509, 290, 311, 108);
+        playerTwoLastAction.setFont(new Font(playerTwoLastAction.getFont().getFontName(), Font.BOLD, 14));
 		matchFrame.setVisible(true);
 		matchFrame.add(playerTwoLastAction);
 		
