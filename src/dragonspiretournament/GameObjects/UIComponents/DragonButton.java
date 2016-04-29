@@ -36,6 +36,24 @@ public class DragonButton extends JButton{
 	}
 	
 	/**
+	 * Instantiates a new dragon button and specifying which image size to use.
+	 *
+	 * @param dragon the dragon
+	 * @param imageSize the size of the image to show as a string -- M for medium, L for large, S for small.
+	 */
+	public DragonButton(Dragon dragon, String imageSize) {
+		super(new ImageIcon( "src/dragons/art/" + dragon.getName() + imageSize + ".png" ));	
+		associatedDragon = dragon;
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		this.setBorderPainted(false);
+		
+		ToolTipManager.sharedInstance().setInitialDelay(10);
+        ToolTipManager.sharedInstance().setDismissDelay(60000);
+		this.setToolTipText(associatedDragon.getName());
+	}
+	
+	/**
 	 * Instantiates a new dragon button.
 	 *
 	 * @param label the label
@@ -74,6 +92,9 @@ public class DragonButton extends JButton{
 	public void setAssociatedDragon(Dragon associatedDragon) {
 		this.associatedDragon = associatedDragon;
 		this.setIcon( new ImageIcon( associatedDragon.getIcon() ));
+		ToolTipManager.sharedInstance().setInitialDelay(10);
+        ToolTipManager.sharedInstance().setDismissDelay(60000);
+		this.setToolTipText(associatedDragon.getName());
 	}
 
 	

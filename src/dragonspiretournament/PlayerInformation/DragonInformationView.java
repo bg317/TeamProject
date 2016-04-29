@@ -99,6 +99,8 @@ public class DragonInformationView {
 		infoFrame = new JFrame("Dragonspire Tournament--" + dragonName + " Information");
 		infoFrame.getContentPane().setLayout(new GridLayout(1,1));
 		infoFrame.setSize(500, 600);
+		//This operation causes it to default to center.
+		infoFrame.setLocationRelativeTo(null);
 		
 		//initializing images
 		
@@ -108,7 +110,7 @@ public class DragonInformationView {
 		//initializing the J elements
 		totalPanel = new JPanel(new BorderLayout());
 		nameLabel = new JLabel("<html><h1 style='font-size:25px; color: #990000; padding: 10px'>"+dragonName+"</h1></html>", JLabel.CENTER);
-		descriptionLabel = new JLabel("<html><table style='font-size:12px; weight: normal; #595959; padding: 10px'>"+dragonDescription +"<br/><br/> Element: " + dragonElement+ "</html>");
+		descriptionLabel = new JLabel("<html><table style='font-size:12px; weight: normal; #595959; padding: 10px'>"+dragonDescription +"<br/><br/> Element: " + dragonElement + "<br/>Advantage: " + dragonAdvantage + "</html>");
 		descriptionPanel = new JPanel(new GridLayout(1,1));
 		descriptionPanel.add(descriptionLabel);
 		//statsPanel = new JPanel(new GridLayout(1,2));
@@ -123,7 +125,6 @@ public class DragonInformationView {
 		
 		//set main dragon image
 		try {
-			System.out.println(dragonArtLocation);
 			mainImage = new ImageButton(dragonArtLocation);
 			totalPanel.add(mainImage, BorderLayout.CENTER);
 		}

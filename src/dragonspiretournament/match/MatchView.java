@@ -3,6 +3,7 @@ package dragonspiretournament.match;
 import java.awt.BorderLayout;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,12 +17,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import dragonspiretournament.Game.GameState;
+import dragonspiretournament.game.GameController;
+import dragonspiretournament.game.GameState;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Dice;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.DragonButton;
+import dragonspiretournament.GameObjects.UIComponents.ImageButton;
+import dragonspiretournament.PlayerInformation.DragonInformationView;
 import dragonspiretournament.title.TitleController;
 import javax.swing.JSplitPane;
 import javax.swing.JProgressBar;
@@ -32,23 +36,32 @@ import java.awt.Color;
 /**
  * The Class MatchView.
  */
-public class MatchView {
+public class MatchView extends JPanel {
 	
 	/** The match model. */
 	private MatchModel matchModel;
 		
 	/** The match frame. */
-	private JFrame matchFrame;
+	private JPanel matchFrame;
 	
 	/** The player two army. */
-	private JPanel playerTwoArmy;
+	private JPanel playerTwoArmyUnclickable;
 	
 	/** The player one army. */
 	private JPanel playerOneArmy;
+    
+    /** The player two army. */
+    private JPanel playerOneArmyUnclickable;
+    
+    /** The player one army. */
+    private JPanel playerTwoArmy;
 	
-	/** The current dice selection. */
-	private JPanel currentDiceSelection;
+	/** The current dice selection for player one. */
+	private JPanel PlayerOneDiceSelection;
 	
+    /** The current dice selection for player two. */
+    private JPanel PlayerTwoDiceSelection;
+    
 	/** The lbl player two. */
 	private JLabel lblPlayerTwo;
 	
@@ -69,21 +82,39 @@ public class MatchView {
 	
 	/** The player two hp. */
 	private JProgressBar playerTwoHP;
-	
-	/** The player one last dragon. */
-	private DragonButton playerOneLastDragon;
-	
-	/** The player two last dragon. */
-	private DragonButton playerTwoLastDragon;
+    
+    /** The player one last dragon. */
+    private DragonButton playerOneLastDragon;
+    
+    /** The player two last dragon. */
+    private DragonButton playerTwoLastDragon; 
+
+    /** The player one last dragon. */
+    private JPanel playerOneLastDragonWindow;
+    
+    /** The player two last dragon. */
+    private JPanel playerTwoLastDragonWindow;
 	
 	/** The btn confirm selection. */
-	private JButton btnConfirmSelection;
-	
-	/** The btn roll. */
+	private JButton btnConfirmSelectionPlayerOne;
+    
+    /** The btn confirm selection. */
+    private JButton btnConfirmSelectionPlayerTwo;
+
+    /** The btn last dice for player one. */
+    private JButton btnLastDicePlayerOne;
+    
+    /** The btn last dice for player two. */
+    private JButton btnLastDicePlayerTwo;
+
+    /** The btn clear dice for player one. */
+    private JButton btnClearDicePlayerOne;
+    
+    /** The btn clear dice for player two. */
+    private JButton btnClearDicePlayerTwo;    
+
+    /** The btn roll. */
 	private JButton btnRoll;
-	
-	/** The match over box. */
-	private static JOptionPane matchOverBox;
 	
 	
 	/**
@@ -92,64 +123,97 @@ public class MatchView {
 	 * @param playerOne the player one
 	 * @param playerTwo the player two
 	 */
-	public MatchView( Player playerOne, Player playerTwo, GameState gameState ) {
+	public MatchView( Player playerOne, Player playerTwo) {
 		matchModel = new MatchModel( playerOne, playerTwo );
 
-		matchFrame = new JFrame("DragonSpire Tournament");
-		matchFrame.setSize(980, 700);
-		matchFrame.getContentPane().setLayout(null);
-		matchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//matchFrame = new JFrame("DragonSpire Tournament");
+		//matchFrame.setSize(980, 700);
+		//matchFrame.getContentPane().setLayout(null);
+		//matchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		playerOneArmy = new JPanel();
-		playerOneArmy.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		playerOneArmy.setBounds(41, 31, 54, 580);
-		matchFrame.getContentPane().add(playerOneArmy);
-		updateArmyPanel( playerOneArmy, matchModel.getPlayerOneArmy(), new DragonButton() );
+		matchFrame = new JPanel();
+		matchFrame.setPreferredSize(new Dimension(980, 700));
+		matchFrame.setLayout(null);
+		
+		this.setPreferredSize(new Dimension(980, 700));
+		//this.setLayout(new GridLayout(1,1));
+		
+		
+        
+        playerOneArmy = new JPanel();
+        playerOneArmy.setBorder(new LineBorder(new Color(255, 0, 0), 2));
+        playerOneArmy.setBounds(74, 31, 54, 580);
+        matchFrame.add(playerOneArmy);
+        updateArmyPanelOne( playerOneArmy, matchModel.getPlayerOneArmy(), new DragonButton() );
 
-		playerTwoArmy = new JPanel();
-		playerTwoArmy.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		playerTwoArmy.setBounds(800, 31, 54, 580);
-		matchFrame.getContentPane().add(playerTwoArmy);
-		updateArmyPanel( playerTwoArmy, matchModel.getPlayerTwoArmy(), new DragonButton() );
+        playerTwoArmyUnclickable = new JPanel();
+        playerTwoArmyUnclickable.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+        playerTwoArmyUnclickable.setBounds(835, 31, 54, 580);
+        matchFrame.add(playerTwoArmyUnclickable);
+        updateArmyPanelOther( playerTwoArmyUnclickable, matchModel.getPlayerTwoArmy(), new DragonButton() );
+        
+        playerTwoArmy = new JPanel();
+        playerTwoArmy.setBorder(new LineBorder(new Color(255, 0, 0), 2));
+        playerTwoArmy.setBounds(835, 31, 54, 580);
+        matchFrame.add(playerTwoArmy);
+        updateArmyPanelTwo( playerTwoArmy, matchModel.getPlayerTwoArmy(), new DragonButton() );
+        playerTwoArmy.setVisible(false);
+
+        playerOneArmyUnclickable = new JPanel();
+        playerOneArmyUnclickable.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+        playerOneArmyUnclickable.setBounds(74, 31, 54, 580);
+        matchFrame.add(playerOneArmyUnclickable);
+        updateArmyPanelOther( playerOneArmyUnclickable, matchModel.getPlayerOneArmy(), new DragonButton() );
+        playerOneArmyUnclickable.setVisible(false);
 		
 		lblPlayerTwo = new JLabel( matchModel.getPlayerOne().getName() );
-		lblPlayerTwo.setBounds(101, 492, 121, 40);
-		matchFrame.getContentPane().add(lblPlayerTwo);
+		lblPlayerTwo.setFont(new Font(lblPlayerTwo.getFont().getFontName(), Font.PLAIN, 18));
+		lblPlayerTwo.setBounds(140, 492, 160, 40);
+		matchFrame.add(lblPlayerTwo);
 		
 		lblPlayerTwoDragons = new JLabel( matchModel.getPlayerTwo().getName() );
-		lblPlayerTwoDragons.setBounds(627, 48, 79, 40);
-		matchFrame.getContentPane().add(lblPlayerTwoDragons);
+        lblPlayerTwoDragons.setFont(new Font(lblPlayerTwoDragons.getFont().getFontName(), Font.PLAIN, 18));
+		lblPlayerTwoDragons.setBounds(662, 48, 160, 40);
+		matchFrame.add(lblPlayerTwoDragons);
 		
 		playerOneHP = new JProgressBar(0, 25); //25 is the max strongholdHP
-		playerOneHP.setBounds(111, 537, 146, 14);
-		matchFrame.getContentPane().add(playerOneHP);
+		playerOneHP.setBounds(146, 537, 146, 14);
+		matchFrame.add(playerOneHP);
 		playerOneHP.setValue(50);
 		
 		playerTwoHP = new JProgressBar(0, 25); //25 is the max strongholdHP
-		playerTwoHP.setBounds(637, 86, 146, 14);
-		matchFrame.getContentPane().add(playerTwoHP);
+		playerTwoHP.setBounds(672, 93, 146, 14);
+		matchFrame.add(playerTwoHP);
 		playerTwoHP.setValue(50);
 
 		playerOneLastAction = new JLabel("No dragons rolled yet");
-		playerOneLastAction.setBounds(296, 105, 243, 108);
-		matchFrame.getContentPane().add(playerOneLastAction);
+		playerOneLastAction.setBounds(672, 93, 243, 80);
+		playerOneLastAction.setFont(new Font(playerOneLastAction.getFont().getFontName(), Font.PLAIN, 14));
+		matchFrame.add(playerOneLastAction);
 
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
-		playerTwoLastAction.setBounds(471, 220, 311, 108);		
+		playerTwoLastAction.setBounds(146, 537, 311, 80);
+        playerTwoLastAction.setFont(new Font(playerTwoLastAction.getFont().getFontName(), Font.PLAIN, 14));
 		matchFrame.setVisible(true);
-		matchFrame.getContentPane().add(playerTwoLastAction);
+		matchFrame.add(playerTwoLastAction);
 		
-		playerOneLastDragon = new DragonButton("");
-		playerOneLastDragon.setBounds(479, 99, 146, 108);
-		matchFrame.getContentPane().add(playerOneLastDragon);
+		playerOneLastDragonWindow = new JPanel();
+		playerOneLastDragonWindow.setBounds(466, 99, 200, 210);
+		matchFrame.add(playerOneLastDragonWindow);
+        playerOneLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"), "M");
+        playerOneLastDragonWindow.add(playerOneLastDragon);
+        setupDragonListener(playerOneLastDragon);
 		
-		playerTwoLastDragon = new DragonButton("");
-		playerTwoLastDragon.setBounds(306, 220, 146, 108);
-		matchFrame.getContentPane().add(playerTwoLastDragon);
+		playerTwoLastDragonWindow = new JPanel();
+		playerTwoLastDragonWindow.setBounds(275, 250, 200, 210);
+		matchFrame.add(playerTwoLastDragonWindow);
+		playerTwoLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"), "M");
+		playerTwoLastDragonWindow.add(playerTwoLastDragon);
+        setupDragonListener(playerTwoLastDragon);
 		
-		btnRoll = new JButton("Roll");
-		btnRoll.setBounds(405, 442, 89, 23);
-		matchFrame.getContentPane().add(btnRoll);
+		btnRoll = new ImageButton(MatchController.getRollButton());
+		btnRoll.setBounds(440, 486, 113, 59);
+		matchFrame.add(btnRoll);
 		btnRoll.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -157,37 +221,140 @@ public class MatchView {
 				MatchController.clearDiceSelection(matchModel);
 				updateViewForDiceRoll();
 				checkIfMatchOver();
+                showDiceSelectionOne();
+                showPlayerOneArmies();
+                if ( !matchModel.isMatchOver() ) {
+                	JOptionPane.showMessageDialog( matchFrame, "It is " + playerOne.getName() + "'s turn now!");
+                    lblAddDiceHere.setVisible(true);
+                }
 			}
 		});
 		btnRoll.setVisible(false);
 		
-		currentDiceSelection = new JPanel();
-		currentDiceSelection.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		currentDiceSelection.setBounds(285, 492, 360, 54);
-		matchFrame.getContentPane().add(currentDiceSelection);
-		
+        PlayerOneDiceSelection = new JPanel();
+        PlayerOneDiceSelection.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+        PlayerOneDiceSelection.setBounds(320, 492, 360, 54);
+        matchFrame.add(PlayerOneDiceSelection);
+        
+        PlayerTwoDiceSelection = new JPanel();
+        PlayerTwoDiceSelection.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+        PlayerTwoDiceSelection.setBounds(320, 492, 360, 54);
+        matchFrame.add(PlayerTwoDiceSelection);
+        
 		lblAddDiceHere = new JLabel("Add to dice here by selecting dragons from your army:");
-		lblAddDiceHere.setBounds(289, 467, 320, 14);
-		matchFrame.getContentPane().add(lblAddDiceHere);
+		lblAddDiceHere.setBounds(320, 474, 320, 14);
+		matchFrame.add(lblAddDiceHere);
 		
-		btnConfirmSelection = new JButton("Confirm Selection");
-		btnConfirmSelection.setBounds(385, 554, 157, 23);
-		matchFrame.getContentPane().add(btnConfirmSelection);
-		btnConfirmSelection.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//HARD CODED NEXT TWO LINES FOR TESTING DO REMOVE
-				matchModel.getPlayerOne().setDice( matchModel.getCurrentDiceSelection() );
-				matchModel.getPlayerTwo().setDice( matchModel.getCurrentDiceSelection() );
-				btnConfirmSelection.setVisible(false);
-				btnRoll.setVisible(true);
-				hideDiceSelection();
-				hidePlayersArmies();
-			}
-		});
-		btnConfirmSelection.setVisible(true);
+        btnConfirmSelectionPlayerOne = new ImageButton("Art/UIGraphics/ConfirmSelectionButton.png");
+        btnConfirmSelectionPlayerOne.setBounds(390, 564, 217, 40);
+        matchFrame.add(btnConfirmSelectionPlayerOne);
+        btnConfirmSelectionPlayerOne.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                matchModel.getPlayerOne().setDice( matchModel.getPlayerOneDiceSelection() );
+                matchModel.setPlayerOneLastDice( matchModel.getPlayerOneDiceSelection() );
+                btnConfirmSelectionPlayerOne.setVisible(false);
+                btnConfirmSelectionPlayerTwo.setVisible(true);
+                hidePlayerOneArmies();
+                showPlayerTwoArmies();
+                hideDiceSelectionOne();
+                showDiceSelectionTwo();
+                if ( !matchModel.isMatchOver() )
+                	JOptionPane.showMessageDialog( matchFrame, "It is " + playerTwo.getName() + "'s turn now!");
+            }
+        });
+        btnConfirmSelectionPlayerOne.setVisible(true);
+        
+        btnConfirmSelectionPlayerTwo = new ImageButton("Art/UIGraphics/ConfirmSelectionButton.png");
+        btnConfirmSelectionPlayerTwo.setBounds(390, 564, 217, 40);
+        matchFrame.add(btnConfirmSelectionPlayerTwo);
+        btnConfirmSelectionPlayerTwo.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                matchModel.getPlayerTwo().setDice( matchModel.getPlayerTwoDiceSelection() );
+                matchModel.setPlayerTwoLastDice( matchModel.getPlayerTwoDiceSelection() );
+                btnConfirmSelectionPlayerTwo.setVisible(false);
+                btnRoll.setVisible(true);
+                hidePlayerTwoArmies();
+                hideDiceSelectionTwo();
+                lblAddDiceHere.setVisible(false);
+            }
+        });
+        btnConfirmSelectionPlayerTwo.setVisible(false);
+
+        btnLastDicePlayerOne = new JButton("Last Dice");
+        btnLastDicePlayerOne.setBounds(690, 493, 100, 23);
+        matchFrame.add(btnLastDicePlayerOne);
+        btnLastDicePlayerOne.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                matchModel.setPlayerOneDiceSelection( matchModel.getPlayerOneLastDice() );
+                updateDiceSelectionPanelOne( PlayerOneDiceSelection );
+            }
+        });
+        btnLastDicePlayerOne.setVisible(false);
+        
+        btnLastDicePlayerTwo = new JButton("Last Dice");
+        btnLastDicePlayerTwo.setBounds(690, 493, 100, 23);
+        matchFrame.add(btnLastDicePlayerTwo);
+        btnLastDicePlayerTwo.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                matchModel.setPlayerTwoDiceSelection( matchModel.getPlayerTwoLastDice() );
+                updateDiceSelectionPanelTwo( PlayerTwoDiceSelection );
+            }
+        });
+        btnLastDicePlayerTwo.setVisible(false);
+        
+        btnClearDicePlayerOne = new JButton("Clear Dice");
+        btnClearDicePlayerOne.setBounds(690, 522, 100, 23);
+        matchFrame.add(btnClearDicePlayerOne);
+        btnClearDicePlayerOne.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dice empty = new Dice();
+                matchModel.setPlayerOneDiceSelection( empty );
+                updateDiceSelectionPanelOne( PlayerOneDiceSelection );
+            }
+        });
+        btnClearDicePlayerOne.setVisible(false);
+        
+        btnClearDicePlayerTwo = new JButton("Clear Dice");
+        btnClearDicePlayerTwo.setBounds(690, 522, 100, 23);
+        matchFrame.add(btnClearDicePlayerTwo);
+        btnClearDicePlayerTwo.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dice empty = new Dice();
+                matchModel.setPlayerTwoDiceSelection( empty );
+                updateDiceSelectionPanelTwo( PlayerTwoDiceSelection );
+            }
+        });
+        btnClearDicePlayerTwo.setVisible(false);
+
+		this.add(matchFrame);
+		
+        JButton helpBtn = new JButton("?");
+        helpBtn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showMessageDialog(matchFrame, ""
+        				+ "1) Player 1 & 2 choose up to 5 dragons of 12 to fill 5 slots on a 6-sided die\n" 
+        				+ "2) Player 1 & 2 rolls die for damage\n"
+        				+ "3) Damage is applied to each side\n"
+        				+ "4) If both strongholds’ hp is above 0, go back to step 1\n"
+        				+ "5) If a stronghold’s hp is at 0, game ends!");
+        	}
+        });
+        helpBtn.setBounds(10, 11, 54, 23);
+        matchFrame.add(helpBtn);
 		
 		matchFrame.repaint();
+
+		//Only runs the first time the panel is run
+        JOptionPane.showMessageDialog( matchFrame, "It is " + playerOne.getName() + "'s turn now!");        
+        
+
+
 	}
 	
 	/**
@@ -198,51 +365,108 @@ public class MatchView {
 		updateLastPlayerOneAction();
 		updateLastPlayerTwoAction();
 		updatePlayersHealthBars();
-		showPlayersArmies();
-		showDiceSelection();
-		btnConfirmSelection.setVisible(true);
+		showPlayerOneArmies();
+		showDiceSelectionOne();
+		btnConfirmSelectionPlayerOne.setVisible(true);
 		lblAddDiceHere.setVisible(true);
 		btnRoll.setVisible(false);
 	}
 	
-	/**
-	 * Hide players armies.
-	 */
-	public void hidePlayersArmies() {
-		playerOneArmy.setVisible(false);
-		playerTwoArmy.setVisible(false);
-		playerOneArmy.updateUI();
-		playerTwoArmy.updateUI();
-	}
-	
-	/**
-	 * Show players armies.
-	 */
-	public void showPlayersArmies() {
-		playerOneArmy.setVisible(true);
-		playerTwoArmy.setVisible(true);
-		playerOneArmy.updateUI();
-		playerTwoArmy.updateUI();
-	}
-	
-	/**
-	 * Hide dice selection.
-	 */
-	public void hideDiceSelection() {
-		currentDiceSelection.setVisible(false);
-		currentDiceSelection.removeAll();
-		currentDiceSelection.updateUI();
-	}
-	
-	/**
-	 * Show dice selection.
-	 */
-	public void showDiceSelection() {
-		currentDiceSelection.setVisible(true);
-		currentDiceSelection.removeAll();
-		currentDiceSelection.updateUI();
-	}
-	
+    /**
+     * Hide player one armies.
+     */
+    public void hidePlayerOneArmies() {
+        playerOneArmy.setVisible(false);
+        playerTwoArmyUnclickable.setVisible(false);
+        playerOneArmy.updateUI();
+        playerTwoArmyUnclickable.updateUI();
+    }
+
+    /**
+     * Hide player two armies.
+     */
+    public void hidePlayerTwoArmies() {
+        playerTwoArmy.setVisible(false);
+        playerOneArmyUnclickable.setVisible(false);
+        playerTwoArmy.updateUI();
+        playerOneArmyUnclickable.updateUI();
+    }
+    
+    /**
+     * Show player one armies.
+     */
+    public void showPlayerOneArmies() {
+        playerOneArmy.setVisible(true);
+        playerTwoArmyUnclickable.setVisible(true);
+        playerOneArmy.updateUI();
+        playerTwoArmyUnclickable.updateUI();
+    }
+    
+    /**
+     * Show player two armies.
+     */
+    public void showPlayerTwoArmies() {
+        playerTwoArmy.setVisible(true);
+        playerOneArmyUnclickable.setVisible(true);
+        playerTwoArmy.updateUI();
+        playerOneArmyUnclickable.updateUI();
+    }
+
+    /**
+     * Clear dice selection.
+     */
+    public void clearDiceSelection() {
+        MatchController.clearDiceSelection(matchModel);
+        PlayerOneDiceSelection.removeAll();
+        PlayerTwoDiceSelection.removeAll();
+        PlayerOneDiceSelection.updateUI();
+        PlayerTwoDiceSelection.updateUI();
+    }
+
+    /**
+     * Hide dice selection for player one.
+     */
+    public void hideDiceSelectionOne() {
+        PlayerOneDiceSelection.setVisible(false);
+        PlayerOneDiceSelection.removeAll();
+        PlayerOneDiceSelection.updateUI();
+        btnLastDicePlayerOne.setVisible(false);
+        btnClearDicePlayerOne.setVisible(false);
+    }
+    
+    /**
+     * Hide dice selection for player two.
+     */
+    public void hideDiceSelectionTwo() {
+        PlayerTwoDiceSelection.setVisible(false);
+        PlayerTwoDiceSelection.removeAll();
+        PlayerTwoDiceSelection.updateUI();
+        btnLastDicePlayerTwo.setVisible(false);
+        btnClearDicePlayerTwo.setVisible(false);
+    }
+    
+    /**
+     * Show dice selection for player one.
+     */
+    public void showDiceSelectionOne() {
+        PlayerOneDiceSelection.setVisible(true);
+        PlayerOneDiceSelection.removeAll();
+        PlayerOneDiceSelection.updateUI();
+        if( matchModel.getPlayerOneLastDice() != null )
+            btnLastDicePlayerOne.setVisible(true);
+    }
+    
+    /**
+     * Show dice selection for player one.
+     */
+    public void showDiceSelectionTwo() {
+        PlayerTwoDiceSelection.setVisible(true);
+        PlayerTwoDiceSelection.removeAll();
+        PlayerTwoDiceSelection.updateUI();
+        if( matchModel.getPlayerTwoLastDice() != null )
+            btnLastDicePlayerTwo.setVisible(true);
+    }
+    
 	/**
 	 * Roll dice.
 	 */
@@ -251,100 +475,207 @@ public class MatchView {
 		updatePlayersHealthBars();
 		updateLastPlayerOneAction();
 		updateLastPlayerTwoAction();
-		System.out.println( matchModel.isMatchOver() );
 	}
 	
 	/**
 	 * Check if match is over.
 	 */
 	public void checkIfMatchOver() { 
-//		System.out.println( matchModel.isMatchOver() + " is match over? "); //Used in testing
 		if ( matchModel.isMatchOver() ) {
 			if ( matchModel.isDraw() ) {
 				JOptionPane.showMessageDialog( matchFrame, "Game has come to a draw!");
+				GameController.changeView("titleView");
 			} else {
 				JOptionPane.showMessageDialog( matchFrame, "The player " + matchModel.getWinner().getName() + " has won the game!");
+                GameController.changeView("titleView");
 			}
 		}
 	}
 	
-	/**
-	 * Update army panel.
-	 *
-	 * @param playersArmy the players army
-	 * @param playerArmy the player army
-	 * @param dragBtn the drag btn
-	 */
-	public void updateArmyPanel( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
-		
-		ArrayList<Dragon> dragons = playerArmy.getArmy();
-		Iterator<Dragon> dragonsItr = dragons.iterator();
-		Dragon currentDrag;
-		playersArmy.removeAll();
-		
-		while ( dragonsItr.hasNext() ) {
-			currentDrag = dragonsItr.next();
-			dragBtn = new DragonButton( currentDrag );
-			dragBtn.addActionListener( new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					DragonButton btnSelected = (DragonButton) e.getSource();
-					MatchController.updateDragonToAdd( matchModel, new Dragon( btnSelected.getAssociatedDragon() ));
-					MatchController.addToDiceSelection( matchModel, new Dragon( btnSelected.getAssociatedDragon() ) );
-					updateDiceSelectionPanel( currentDiceSelection );
-				}
-			});
-			playersArmy.add(dragBtn);
-		}
-		
-		playersArmy.updateUI();	
-	}
-	
-	/**
-	 * Update dice selection panel.
-	 *
-	 * @param diceSelectionPanel the dice selection panel
-	 */
-	public void updateDiceSelectionPanel( JPanel diceSelectionPanel ) { 
-		
-		Dice dragonFaces = this.matchModel.getCurrentDiceSelection();
-		ArrayList<Dragon> dragons = dragonFaces.getDice();
-		Iterator<Dragon> dragonsItr = dragons.iterator();
-		DragonButton dragBtn;
-		Dragon currentDrag;
-		diceSelectionPanel.removeAll();
+    /**
+     * Update army panel.
+     *
+     * @param playersArmy the players army
+     * @param playerArmy the player army
+     * @param dragBtn the drag btn
+     */
+    public void updateArmyPanelOne( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
+        ArrayList<Dragon> dragons = playerArmy.getArmy();
+        Iterator<Dragon> dragonsItr = dragons.iterator();
+        
+        Dragon currentDrag;
+        playersArmy.removeAll();
+        
+        while ( dragonsItr.hasNext() ) {
+            currentDrag = dragonsItr.next();
+            dragBtn = new DragonButton( currentDrag );
+            dragBtn.addActionListener( new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DragonButton btnSelected = (DragonButton) e.getSource();
+                    MatchController.updateDragonToAdd( matchModel, new Dragon( btnSelected.getAssociatedDragon() ));
+                    MatchController.addToDiceSelectionOne( matchModel, new Dragon( btnSelected.getAssociatedDragon() ) );
+                    updateDiceSelectionPanelOne( PlayerOneDiceSelection );
+                }
+            });
+            playersArmy.add(dragBtn);
+        }
+        
+        playersArmy.updateUI(); 
+    }
 
-        currentDrag = dragonsItr.next();//Skips "Missed" Dragon
-		
-		while ( dragonsItr.hasNext() ) {
-			currentDrag = dragonsItr.next();
-			MatchController.updateDragonToDelete( this.matchModel, currentDrag );
-			dragBtn = new DragonButton( currentDrag );
-			diceSelectionPanel.add( dragBtn );
-			dragBtn.addActionListener( new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					MatchController.removeFromDiceSelection( matchModel );
-					updateDiceSelectionPanel( diceSelectionPanel );
-				}
-			});
-		}
-		
-		diceSelectionPanel.updateUI();
-		
-	}
-	
+    /**
+     * Update army panel.
+     *
+     * @param playersArmy the players army
+     * @param playerArmy the player army
+     * @param dragBtn the drag btn
+     */
+
+    public void updateArmyPanelTwo( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
+        ArrayList<Dragon> dragons = playerArmy.getArmy();
+        Iterator<Dragon> dragonsItr = dragons.iterator();
+        
+        Dragon currentDrag;
+        playersArmy.removeAll();
+        
+        while ( dragonsItr.hasNext() ) {
+            currentDrag = dragonsItr.next();
+            dragBtn = new DragonButton( currentDrag );
+            dragBtn.addActionListener( new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DragonButton btnSelected = (DragonButton) e.getSource();
+                    MatchController.updateDragonToAdd( matchModel, new Dragon( btnSelected.getAssociatedDragon() ));
+                    MatchController.addToDiceSelectionTwo( matchModel, new Dragon( btnSelected.getAssociatedDragon() ) );
+                    updateDiceSelectionPanelTwo( PlayerTwoDiceSelection );
+                }
+            });
+            playersArmy.add(dragBtn);
+        }
+        
+        playersArmy.updateUI(); 
+    }
+
+    /**
+     * Update army panel for the other player
+     *
+     * @param playersArmy the players army
+     * @param playerArmy the player army
+     * @param dragBtn the drag btn
+     */
+    public void updateArmyPanelOther( JPanel playersArmy, Army playerArmy, DragonButton dragBtn ) {
+        ArrayList<Dragon> dragons = playerArmy.getArmy();
+        Iterator<Dragon> dragonsItr = dragons.iterator();
+        
+        Dragon currentDrag;
+        playersArmy.removeAll();
+        
+        while ( dragonsItr.hasNext() ) {
+            currentDrag = dragonsItr.next();
+            dragBtn = new DragonButton( currentDrag );
+            playersArmy.add(dragBtn);
+        }
+        
+        playersArmy.updateUI(); 
+    }
+    
+
+    /**
+     * Update dice selection panel for player one.
+     *
+     * @param diceSelectionPanel the dice selection panel
+     */
+    public void updateDiceSelectionPanelOne( JPanel diceSelectionPanel ) { 
+        
+        Dice dragonFaces = this.matchModel.getPlayerOneDiceSelection();
+        ArrayList<Dragon> dragons = dragonFaces.getDice();
+        Iterator<Dragon> dragonsItr = dragons.iterator();
+        DragonButton dragBtn;
+        Dragon currentDrag;
+        diceSelectionPanel.removeAll();
+
+        currentDrag = dragonsItr.next(); //Skips "Missed" Dragon
+        
+        while ( dragonsItr.hasNext() ) {
+            currentDrag = dragonsItr.next();
+            MatchController.updateDragonToDelete( this.matchModel, currentDrag );
+            dragBtn = new DragonButton( currentDrag );
+            diceSelectionPanel.add( dragBtn );
+            dragBtn.addActionListener( new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    MatchController.removeFromDiceSelectionOne( matchModel );
+                    updateDiceSelectionPanelOne( diceSelectionPanel );
+                }
+            });
+        }
+        
+        diceSelectionPanel.updateUI();
+
+        if( matchModel.getPlayerOneDiceSelection().getFaceCount() > 1 )
+            btnClearDicePlayerOne.setVisible(true);
+        else
+            btnClearDicePlayerOne.setVisible(false);
+    }
+    
+    /**
+     * Update dice selection panel for player two.
+     *
+     * @param diceSelectionPanel the dice selection panel
+     */
+    public void updateDiceSelectionPanelTwo( JPanel diceSelectionPanel ) { 
+        
+        Dice dragonFaces = this.matchModel.getPlayerTwoDiceSelection();
+        ArrayList<Dragon> dragons = dragonFaces.getDice();
+        Iterator<Dragon> dragonsItr = dragons.iterator();
+        DragonButton dragBtn;
+        Dragon currentDrag;
+        diceSelectionPanel.removeAll();
+
+        currentDrag = dragonsItr.next(); //Skips "Missed" Dragon
+        
+        while ( dragonsItr.hasNext() ) {
+            currentDrag = dragonsItr.next();
+            MatchController.updateDragonToDelete( this.matchModel, currentDrag );
+            dragBtn = new DragonButton( currentDrag );
+            diceSelectionPanel.add( dragBtn );
+            dragBtn.addActionListener( new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    MatchController.removeFromDiceSelectionTwo( matchModel );
+                    updateDiceSelectionPanelTwo( diceSelectionPanel );
+                }
+            });
+        }
+        
+        diceSelectionPanel.updateUI();
+        
+        if( matchModel.getPlayerTwoDiceSelection().getFaceCount() > 1 )
+            btnClearDicePlayerTwo.setVisible(true);
+        else
+            btnClearDicePlayerTwo.setVisible(false);
+            
+        
+    }
+    
 	/**
 	 * Update last dragon.
 	 */
 	public void updateLastDragon() {
 		if ( matchModel.getPlayerOneLastDragon() != null ) {
-			this.playerOneLastDragon.setAssociatedDragon( matchModel.getPlayerOneLastDragon() );
-			this.playerOneLastDragon.updateUI();
+			this.playerOneLastDragon = new DragonButton( matchModel.getPlayerOneLastDragon(), "M" );
+			setupDragonListener(playerOneLastDragon);
+			this.playerOneLastDragonWindow.removeAll();
+			this.playerOneLastDragonWindow.add(playerOneLastDragon);
+			this.playerOneLastDragonWindow.updateUI();
 		} 
 		if ( matchModel.getPlayerTwoLastDragon() != null ) {
-			this.playerTwoLastDragon.setAssociatedDragon( matchModel.getPlayerTwoLastDragon() );
-			this.playerOneLastDragon.updateUI();
+			this.playerTwoLastDragon = new DragonButton( matchModel.getPlayerTwoLastDragon(), "M" );
+			setupDragonListener(playerTwoLastDragon);
+            this.playerTwoLastDragonWindow.removeAll();
+            this.playerTwoLastDragonWindow.add(playerTwoLastDragon);
+			this.playerTwoLastDragonWindow.updateUI();
 		}
 	}
 	
@@ -376,5 +707,19 @@ public class MatchView {
 		
 		playerOneHP.updateUI();
 		playerTwoHP.updateUI();
+	}
+
+	public void setupDragonListener(DragonButton dragBtn) {
+	    dragBtn.addActionListener( new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                DragonButton actionPerfomedOn = (DragonButton) arg0.getSource();
+                Dragon dragonToDisplay = actionPerfomedOn.getAssociatedDragon();
+                DragonInformationView dragonInformation = new DragonInformationView( dragonToDisplay );
+            }
+            
+        });
+
 	}
 }

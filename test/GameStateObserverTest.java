@@ -6,7 +6,7 @@ import java.util.Observer;
 
 import org.junit.Test;
 
-import dragonspiretournament.Game.GameState;
+import dragonspiretournament.game.GameState;
 
 public class GameStateObserverTest {
 	

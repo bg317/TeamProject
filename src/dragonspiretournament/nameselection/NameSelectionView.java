@@ -1,8 +1,13 @@
 package dragonspiretournament.nameselection;
 
 import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.PopupMenu;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,15 +17,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import dragonspiretournament.GameObjects.Player;
+import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 
 /**
  * The Class NameSelectionView.
  */
-public class NameSelectionView {
+public class NameSelectionView extends JPanel {
 	
 	/** The name frame. */
 	//not sure if we want a frame here, but this is for testing purposes
-	private JFrame nameFrame;
+	//private JFrame nameFrame;
 	
 	/** The total panel. */
 	//all components to be added to the JPanel totalPanel, and totalPanel will be added to the frame
@@ -58,7 +64,7 @@ public class NameSelectionView {
 	 * @param playerOne the player one
 	 * @param playerTwo the player two
 	 */
-	//constructor
+	//constructor with players passed in
 	public NameSelectionView( Player playerOne, Player playerTwo )
 	{
 		
@@ -73,13 +79,14 @@ public class NameSelectionView {
 		instructionText = currentPlayer + " enter your name: ";
 		
 		//creating a frame
-		nameFrame = new JFrame("Dragonspire Tournament--Name Selection");
+		//nameFrame = new JFrame("Dragonspire Tournament--Name Selection");
 		
 		//initializing the J elements
 		totalPanel = new JPanel(new GridLayout(2,1));
 		entryAndSubmit = new JPanel();
 		//swing constants center centers the text across 
 		instructionLabel = new JLabel(instructionText, SwingConstants.CENTER);
+		instructionLabel.setFont(new Font(instructionLabel.getFont().getFontName(), Font.PLAIN, 16));
 		//setting the default value of the name entry field
 		nameEntry = new JTextField(currentPlayer);
 		submitButton = new JButton("Submit");
@@ -95,10 +102,74 @@ public class NameSelectionView {
 		
 		
 		//frame stuff
-		nameFrame.getContentPane().add(totalPanel);
-		nameFrame.setSize(500, 500);
+		//nameFrame.getContentPane().add(totalPanel);
+		//nameFrame.setSize(500, 500);
 		
-		nameFrame.setVisible(true);
+		//nameFrame.setVisible(true);
+		
+		this.add(totalPanel);
+		//this.setSize(500,500);
+		this.setVisible(true);
+	}
+	
+	/**
+	 * Instantiates a new name selection view without players passed in as parameters.
+	 *
+	 */
+	//constructor with no players passed in
+	public NameSelectionView()
+	{
+		playerOne = new Player();
+		playerTwo = new Player();
+		
+		NameSelectionController.setPlayerOne( playerOne );
+		NameSelectionController.setPlayerTwo( playerTwo );
+		
+		//preparing the text that changes before sending it to the elements
+		//the text we want will be found by the controller
+
+		//current player is assumed to be player 1 until we are told otherwise
+		currentPlayer = NameSelectionController.getPlayer();
+		
+		instructionText = currentPlayer + " enter your name: ";
+		
+		//creating a frame
+		//nameFrame = new JFrame("Dragonspire Tournament--Name Selection");
+		
+		//initializing the J elements
+		totalPanel = new JPanel(new GridLayout(2,1));
+		entryAndSubmit = new JPanel();
+		//swing constants center centers the text across 
+		instructionLabel = new JLabel(instructionText, SwingConstants.CENTER);
+        instructionLabel.setFont(new Font(instructionLabel.getFont().getFontName(), Font.PLAIN, 16));
+		//setting the default value of the name entry field
+		nameEntry = new JTextField(currentPlayer);
+		nameEntry.setFont(new Font(nameEntry.getFont().getFontName(), Font.PLAIN, 15));
+		nameEntry.setColumns(6);
+		submitButton = new ImageButton(NameSelectionController.getSubmitButton());
+		
+		//adding the J elements to the total panel
+		totalPanel.add(instructionLabel);
+		entryAndSubmit.add(nameEntry);
+		entryAndSubmit.add(submitButton);
+		totalPanel.add(entryAndSubmit);
+		
+		//adds functionality to the button
+		submitButton.addActionListener((ActionListener) new ButtonListener());
+		
+		
+		//frame stuff
+		//nameFrame.getContentPane().add(totalPanel);
+		//nameFrame.setSize(500, 500);
+		
+		//nameFrame.setVisible(true);
+		
+		//adding for cardLayout
+		this.setLayout(new GridLayout(1,1));
+		this.setPreferredSize(new Dimension(500,500));
+		this.add(totalPanel);
+		this.setBackground(Color.white);
+		this.setVisible(true);
 	}
 	
 	/**
@@ -130,7 +201,9 @@ public class NameSelectionView {
 			//then moving on to the game if we're on player 2
 			if (NameSelectionController.goToNextFrame() == true)
 			{
-				//start game
+				//finalize names/start game
+				NameSelectionController.finalizeNames();
+				NameSelectionController.goToChooseArmy();
 			}
 			//go to player 2 if on player 1
 			else

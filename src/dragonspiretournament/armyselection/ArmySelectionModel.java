@@ -29,6 +29,9 @@ public class ArmySelectionModel {
 	
 	/** The current player army. */
 	private Army currentPlayerArmy;
+	
+	/** The player name. */
+	String playerName;
 
 	
 	/**
@@ -57,6 +60,7 @@ public class ArmySelectionModel {
 	 */
 	public ArmySelectionModel(Player player, DragonLibrary dragLib) {
 		this.player = player;
+		this.playerName = player.getName();
 		this.dragLib = dragLib;
 		this.current = current;
 		this.prev = prev;
@@ -94,6 +98,24 @@ public class ArmySelectionModel {
 		this.player = player;
 	}
 	
+	/**
+	 * Gets the player name.
+	 *
+	 * @return the player name
+	 */
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	/**
+	 * Sets the player name.
+	 *
+	 * @param playerName the new player name
+	 */
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
+	}
+
 	/**
 	 * Gets the all library dragons.
 	 *

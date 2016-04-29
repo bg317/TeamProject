@@ -73,19 +73,15 @@ public class NameSelectionModel {
 		if (currentPlayer == ONE)
 		{
 			playerOneName = name;
-			System.out.println("name: " + playerOneName);
 			//sets the name in the actual player 1 object
 			player1.setName(playerOneName);
 		}
 		else if (currentPlayer == TWO)
 		{
 			playerTwoName = name;
-			System.out.println("name: " + playerTwoName);
 			//sets the name in the actual player 2 object
 			player2.setName(playerTwoName);
 		}
-		
-		//create a player with the name information
 		
 	}
 	
@@ -128,6 +124,37 @@ public class NameSelectionModel {
 	 */
 	public void setPlayerTwo( Player player ) {
 		this.player2 = player;
+	}
+	
+	/**
+	 * gets the first player information
+	 * @return player one's information.
+	 */
+	public Player getPlayerOne()
+	{
+		return player1;
+	}
+	
+	/**
+	 * gets the second player information.
+	 * @return player two's information.
+	 */
+	public Player getPlayerTwo()
+	{
+		return player2;
+	}
+
+	/**
+	 * resets players back to default values
+	 */
+	public void resetPlayers()
+	{
+        currentPlayer = ONE;
+        playerOneName = "Player 1";
+        playerTwoName = "Player 2";
+        
+        player1 = new Player(playerOneName);
+        player2 = new Player(playerTwoName);
 	}
 }
 

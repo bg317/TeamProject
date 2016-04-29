@@ -28,8 +28,11 @@ public class MatchModel {
 	/** The player two dice. */
 	private Dice playerTwoDice;
 	
-	/** The current dice selection. */
-	private Dice currentDiceSelection;
+    /** The dice selection for player one. */
+    private Dice playerOneDiceSelection;
+
+    /** The dice selection for player two. */
+    private Dice playerTwoDiceSelection;
 	
 	/** The player one last action. */
 	private String playerOneLastAction;
@@ -60,6 +63,12 @@ public class MatchModel {
 	
 	/** The player two last damage recv. */
 	private int playerTwoLastDamageRecv;
+    
+    /** The player one last dice. */
+    private Dice playerOneLastDice;
+    
+    /** The player two last dice. */
+    private Dice playerTwoLastDice;
 	
 	
 	/** The draw. */
@@ -98,7 +107,10 @@ public class MatchModel {
 		this.playerTwoDice = playerTwo.getDice();
 		this.playerOneHealth = playerOne.getStrongholdHP();
 		this.playerTwoHealth = playerTwo.getStrongholdHP();
-		this.currentDiceSelection = new Dice();
+        this.playerOneDiceSelection = new Dice();
+        this.playerTwoDiceSelection = new Dice();
+        this.playerOneLastDice = null;
+        this.playerTwoLastDice = null;
 		this.playerOneLastAction = "No dice has been rolled yet";
 		this.playerTwoLastAction = "No dice has been rolled yet";
 		this.matchOver = false;
@@ -114,7 +126,10 @@ public class MatchModel {
 		this.playerTwoArmy = new Army();
 		this.playerOneDice = new Dice();
 		this.playerTwoDice = new Dice();
-		this.currentDiceSelection = new Dice();
+        this.playerOneDiceSelection = new Dice();
+        this.playerTwoDiceSelection = new Dice();
+        this.playerOneLastDice = null;
+        this.playerTwoLastDice = null;
 		this.matchOver = false;
 	}
 
@@ -290,22 +305,80 @@ public class MatchModel {
 	}
 
 	/**
-	 * Gets the current dice selection.
+	 * Gets the player one dice selection.
 	 *
-	 * @return the current dice selection
+	 * @return the player one dice selection
 	 */
-	public Dice getCurrentDiceSelection() {
-		return currentDiceSelection;
+	public Dice getPlayerOneDiceSelection() {
+		return playerOneDiceSelection;
 	}
 
-	/**
-	 * Sets the current dice selection.
+    /**
+     * Gets the player two dice selection.
+     *
+     * @return the player one dice selection
+     */
+    public Dice getPlayerTwoDiceSelection() {
+        return playerTwoDiceSelection;
+    }
+
+    /**
+	 * Sets the player one dice selection.
 	 *
 	 * @param currentDiceSelection the new current dice selection
 	 */
-	public void setCurrentDiceSelection(Dice currentDiceSelection) {
-		this.currentDiceSelection = currentDiceSelection;
+	public void setPlayerOneDiceSelection(Dice currentDiceSelection) {
+		this.playerOneDiceSelection = currentDiceSelection;
 	}
+
+    /**
+     * Sets the player two dice selection.
+     *
+     * @param currentDiceSelection the new current dice selection
+     */
+    public void setPlayerTwoDiceSelection(Dice currentDiceSelection) {
+        this.playerTwoDiceSelection = currentDiceSelection;
+    }
+
+    /**
+     * Gets the player one last dic.
+     *
+     * @return the player one last dice
+     */
+    public Dice getPlayerOneLastDice() {
+        return playerOneLastDice;
+    }
+
+    /**
+     * Sets the player one last dice.
+     *
+     * @param playerOneLastDice the new player one last dice
+     */
+    public void setPlayerOneLastDice(Dice playerOneLastDice) {
+        this.playerOneLastDice = new Dice();
+        for(int index = 1; index < playerOneLastDice.getFaceCount(); index++)
+            this.playerOneLastDice.add( playerOneLastDice.getFace(index) );
+    }
+
+    /**
+     * Gets the player two last dice.
+     *
+     * @return the player two last dice
+     */
+    public Dice getPlayerTwoLastDice() {
+        return playerTwoLastDice;
+    }
+
+    /**
+     * Sets the player two last dice.
+     *
+     * @param playerTwoLastDice the new player two last dice
+     */
+    public void setPlayerTwoLastDice(Dice playerTwoLastDice) {
+        this.playerTwoLastDice = new Dice();
+        for(int index = 1; index < playerTwoLastDice.getFaceCount(); index++)
+            this.playerTwoLastDice.add( playerTwoLastDice.getFace(index) );
+    }
 
 	/**
 	 * Gets the dragon being added to dice.
@@ -315,6 +388,7 @@ public class MatchModel {
 	public Dragon getDragonBeingAddedToDice() {
 		return dragonBeingAddedToDice;
 	}
+
 
 	/**
 	 * Sets the dragon being added to dice.

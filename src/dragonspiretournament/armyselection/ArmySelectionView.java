@@ -5,6 +5,7 @@ import javax.swing.JButton;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,23 +13,28 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import dragonspiretournament.Game.GameState;
+import dragonspiretournament.game.GameState;
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.DragonButton;
+import dragonspiretournament.GameObjects.UIComponents.ImageButton;
+import dragonspiretournament.PlayerInformation.DragonInformation;
+import dragonspiretournament.PlayerInformation.DragonInformationView;
 import dragonspiretournament.match.MatchView;
+import dragonspiretournament.game.GameController;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JLabel;
 
 /**
  * The Class ArmySelectionView.
  */
-public class ArmySelectionView {
+public class ArmySelectionView extends JPanel {
 	
 	/** The army selection window. */
-	JFrame armySelectionWindow;
+	JPanel armySelectionWindow;
 	
 	/** The selection model. */
 	ArmySelectionModel selectionModel;
@@ -50,6 +56,9 @@ public class ArmySelectionView {
 	
 	/** The select dragon btn. */
 	JButton selectDragonBtn;
+
+	/** The current dragon button. */
+	DragonButton currDragBtn;
 	
 	/** The prev button. */
 	JButton prevButton;
@@ -57,6 +66,8 @@ public class ArmySelectionView {
 	/** The next button. */
 	JButton nextButton;
 	
+	/** The confirm selection button*/
+	JButton btnConfirmSelection;	
 	/**
 	 * Instantiates a new army selection view.
 	 *
@@ -76,29 +87,34 @@ public class ArmySelectionView {
 		}
 		
 		ArmySelectionController.initCurrentAndPrev(selectionModel);
-		armySelectionWindow = new JFrame("Select your army");
-		armySelectionWindow.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
-		armySelectionWindow.setSize(1200, 748);
-		armySelectionWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//armySelectionWindow = new JFrame("Select your army");
+		//armySelectionWindow.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		//armySelectionWindow.setSize(1200, 748);
+		//armySelectionWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		armySelectionWindow = new JPanel(new GridLayout(0, 1, 0, 0));
+		armySelectionWindow.setPreferredSize(new Dimension(1200, 748));
+		this.setLayout(new GridLayout(1,1));
 		
 		mainPanel = new JPanel();
-		armySelectionWindow.getContentPane().add(mainPanel);
+		armySelectionWindow.add(mainPanel);
 		mainPanel.setLayout(null);
 		
 		prevWindow = new JPanel();
-		prevWindow.setBounds(41, 163, 124, 108);
+		prevWindow.setBounds(106, 193, 60, 54);
 		mainPanel.add(prevWindow);
 		prevWindow.add(new DragonButton( this.selectionModel.getPrev()));
 		prevWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		currWindow = new JPanel();
-		currWindow.setBounds(344, 111, 298, 210);
+		currWindow.setBounds(344, 111, 298, 218);
 		mainPanel.add(currWindow);
-		currWindow.add(new DragonButton( this.selectionModel.getCurrent()));
+		currDragBtn = new DragonButton( this.selectionModel.getCurrent(),  "M");
+		setupCurrentDragonButtonListener( currDragBtn );
+		currWindow.add( currDragBtn );
 		currWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		nextWindow = new JPanel();
-		nextWindow.setBounds(814, 163, 124, 108);
+		nextWindow.setBounds(854, 193, 60, 54);
 		mainPanel.add(nextWindow);
 		nextWindow.add(new DragonButton( this.selectionModel.getNext()));
 		nextWindow.setBorder(new LineBorder(Color.BLACK));
@@ -107,15 +123,21 @@ public class ArmySelectionView {
 		currentArmySelection.setBounds(70, 441, 860, 54);	
 		currentArmySelection.setBorder(new LineBorder(Color.BLACK));
 		
+        btnConfirmSelection = new ImageButton(ArmySelectionController.getConfirmSelectionButton());
+        btnConfirmSelection.setSize(new Dimension(217,40));
+        btnConfirmSelection.setBounds(706, 527, 217, 40);
+        btnConfirmSelection.setVisible(false);
+        
 		updateSelectionPanel( currentArmySelection, selectionModel ); 
 		
 		mainPanel.add(currentArmySelection);
+        mainPanel.add(btnConfirmSelection);
 
 			
 		
-		selectDragonBtn = new JButton("Add Dragon");
-		selectDragonBtn.setBounds(419, 387, 89, 23);
-		selectDragonBtn.setSize(new Dimension(150,50));
+		selectDragonBtn = new ImageButton(ArmySelectionController.getAddDragonButton());
+		selectDragonBtn.setBounds(379, 352, 29, 29);
+		selectDragonBtn.setSize(new Dimension(240,59));
 		mainPanel.add(selectDragonBtn);
 		selectDragonBtn.addActionListener(new ActionListener() {
 			@Override
@@ -125,8 +147,8 @@ public class ArmySelectionView {
 			}
 		});
 		
-		prevButton = new JButton("Prev");
-		prevButton.setBounds(76, 347, 89, 23);
+		prevButton = new ImageButton(ArmySelectionController.getPreviousButton());
+		prevButton.setBounds(66, 347, 133, 40);
 		mainPanel.add(prevButton);
 		prevButton.addActionListener(new ActionListener() {
 			@Override
@@ -137,25 +159,32 @@ public class ArmySelectionView {
 			}
 		});
 		
-		nextButton = new JButton("Next");
-		nextButton.setBounds(823, 347, 89, 23);
+		nextButton = new ImageButton(ArmySelectionController.getNextButton());
+		nextButton.setBounds(823, 347, 133, 40);
 		mainPanel.add(nextButton);
 		
-		JButton btnConfirmSelection = new JButton("Confirm Selection");
-		btnConfirmSelection.setBounds(746, 557, 177, 23);
-		mainPanel.add(btnConfirmSelection);
+		JLabel playerPickMessage = new JLabel(selectionModel.getPlayer().getName() + ", select your Army!");
+		playerPickMessage.setFont(new Font(playerPickMessage.getFont().getFontName(), Font.PLAIN, 20));
+		playerPickMessage.setBounds(66, 30, 900, 33);
+		mainPanel.add(playerPickMessage);
 		btnConfirmSelection.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				ArmySelectionController.confirmPlayersArmy( selectionModel );
 				if ( gameState.getPlayerOneArmySelection() && !gameState.getPlayerTwoArmySelection() ) {
 					gameState.setPlayerTwoArmySelection( true );
-					new ArmySelectionView( playerOne, playerTwo, gameState );
-					armySelectionWindow.setVisible(false);
+					GameController.createArmySelectionView(playerOne, playerTwo);
+					GameController.changeView("armySelect");
+					//new ArmySelectionView( playerOne, playerTwo, gameState );
+					//armySelectionWindow.setVisible(false);
 				} else {
+                    gameState.setPlayerTwoArmySelection( false );
 					armySelectionWindow.setVisible(false);
 					gameState.setPlayerOneDiceSelection( true );
-					new MatchView( playerOne, playerTwo, gameState );
+					//create a new match card
+					GameController.createMatchView( playerOne, playerTwo, gameState );
+					GameController.changeView("matchView");
+					//new MatchView( playerOne, playerTwo, gameState );
 				}
 			}
 		});
@@ -170,8 +199,23 @@ public class ArmySelectionView {
 		});
 		
 		armySelectionWindow.setVisible(true);
+		
+		this.add(armySelectionWindow);
 	}
 	
+	private void setupCurrentDragonButtonListener(DragonButton dragBtn) {
+		dragBtn.addActionListener( new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				DragonButton actionPerfomedOn = (DragonButton) arg0.getSource();
+				Dragon dragonToDisplay = actionPerfomedOn.getAssociatedDragon();
+				DragonInformationView dragonInformation = new DragonInformationView( dragonToDisplay );
+			}
+			
+		});
+	}
+
 	/**
 	 * Update preview panels.
 	 */
@@ -190,8 +234,20 @@ public class ArmySelectionView {
 	 * @param dragon the dragon
 	 */
 	public void updatePanel( JPanel panel, Dragon dragon ) {
+		
+		DragonButton dragBtn;
+		
+		if (panel.getHeight() > 200)
+		{
+			dragBtn = new DragonButton ( dragon, "M" );
+		}
+		else
+		{
+			dragBtn = new DragonButton ( dragon );
+		}
+		setupCurrentDragonButtonListener( dragBtn );
 		panel.removeAll();
-		panel.add( new DragonButton( dragon ));
+		panel.add( dragBtn );
 		panel.updateUI();
 	}
 	
@@ -220,6 +276,13 @@ public class ArmySelectionView {
 				selectionPanel.updateUI();
 			}
 		}
+
+		if(playerDragons.getSize() > 0)
+		    btnConfirmSelection.setVisible(true);
+		else
+            btnConfirmSelection.setVisible(false);
+
+		selectionPanel.updateUI();
 		
 	}
 	

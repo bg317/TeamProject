@@ -1,4 +1,4 @@
-package dragonspiretournament.Game;
+package dragonspiretournament.game;
 
 import java.util.Observable;
 
