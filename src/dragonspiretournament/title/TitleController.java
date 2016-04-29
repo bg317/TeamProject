@@ -21,4 +21,20 @@ public class TitleController {
 	    GameController.createLeaderboardView();
 	    GameController.changeView("leaderboardView");
 	}
+	
+	/**
+	 * Gets the path to the start button.
+	 * @return path to the start button.
+	 */
+	public static String getStartButton() {
+		return "Art/UIGraphics/StartButton.png";
+	}
+	
+	/**
+	 * Gets the path to the leaderboard button.
+	 * @return path to the leaderboard button.
+	 */
+	public static String getLeaderboardButton() {
+		return "Art/UIGraphics/LeaderboardButton.png";
+	}
 }

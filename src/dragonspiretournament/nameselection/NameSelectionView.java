@@ -1,6 +1,7 @@
 package dragonspiretournament.nameselection;
 
 import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.PopupMenu;
@@ -15,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import dragonspiretournament.GameObjects.Player;
+import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 
 /**
  * The Class NameSelectionView.
@@ -139,7 +141,7 @@ public class NameSelectionView extends JPanel {
 		instructionLabel = new JLabel(instructionText, SwingConstants.CENTER);
 		//setting the default value of the name entry field
 		nameEntry = new JTextField(currentPlayer);
-		submitButton = new JButton("Submit");
+		submitButton = new ImageButton(NameSelectionController.getSubmitButton());
 		
 		//adding the J elements to the total panel
 		totalPanel.add(instructionLabel);

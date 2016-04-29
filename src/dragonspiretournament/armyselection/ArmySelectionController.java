@@ -1,6 +1,7 @@
 package dragonspiretournament.armyselection;
 
 import java.util.ArrayList;
+
 import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
@@ -118,5 +119,37 @@ public class ArmySelectionController {
 	public static void confirmPlayersArmy( ArmySelectionModel selectModel ) {
 		Player player = selectModel.getPlayer();
 		player.setArmy( selectModel.getCurrentPlayerArmy() );
+	}
+	
+	/**
+	 * Gets the path to the get next button.
+	 * @return path to the get next button.
+	 */
+	public static String getNextButton() {
+		return "Art/UIGraphics/NextButton.png";
+	}
+	
+	/**
+	 * Gets the path to the get previous button.
+	 * @return path to the get previous button.
+	 */
+	public static String getPreviousButton() {
+		return "Art/UIGraphics/PreviousButton.png";
+	}
+	
+	/**
+	 * Gets the path to the add dragon button.
+	 * @return path to the add dragon button.
+	 */
+	public static String getAddDragonButton() {
+		return "Art/UIGraphics/AddDragonButton.png";
+	}
+	
+	/**
+	 * Gets the path to the confirm selection button.
+	 * @return path to the confirm selection button.
+	 */
+	public static String getConfirmSelectionButton() {
+		return "Art/UIGraphics/ConfirmSelectionButton.png";
 	}
 }

@@ -1,6 +1,8 @@
 package dragonspiretournament.title;
+import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 
 import java.awt.BorderLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
@@ -50,11 +52,12 @@ public class TitleView extends JPanel {
         titleFrame.add(titleLabel, BorderLayout.CENTER);
         
         buttonPanel = new JPanel(new BorderLayout());
-		startButton = new JButton("Start");
+		startButton = new ImageButton(TitleController.getStartButton());
 		buttonPanel.add(startButton, BorderLayout.NORTH);
-		leaderboardButton = new JButton("Leaderboard");
+		leaderboardButton = new ImageButton(TitleController.getLeaderboardButton());
 		buttonPanel.add(leaderboardButton, BorderLayout.SOUTH);
 		titleFrame.add(buttonPanel, BorderLayout.SOUTH);
+		buttonPanel.setBackground(Color.white);
 		
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

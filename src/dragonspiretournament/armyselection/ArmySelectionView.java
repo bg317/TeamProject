@@ -17,6 +17,7 @@ import dragonspiretournament.GameObjects.Army;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.DragonButton;
+import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 import dragonspiretournament.PlayerInformation.DragonInformation;
 import dragonspiretournament.PlayerInformation.DragonInformationView;
 import dragonspiretournament.match.MatchView;
@@ -95,7 +96,7 @@ public class ArmySelectionView extends JPanel {
 		mainPanel.setLayout(null);
 		
 		prevWindow = new JPanel();
-		prevWindow.setBounds(41, 163, 124, 108);
+		prevWindow.setBounds(66, 163, 124, 108);
 		mainPanel.add(prevWindow);
 		prevWindow.add(new DragonButton( this.selectionModel.getPrev()));
 		prevWindow.setBorder(new LineBorder(Color.BLACK));
@@ -124,9 +125,9 @@ public class ArmySelectionView extends JPanel {
 
 			
 		
-		selectDragonBtn = new JButton("Add Dragon");
-		selectDragonBtn.setBounds(419, 387, 89, 23);
-		selectDragonBtn.setSize(new Dimension(150,50));
+		selectDragonBtn = new ImageButton(ArmySelectionController.getAddDragonButton());
+		selectDragonBtn.setBounds(379, 352, 29, 29);
+		selectDragonBtn.setSize(new Dimension(240,59));
 		mainPanel.add(selectDragonBtn);
 		selectDragonBtn.addActionListener(new ActionListener() {
 			@Override
@@ -136,8 +137,8 @@ public class ArmySelectionView extends JPanel {
 			}
 		});
 		
-		prevButton = new JButton("Prev");
-		prevButton.setBounds(76, 347, 89, 23);
+		prevButton = new ImageButton(ArmySelectionController.getPreviousButton());
+		prevButton.setBounds(66, 347, 133, 40);
 		mainPanel.add(prevButton);
 		prevButton.addActionListener(new ActionListener() {
 			@Override
@@ -148,12 +149,13 @@ public class ArmySelectionView extends JPanel {
 			}
 		});
 		
-		nextButton = new JButton("Next");
-		nextButton.setBounds(823, 347, 89, 23);
+		nextButton = new ImageButton(ArmySelectionController.getNextButton());
+		nextButton.setBounds(823, 347, 133, 40);
 		mainPanel.add(nextButton);
 		
-		JButton btnConfirmSelection = new JButton("Confirm Selection");
-		btnConfirmSelection.setBounds(746, 557, 177, 23);
+		JButton btnConfirmSelection = new ImageButton(ArmySelectionController.getConfirmSelectionButton());
+		btnConfirmSelection.setSize(new Dimension(217,40));
+		btnConfirmSelection.setBounds(706, 527, 217, 40);
 		mainPanel.add(btnConfirmSelection);
 		
 		JLabel playerPickMessage = new JLabel(selectionModel.getPlayer().getName() + ", select your Army!");

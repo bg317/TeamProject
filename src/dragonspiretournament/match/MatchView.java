@@ -23,6 +23,7 @@ import dragonspiretournament.GameObjects.Dice;
 import dragonspiretournament.GameObjects.Player;
 import dragonspiretournament.GameObjects.Dragons.Dragon;
 import dragonspiretournament.GameObjects.UIComponents.DragonButton;
+import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 import dragonspiretournament.PlayerInformation.DragonInformationView;
 import dragonspiretournament.title.TitleController;
 import javax.swing.JSplitPane;
@@ -213,8 +214,8 @@ public class MatchView extends JPanel {
 			
 		});
 		
-		btnRoll = new JButton("Roll");
-		btnRoll.setBounds(440, 486, 89, 38);
+		btnRoll = new ImageButton(MatchController.getRollButton());
+		btnRoll.setBounds(440, 486, 113, 59);
 		matchFrame.add(btnRoll);
 		btnRoll.addActionListener( new ActionListener() {
 			@Override

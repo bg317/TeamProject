@@ -81,4 +81,12 @@ public class NameSelectionController {
 	{
 	    nameSelector.resetPlayers();
 	}
+	
+	/**
+	 * Gets the path to the submit button.
+	 * @return path to the submit button.
+	 */
+	public static String getSubmitButton() {
+		return "Art/UIGraphics/SubmitButton.png";
+	}
 }

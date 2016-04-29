@@ -336,5 +336,12 @@ public class MatchController {
 		playerTwo.setDice( selectionDice );
 	}
 
+	/**
+	 * Gets the path to the roll button.
+	 * @return path to the roll button.
+	 */
+	public static String getRollButton() {
+		return "Art/UIGraphics/RollButton.png";
+	}
 
 }
