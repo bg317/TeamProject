@@ -2,7 +2,11 @@ package dragonspiretournament.PlayerDatabase;
 
 import dragonspiretournament.PlayerDatabase.DragonDB;
 
-
+/**
+ * Class that makes up the entries in the database
+ * @author Team 29(LS)
+ *
+ */
 public class PlayerEntry implements Comparable <PlayerEntry>{
 
 	protected String playerName;
@@ -10,6 +14,13 @@ public class PlayerEntry implements Comparable <PlayerEntry>{
 	protected int losses;
 	protected int ties; 
 	
+	/**
+	 * PlayerEntry-Constructor for PlayerEntry
+	 * @param playerName String name of player
+	 * @param wins int number of wins for player
+	 * @param losses int number of losses for player
+	 * @param ties int number of ties for player
+	 */
 	public PlayerEntry(String playerName, int wins, int losses, int ties){
 		this.playerName = playerName;
 		this.ties = ties;
@@ -17,6 +28,9 @@ public class PlayerEntry implements Comparable <PlayerEntry>{
 		this.losses = losses; 
 	}
 	
+	/**
+	 * compareTo-Method that overrides comparable's compareTo
+	 */
 	@Override
 	public int compareTo(PlayerEntry arg0) {
 		if (this.wins <= arg0.wins)
@@ -24,39 +38,74 @@ public class PlayerEntry implements Comparable <PlayerEntry>{
 		else 
 			return -1;
 	}
-
+	
+	/**
+	 * getPlayerName-Accessor for playerName
+	 * @return String of player's name
+	 */
 	public String getPlayerName() {
 		return playerName;
 	}
 
+	/**
+	 * setPlayerName-Setter for playerName
+	 * @param playerName String player's name
+	 */
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
 
+	/**
+	 * getTies-Accessor for ties
+	 * @return int number of ties for player
+	 */
 	public int getTies() {
 		return ties;
 	}
 
+	/**
+	 * setTies-Setter for ties
+	 * @param ties int number of ties for player
+	 */
 	public void setTies(int ties) {
 		this.ties = ties;
 	}
 
+	/**
+	 * getWins-Accessor for wins
+	 * @return int number of wins for player
+	 */
 	public int getWins() {
 		return wins;
 	}
 
+	/**
+	 * setWins-Setter for wins
+	 * @param wins int number of wins for player
+	 */
 	public void setWins(int wins) {
 		this.wins = wins;
 	}
 
+	/**
+	 * getLosses-Accessor for losses
+	 * @return int number of losses for player
+	 */
 	public int getLosses() {
 		return losses;
 	}
 
+	/**
+	 * setLosses-Setter for losses
+	 * @param losses int number of losses for player
+	 */
 	public void setLosses(int losses) {
 		this.losses = losses;
 	}
 	
+	/**
+	 * toString-Method to print PlayerEntry as a string
+	 */
 	public String toString(){
 		String retString = "";
 		
@@ -66,47 +115,6 @@ public class PlayerEntry implements Comparable <PlayerEntry>{
 		+this.getTies() + " ";
 		
 		return retString; 
-	}
-	
-	public static void main(String[] args) {
-		DragonDB db = new DragonDB();
-		
-		db.add("P1", 1, 5, 1);
-		db.add("P2", 22, 4, 33);
-		db.add("P3", 33, 3, 333);
-		db.add("P4", 44, 2, 4444);
-		
-		System.out.println(db.toString());
-		
-		db.write();
-		
-		DragonDB db2 = new DragonDB();
-		
-		db2.read(); 
-		
-		System.out.println(db2.toString());
-		
-		db2.Find("P2").setTies(999999);
-		
-		db2.write();
-		
-		DragonDB db3 = new DragonDB();
-		
-		db3.read();
-		
-		for (int ii = 0; ii < db3.get().size(); ii++){
-			System.out.println(db3.get().get(ii).toString());
-		}
-		
-		db3.sort();
-		System.out.println();
-		
-		for (int ii = 0; ii < db3.get().size(); ii++){
-			System.out.println(db3.get().get(ii).toString());
-		}
-		System.out.println();
-		System.out.println(db3.Find("P1").getPlayerName() + "   @index: " + db3.findIndex("P1"));
-
 	}
 
 }
