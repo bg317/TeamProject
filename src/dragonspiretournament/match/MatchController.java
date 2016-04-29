@@ -215,8 +215,10 @@ public class MatchController {
 		String oneDragonName = oneLast.getName();
 		String twoDragonName = twoLast.getName();
 		
-		playerOneActionText = "Dragon: " + oneDragonName + " Damage: " + playerOne.getLastDamage();
-		playerTwoActionText = "Dragon: " + twoDragonName + " Damage: " + playerTwo.getLastDamage();
+		playerOneActionText = "<html>Last Dragon: " + oneDragonName + "<br>Damage Dealt: " 
+		                                            + playerOne.getLastDamage() + "</html>";
+		playerTwoActionText = "<html>Last Dragon: " + twoDragonName + "<br>Damage Dealt: " 
+		                                            + playerTwo.getLastDamage() + "</html>";
 		
 		matchModel.setPlayerOneLastAction( playerOneActionText );
 		matchModel.setPlayerTwoLastAction( playerTwoActionText );
