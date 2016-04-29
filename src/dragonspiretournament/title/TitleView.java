@@ -48,7 +48,7 @@ public class TitleView extends JPanel {
 		titleFrame.setPreferredSize(new Dimension(500,500));
 		titleFrame.setBackground(Color.white);
 		
-		titleLabel = new JLabel("<html><p><h1>Dragonspire Tournament</h1></br><div style= 'text-align: center; font-size: 14'>Press Start to continue!</div></p></html>", SwingConstants.CENTER);
+		titleLabel = new JLabel("<html><p><div style= 'font-size: 40;'>Dragonspire Tournament</div><br><div style= 'text-align: center; font-size: 14'>Press Start to continue!</div></p></html>", SwingConstants.CENTER);
         titleFrame.add(titleLabel, BorderLayout.CENTER);
         
         buttonPanel = new JPanel(new BorderLayout());
