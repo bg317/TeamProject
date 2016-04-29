@@ -145,7 +145,6 @@ public class DragonInformationController {
 	        return new ImageIcon(imageLocation, altText);
 	    } 
 	    else {
-	        System.out.println("file not found at: " + path);
 	        return null;
 	    }
 	}

@@ -125,7 +125,6 @@ public class DragonInformationView {
 		
 		//set main dragon image
 		try {
-			System.out.println(dragonArtLocation);
 			mainImage = new ImageButton(dragonArtLocation);
 			totalPanel.add(mainImage, BorderLayout.CENTER);
 		}

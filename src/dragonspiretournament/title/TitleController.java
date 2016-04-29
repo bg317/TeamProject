@@ -12,7 +12,6 @@ public class TitleController {
 	 * Do something.
 	 */
 	public static void doSomething() {
-		System.out.println("Do Something");
 		GameController.createNameSelectionView();
 		GameController.changeView("nameView");
 	}

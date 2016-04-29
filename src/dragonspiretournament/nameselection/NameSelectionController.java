@@ -72,7 +72,6 @@ public class NameSelectionController {
 	 */
 	public static void goToChooseArmy()
 	{
-		System.out.println("going to choose army screen");
 		GameController.createArmySelectionView(nameSelector.getPlayerOne(), nameSelector.getPlayerTwo());
 		GameController.changeView("armySelect");
 	}

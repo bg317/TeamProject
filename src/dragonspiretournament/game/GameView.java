@@ -123,7 +123,6 @@ public class GameView {
 	        gameState.setPlayerOneArmySelection(true);
 
 	    armySelectView = new ArmySelectionView(playerOne, playerTwo, gameState);
-		System.out.println("army select view created");
 		
 		//adds a card to the wrapper panel for the army selection view
 		wrapperPanel.add(armySelectView, "armySelect");

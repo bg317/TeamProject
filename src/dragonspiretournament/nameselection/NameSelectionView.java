@@ -170,7 +170,6 @@ public class NameSelectionView extends JPanel {
 		this.add(totalPanel);
 		this.setBackground(Color.white);
 		this.setVisible(true);
-		System.out.println("inside constructor without parameters");
 	}
 	
 	/**

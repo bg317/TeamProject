@@ -73,14 +73,12 @@ public class NameSelectionModel {
 		if (currentPlayer == ONE)
 		{
 			playerOneName = name;
-			System.out.println("name: " + playerOneName);
 			//sets the name in the actual player 1 object
 			player1.setName(playerOneName);
 		}
 		else if (currentPlayer == TWO)
 		{
 			playerTwoName = name;
-			System.out.println("name: " + playerTwoName);
 			//sets the name in the actual player 2 object
 			player2.setName(playerTwoName);
 		}
