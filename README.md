@@ -27,23 +27,26 @@ You can also build the JAR file to the target directory, in which case run the j
 ####Playing
 To play, you need two players. An initial screen will pop up to select a various set of Dragons. The first dragon selection screen will be player one. Player one can select from the library and turning wheel a dragon to add to his collection. Once player one has confirmed his or her selection, another selection window will pop up. This selection window is for player two to select and confirm his or her selection. Each dragon is represented as a shield and next release we will have an information window for each one. 
 
-After confirming both players' selections, move onto the match screen. The players can select a dragons to add to its dice collection, and a roll will select a random dragon to attack. 
-
-The dice selection currently selects for both players, so each player cannot have a unique dice until next release. 
+After confirming both players' selections, move onto the match screen. The players can select a dragons to add to its dice collection and confirm their selection. Once both players have confirmed, roll dice will select a random dragon to attack from each player's dice.
 
 When rolling, an attack will occur which will be reflected in the status text for each player. The damage is the damage received. If you are out of HP you will either win or a draw will occur. Exit the game after match is over by selecting the X in the top right.
 
 # <a name="authors"></a>Authors
 
-Brandon G.  (id: bg317)
+Brandon Gardell<br/>
+GitHub id: bg317
 
-Lloyd A.    (id: lkcallen)
+Lloyd Allen<br/>
+GitHub id: lkcallen
 
-Cheri T.    (id: cmthom10)
+Cheri Thompson<br/>
+GitHub id: cmthom10
 
-Larry S.    (id: lstandage135)
+Larry Standage<br/>
+GitHub id: lstandage135
 
-Caleb D.    (id: calebdav)
+Caleb Davis<br/>
+GitHub id: calebdav
 
 # <a name="rules"></a>Game Rules and Other Info
 
@@ -64,7 +67,7 @@ Game Begin:<br/>
 3) Go to Turn Begin<br/>
 
 Turn Begin:<br/>
-1) Player 1 & 2 choose up to 5 dragons of 12 to fill 5 slots on a 6-sided die (player 1 goes first on odds, player 2 on evens)<br/>
+1) Player 1 & 2 choose up to 5 dragons of 12 to fill 5 slots on a 6-sided die (player 1 chooses first)<br/>
 2) Player 1 & 2 rolls die for damage<br/>
 3) Damage is applied to each side<br/>
 4) If both strongholds’ hp is above 0, go back to step 1<br/>
