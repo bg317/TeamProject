@@ -90,7 +90,7 @@ public class LeaderboardView extends JPanel {
 		leaderboardFrame.add(winsLabel);
 		
 		backButton = new JButton("Back");
-		backButton.setBounds(350, 610, 75, 23);
+		backButton.setBounds(350, 600, 75, 23);
 		leaderboardFrame.add(backButton);
 
         backButton.addActionListener(new ActionListener() {
