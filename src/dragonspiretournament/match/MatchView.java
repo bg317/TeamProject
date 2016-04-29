@@ -334,10 +334,27 @@ public class MatchView extends JPanel {
 
 		this.add(matchFrame);
 		
+        JButton helpBtn = new JButton("?");
+        helpBtn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showMessageDialog(matchFrame, ""
+        				+ "1) Player 1 & 2 choose up to 5 dragons of 12 to fill 5 slots on a 6-sided die\n" 
+        				+ "2) Player 1 & 2 rolls die for damage\n"
+        				+ "3) Damage is applied to each side\n"
+        				+ "4) If both strongholds’ hp is above 0, go back to step 1\n"
+        				+ "5) If a stronghold’s hp is at 0, game ends!");
+        	}
+        });
+        helpBtn.setBounds(10, 11, 54, 23);
+        matchFrame.add(helpBtn);
+		
 		matchFrame.repaint();
 
 		//Only runs the first time the panel is run
         JOptionPane.showMessageDialog( matchFrame, "It is " + playerOne.getName() + "'s turn now!");        
+        
+
+
 	}
 	
 	/**
@@ -458,14 +475,12 @@ public class MatchView extends JPanel {
 		updatePlayersHealthBars();
 		updateLastPlayerOneAction();
 		updateLastPlayerTwoAction();
-		System.out.println( matchModel.isMatchOver() );
 	}
 	
 	/**
 	 * Check if match is over.
 	 */
 	public void checkIfMatchOver() { 
-//		System.out.println( matchModel.isMatchOver() + " is match over? "); //Used in testing
 		if ( matchModel.isMatchOver() ) {
 			if ( matchModel.isDraw() ) {
 				JOptionPane.showMessageDialog( matchFrame, "Game has come to a draw!");
