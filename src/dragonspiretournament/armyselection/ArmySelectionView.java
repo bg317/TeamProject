@@ -104,7 +104,7 @@ public class ArmySelectionView extends JPanel {
 		currWindow = new JPanel();
 		currWindow.setBounds(344, 111, 298, 210);
 		mainPanel.add(currWindow);
-		currDragBtn = new DragonButton( this.selectionModel.getCurrent());
+		currDragBtn = new DragonButton( this.selectionModel.getCurrent(),  "M");
 		setupCurrentDragonButtonListener( currDragBtn );
 		currWindow.add( currDragBtn );
 		currWindow.setBorder(new LineBorder(Color.BLACK));
@@ -175,7 +175,7 @@ public class ArmySelectionView extends JPanel {
                     gameState.setPlayerTwoArmySelection( false );
 					armySelectionWindow.setVisible(false);
 					gameState.setPlayerOneDiceSelection( true );
-					//create a new match card(??)
+					//create a new match card
 					GameController.createMatchView( playerOne, playerTwo, gameState );
 					GameController.changeView("matchView");
 					//new MatchView( playerOne, playerTwo, gameState );
@@ -228,7 +228,17 @@ public class ArmySelectionView extends JPanel {
 	 * @param dragon the dragon
 	 */
 	public void updatePanel( JPanel panel, Dragon dragon ) {
-		DragonButton dragBtn = new DragonButton ( dragon );
+		
+		DragonButton dragBtn;
+		
+		if (panel.getHeight() > 200)
+		{
+			dragBtn = new DragonButton ( dragon, "M" );
+		}
+		else
+		{
+			dragBtn = new DragonButton ( dragon );
+		}
 		setupCurrentDragonButtonListener( dragBtn );
 		panel.removeAll();
 		panel.add( dragBtn );
