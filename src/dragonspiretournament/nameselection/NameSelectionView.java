@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.PopupMenu;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Color;
 
 import javax.swing.JButton;
@@ -85,6 +86,7 @@ public class NameSelectionView extends JPanel {
 		entryAndSubmit = new JPanel();
 		//swing constants center centers the text across 
 		instructionLabel = new JLabel(instructionText, SwingConstants.CENTER);
+		instructionLabel.setFont(new Font(instructionLabel.getFont().getFontName(), Font.PLAIN, 16));
 		//setting the default value of the name entry field
 		nameEntry = new JTextField(currentPlayer);
 		submitButton = new JButton("Submit");
@@ -139,8 +141,11 @@ public class NameSelectionView extends JPanel {
 		entryAndSubmit = new JPanel();
 		//swing constants center centers the text across 
 		instructionLabel = new JLabel(instructionText, SwingConstants.CENTER);
+        instructionLabel.setFont(new Font(instructionLabel.getFont().getFontName(), Font.PLAIN, 16));
 		//setting the default value of the name entry field
 		nameEntry = new JTextField(currentPlayer);
+		nameEntry.setFont(new Font(nameEntry.getFont().getFontName(), Font.PLAIN, 15));
+		nameEntry.setColumns(6);
 		submitButton = new ImageButton(NameSelectionController.getSubmitButton());
 		
 		//adding the J elements to the total panel

@@ -3,6 +3,7 @@ package dragonspiretournament.match;
 import java.awt.BorderLayout;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -160,11 +161,13 @@ public class MatchView extends JPanel {
         playerOneArmyUnclickable.setVisible(false);
 		
 		lblPlayerTwo = new JLabel( matchModel.getPlayerOne().getName() );
-		lblPlayerTwo.setBounds(140, 492, 121, 40);
+		lblPlayerTwo.setFont(new Font(lblPlayerTwo.getFont().getFontName(), Font.PLAIN, 18));
+		lblPlayerTwo.setBounds(140, 492, 160, 40);
 		matchFrame.add(lblPlayerTwo);
 		
 		lblPlayerTwoDragons = new JLabel( matchModel.getPlayerTwo().getName() );
-		lblPlayerTwoDragons.setBounds(662, 48, 79, 40);
+        lblPlayerTwoDragons.setFont(new Font(lblPlayerTwoDragons.getFont().getFontName(), Font.PLAIN, 18));
+		lblPlayerTwoDragons.setBounds(662, 48, 160, 40);
 		matchFrame.add(lblPlayerTwoDragons);
 		
 		playerOneHP = new JProgressBar(0, 25); //25 is the max strongholdHP
@@ -173,7 +176,7 @@ public class MatchView extends JPanel {
 		playerOneHP.setValue(50);
 		
 		playerTwoHP = new JProgressBar(0, 25); //25 is the max strongholdHP
-		playerTwoHP.setBounds(672, 86, 146, 14);
+		playerTwoHP.setBounds(672, 93, 146, 14);
 		matchFrame.add(playerTwoHP);
 		playerTwoHP.setValue(50);
 
@@ -245,11 +248,11 @@ public class MatchView extends JPanel {
         matchFrame.add(PlayerTwoDiceSelection);
         
 		lblAddDiceHere = new JLabel("Add to dice here by selecting dragons from your army:");
-		lblAddDiceHere.setBounds(324, 467, 320, 14);
+		lblAddDiceHere.setBounds(320, 474, 320, 14);
 		matchFrame.add(lblAddDiceHere);
 		
-        btnConfirmSelectionPlayerOne = new JButton("Confirm Selection");
-        btnConfirmSelectionPlayerOne.setBounds(420, 554, 157, 23);
+        btnConfirmSelectionPlayerOne = new ImageButton("Art/UIGraphics/ConfirmSelectionButton.png");
+        btnConfirmSelectionPlayerOne.setBounds(390, 564, 217, 40);
         matchFrame.add(btnConfirmSelectionPlayerOne);
         btnConfirmSelectionPlayerOne.addActionListener( new ActionListener() {
             @Override
@@ -268,8 +271,8 @@ public class MatchView extends JPanel {
         });
         btnConfirmSelectionPlayerOne.setVisible(true);
         
-        btnConfirmSelectionPlayerTwo = new JButton("Confirm Selection");
-        btnConfirmSelectionPlayerTwo.setBounds(420, 554, 157, 23);
+        btnConfirmSelectionPlayerTwo = new ImageButton("Art/UIGraphics/ConfirmSelectionButton.png");
+        btnConfirmSelectionPlayerTwo.setBounds(390, 564, 217, 40);
         matchFrame.add(btnConfirmSelectionPlayerTwo);
         btnConfirmSelectionPlayerTwo.addActionListener( new ActionListener() {
             @Override

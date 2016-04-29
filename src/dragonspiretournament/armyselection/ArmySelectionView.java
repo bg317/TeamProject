@@ -5,6 +5,7 @@ import javax.swing.JButton;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,7 +97,7 @@ public class ArmySelectionView extends JPanel {
 		mainPanel.setLayout(null);
 		
 		prevWindow = new JPanel();
-		prevWindow.setBounds(66, 163, 124, 108);
+		prevWindow.setBounds(106, 193, 60, 54);
 		mainPanel.add(prevWindow);
 		prevWindow.add(new DragonButton( this.selectionModel.getPrev()));
 		prevWindow.setBorder(new LineBorder(Color.BLACK));
@@ -110,7 +111,7 @@ public class ArmySelectionView extends JPanel {
 		currWindow.setBorder(new LineBorder(Color.BLACK));
 		
 		nextWindow = new JPanel();
-		nextWindow.setBounds(814, 163, 124, 108);
+		nextWindow.setBounds(854, 193, 60, 54);
 		mainPanel.add(nextWindow);
 		nextWindow.add(new DragonButton( this.selectionModel.getNext()));
 		nextWindow.setBorder(new LineBorder(Color.BLACK));
@@ -159,7 +160,8 @@ public class ArmySelectionView extends JPanel {
 		mainPanel.add(btnConfirmSelection);
 		
 		JLabel playerPickMessage = new JLabel(selectionModel.getPlayer().getName() + ", select your Army!");
-		playerPickMessage.setBounds(350, 85, 194, 33);
+		playerPickMessage.setFont(new Font(playerPickMessage.getFont().getFontName(), Font.PLAIN, 20));
+		playerPickMessage.setBounds(66, 30, 900, 33);
 		mainPanel.add(playerPickMessage);
 		btnConfirmSelection.addActionListener( new ActionListener() {
 			@Override
