@@ -56,7 +56,8 @@ public class ArmySelectionView extends JPanel {
 	
 	/** The select dragon btn. */
 	JButton selectDragonBtn;
-	
+
+	/** The current dragon button. */
 	DragonButton currDragBtn;
 	
 	/** The prev button. */
@@ -65,6 +66,8 @@ public class ArmySelectionView extends JPanel {
 	/** The next button. */
 	JButton nextButton;
 	
+	/** The confirm selection button*/
+	JButton btnConfirmSelection;	
 	/**
 	 * Instantiates a new army selection view.
 	 *
@@ -120,9 +123,15 @@ public class ArmySelectionView extends JPanel {
 		currentArmySelection.setBounds(70, 441, 860, 54);	
 		currentArmySelection.setBorder(new LineBorder(Color.BLACK));
 		
+        btnConfirmSelection = new ImageButton(ArmySelectionController.getConfirmSelectionButton());
+        btnConfirmSelection.setSize(new Dimension(217,40));
+        btnConfirmSelection.setBounds(706, 527, 217, 40);
+        btnConfirmSelection.setVisible(false);
+        
 		updateSelectionPanel( currentArmySelection, selectionModel ); 
 		
 		mainPanel.add(currentArmySelection);
+        mainPanel.add(btnConfirmSelection);
 
 			
 		
@@ -153,11 +162,6 @@ public class ArmySelectionView extends JPanel {
 		nextButton = new ImageButton(ArmySelectionController.getNextButton());
 		nextButton.setBounds(823, 347, 133, 40);
 		mainPanel.add(nextButton);
-		
-		JButton btnConfirmSelection = new ImageButton(ArmySelectionController.getConfirmSelectionButton());
-		btnConfirmSelection.setSize(new Dimension(217,40));
-		btnConfirmSelection.setBounds(706, 527, 217, 40);
-		mainPanel.add(btnConfirmSelection);
 		
 		JLabel playerPickMessage = new JLabel(selectionModel.getPlayer().getName() + ", select your Army!");
 		playerPickMessage.setFont(new Font(playerPickMessage.getFont().getFontName(), Font.PLAIN, 20));
@@ -272,7 +276,13 @@ public class ArmySelectionView extends JPanel {
 				selectionPanel.updateUI();
 			}
 		}
-        selectionPanel.updateUI();
+
+		if(playerDragons.getSize() > 0)
+		    btnConfirmSelection.setVisible(true);
+		else
+            btnConfirmSelection.setVisible(false);
+
+		selectionPanel.updateUI();
 		
 	}
 	
