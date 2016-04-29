@@ -187,25 +187,25 @@ public class MatchView extends JPanel {
 		playerTwoHP.setValue(50);
 
 		playerOneLastAction = new JLabel("No dragons rolled yet");
-		playerOneLastAction.setBounds(146, 537, 243, 80);
-		playerOneLastAction.setFont(new Font(playerOneLastAction.getFont().getFontName(), Font.BOLD, 14));
+		playerOneLastAction.setBounds(672, 93, 243, 80);
+		playerOneLastAction.setFont(new Font(playerOneLastAction.getFont().getFontName(), Font.PLAIN, 14));
 		matchFrame.add(playerOneLastAction);
 
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
-		playerTwoLastAction.setBounds(672, 93, 311, 80);
-        playerTwoLastAction.setFont(new Font(playerTwoLastAction.getFont().getFontName(), Font.BOLD, 14));
+		playerTwoLastAction.setBounds(146, 537, 311, 80);
+        playerTwoLastAction.setFont(new Font(playerTwoLastAction.getFont().getFontName(), Font.PLAIN, 14));
 		matchFrame.setVisible(true);
 		matchFrame.add(playerTwoLastAction);
 		
 		playerOneLastDragonWindow = new JPanel();
-		playerOneLastDragonWindow.setBounds(275, 250, 200, 210);
+		playerOneLastDragonWindow.setBounds(466, 99, 200, 210);
 		matchFrame.add(playerOneLastDragonWindow);
         playerOneLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"), "M");
         playerOneLastDragonWindow.add(playerOneLastDragon);
         setupDragonListener(playerOneLastDragon);
 		
 		playerTwoLastDragonWindow = new JPanel();
-		playerTwoLastDragonWindow.setBounds(466, 119, 200, 210);
+		playerTwoLastDragonWindow.setBounds(275, 250, 200, 210);
 		matchFrame.add(playerTwoLastDragonWindow);
 		playerTwoLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"), "M");
 		playerTwoLastDragonWindow.add(playerTwoLastDragon);
@@ -332,10 +332,12 @@ public class MatchView extends JPanel {
         });
         btnClearDicePlayerTwo.setVisible(false);
 
-		
 		this.add(matchFrame);
 		
 		matchFrame.repaint();
+
+		//Only runs the first time the panel is run
+        JOptionPane.showMessageDialog( matchFrame, "It is " + playerOne.getName() + "'s turn now!");        
 	}
 	
 	/**
