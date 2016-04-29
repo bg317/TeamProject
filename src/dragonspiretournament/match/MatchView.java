@@ -82,12 +82,18 @@ public class MatchView extends JPanel {
 	
 	/** The player two hp. */
 	private JProgressBar playerTwoHP;
-	
-	/** The player one last dragon. */
-	private DragonButton playerOneLastDragon;
-	
-	/** The player two last dragon. */
-	private DragonButton playerTwoLastDragon;
+    
+    /** The player one last dragon. */
+    private DragonButton playerOneLastDragon;
+    
+    /** The player two last dragon. */
+    private DragonButton playerTwoLastDragon; 
+
+    /** The player one last dragon. */
+    private JPanel playerOneLastDragonWindow;
+    
+    /** The player two last dragon. */
+    private JPanel playerTwoLastDragonWindow;
 	
 	/** The btn confirm selection. */
 	private JButton btnConfirmSelectionPlayerOne;
@@ -181,43 +187,29 @@ public class MatchView extends JPanel {
 		playerTwoHP.setValue(50);
 
 		playerOneLastAction = new JLabel("No dragons rolled yet");
-		playerOneLastAction.setBounds(306, 175, 243, 108);
+		playerOneLastAction.setBounds(146, 537, 243, 80);
 		playerOneLastAction.setFont(new Font(playerOneLastAction.getFont().getFontName(), Font.BOLD, 14));
 		matchFrame.add(playerOneLastAction);
 
 		playerTwoLastAction = new JLabel("No dragons rolled yet");
-		playerTwoLastAction.setBounds(509, 290, 311, 108);
+		playerTwoLastAction.setBounds(672, 93, 311, 80);
         playerTwoLastAction.setFont(new Font(playerTwoLastAction.getFont().getFontName(), Font.BOLD, 14));
 		matchFrame.setVisible(true);
 		matchFrame.add(playerTwoLastAction);
 		
-		playerOneLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"));
-		playerOneLastDragon.setBounds(506, 169, 146, 108);
-		matchFrame.add(playerOneLastDragon);
-		playerOneLastDragon.addActionListener( new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				DragonButton actionPerfomedOn = (DragonButton) arg0.getSource();
-				Dragon dragonToDisplay = actionPerfomedOn.getAssociatedDragon();
-				DragonInformationView dragonInformation = new DragonInformationView( dragonToDisplay );
-			}
-			
-		});
+		playerOneLastDragonWindow = new JPanel();
+		playerOneLastDragonWindow.setBounds(275, 250, 200, 210);
+		matchFrame.add(playerOneLastDragonWindow);
+        playerOneLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"), "M");
+        playerOneLastDragonWindow.add(playerOneLastDragon);
+        setupDragonListener(playerOneLastDragon);
 		
-		playerTwoLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"));
-		playerTwoLastDragon.setBounds(301, 290, 146, 108);
-		matchFrame.add(playerTwoLastDragon);
-		playerTwoLastDragon.addActionListener( new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				DragonButton actionPerfomedOn = (DragonButton) arg0.getSource();
-				Dragon dragonToDisplay = actionPerfomedOn.getAssociatedDragon();
-				DragonInformationView dragonInformation = new DragonInformationView( dragonToDisplay );
-			}
-			
-		});
+		playerTwoLastDragonWindow = new JPanel();
+		playerTwoLastDragonWindow.setBounds(466, 119, 200, 210);
+		matchFrame.add(playerTwoLastDragonWindow);
+		playerTwoLastDragon = new DragonButton(new Dragon("Missed", 0, 0, "none", "none", "src/dragons/icons/Missed.png", "src/dragons/descr/Missed.txt"), "M");
+		playerTwoLastDragonWindow.add(playerTwoLastDragon);
+        setupDragonListener(playerTwoLastDragon);
 		
 		btnRoll = new ImageButton(MatchController.getRollButton());
 		btnRoll.setBounds(440, 486, 113, 59);
@@ -655,12 +647,18 @@ public class MatchView extends JPanel {
 	 */
 	public void updateLastDragon() {
 		if ( matchModel.getPlayerOneLastDragon() != null ) {
-			this.playerOneLastDragon.setAssociatedDragon( matchModel.getPlayerOneLastDragon() );
-			this.playerOneLastDragon.updateUI();
+			this.playerOneLastDragon = new DragonButton( matchModel.getPlayerOneLastDragon(), "M" );
+			setupDragonListener(playerOneLastDragon);
+			this.playerOneLastDragonWindow.removeAll();
+			this.playerOneLastDragonWindow.add(playerOneLastDragon);
+			this.playerOneLastDragonWindow.updateUI();
 		} 
 		if ( matchModel.getPlayerTwoLastDragon() != null ) {
-			this.playerTwoLastDragon.setAssociatedDragon( matchModel.getPlayerTwoLastDragon() );
-			this.playerOneLastDragon.updateUI();
+			this.playerTwoLastDragon = new DragonButton( matchModel.getPlayerTwoLastDragon(), "M" );
+			setupDragonListener(playerTwoLastDragon);
+            this.playerTwoLastDragonWindow.removeAll();
+            this.playerTwoLastDragonWindow.add(playerTwoLastDragon);
+			this.playerTwoLastDragonWindow.updateUI();
 		}
 	}
 	
@@ -692,5 +690,19 @@ public class MatchView extends JPanel {
 		
 		playerOneHP.updateUI();
 		playerTwoHP.updateUI();
+	}
+
+	public void setupDragonListener(DragonButton dragBtn) {
+	    dragBtn.addActionListener( new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                DragonButton actionPerfomedOn = (DragonButton) arg0.getSource();
+                Dragon dragonToDisplay = actionPerfomedOn.getAssociatedDragon();
+                DragonInformationView dragonInformation = new DragonInformationView( dragonToDisplay );
+            }
+            
+        });
+
 	}
 }
