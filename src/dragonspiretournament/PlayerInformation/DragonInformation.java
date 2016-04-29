@@ -44,7 +44,7 @@ public class DragonInformation {
 		dragonDescriptionLocation = dragon.getDescription();
 		dragonFullArt = "";
 		dragonDescription = "";
-		dragonAdvantage = "";
+		dragonAdvantage = dragon.getStrength();
 		
 		try
 		{
