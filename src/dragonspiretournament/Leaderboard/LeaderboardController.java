@@ -29,4 +29,12 @@ public class LeaderboardController{
 	public static void goToTitleView() {
 	    GameController.changeView("titleView");
 	}
+	
+	/**
+	 * Gets the path to the back button.
+	 * @return path to the back button.
+	 */
+	public static String getBackButton() {
+		return "Art/UIGraphics/BackButton.png";
+	}
 }

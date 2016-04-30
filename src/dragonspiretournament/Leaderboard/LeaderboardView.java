@@ -14,6 +14,8 @@ import java.awt.Color;
 
 import dragonspiretournament.Leaderboard.LeaderboardModel;
 import dragonspiretournament.title.TitleController;
+import dragonspiretournament.game.GameController;
+import dragonspiretournament.GameObjects.UIComponents.ImageButton;
 
 public class LeaderboardView extends JPanel {
 	
@@ -89,8 +91,8 @@ public class LeaderboardView extends JPanel {
 		winsLabel.setBounds(350, 20, 100, 30);
 		leaderboardFrame.add(winsLabel);
 		
-		backButton = new JButton("Back");
-		backButton.setBounds(350, 600, 75, 23);
+		backButton = new ImageButton(LeaderboardController.getBackButton());
+		backButton.setBounds(350, 600, 87, 40);
 		leaderboardFrame.add(backButton);
 
         backButton.addActionListener(new ActionListener() {
