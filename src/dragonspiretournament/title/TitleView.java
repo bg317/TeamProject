@@ -27,6 +27,12 @@ public class TitleView extends JPanel {
 	/** The title label. */
 	private JLabel titleLabel;
 	
+	/**The logo button*/
+	private ImageButton logoButton;
+	
+	/**The logo panel*/
+	private JPanel logoPanel;
+	
 	/** The button panel. */
 	private JPanel buttonPanel;
 
@@ -48,8 +54,17 @@ public class TitleView extends JPanel {
 		titleFrame.setPreferredSize(new Dimension(500,500));
 		titleFrame.setBackground(Color.white);
 		
-		titleLabel = new JLabel("<html><p><div style= 'font-size: 40;'>Dragonspire Tournament</div><br><div style= 'text-align: center; font-size: 14'>Press Start to continue!</div></p></html>", SwingConstants.CENTER);
-        titleFrame.add(titleLabel, BorderLayout.CENTER);
+		logoButton = new ImageButton(TitleController.getLogo());
+		
+		logoPanel = new JPanel(new BorderLayout());
+		logoPanel.add(logoButton, BorderLayout.CENTER);
+		logoPanel.setBackground(Color.white);
+		
+		//titleLabel = new JLabel("<html><p><div style= 'font-size: 40;'>Dragonspire Tournament</div><br><div style= 'text-align: center; font-size: 14'>Press Start to continue!</div></p></html>", SwingConstants.CENTER);
+		titleLabel = new JLabel("<html><br><div style= 'text-align: center; font-size: 14'>Press Start to continue!</div></p><br/><br/></html>", SwingConstants.CENTER);
+		logoPanel.add(titleLabel, BorderLayout.SOUTH);
+		
+		titleFrame.add(logoPanel, BorderLayout.CENTER);
         
         buttonPanel = new JPanel(new BorderLayout());
 		startButton = new ImageButton(TitleController.getStartButton());

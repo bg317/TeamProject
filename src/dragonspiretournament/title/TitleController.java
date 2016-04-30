@@ -36,4 +36,12 @@ public class TitleController {
 	public static String getLeaderboardButton() {
 		return "Art/UIGraphics/LeaderboardButton.png";
 	}
+	
+	/**
+	 * Gets the path to the logo image.
+	 * @return path to the logo image.
+	 */
+	public static String getLogo() {
+		return "Art/UIGraphics/Logo.png";
+	}
 }
